@@ -1,0 +1,34 @@
+# EditorConfig helps developers define and maintain consistent
+# coding styles between different editors and IDEs
+# http://editorconfig.org
+
+root = true
+
+# all files
+[*]
+charset = utf-8
+end_of_line = lf
+indent_size = 2
+indent_style = space
+insert_final_newline = true
+max_line_length = 120
+trim_trailing_whitespace = true
+
+[*.js]
+curly_bracket_next_line = false
+indent_brace_style = 1TBS
+insert_final_newline = true
+max_line_length = 120
+quote_type = single
+spaces_around_brackets = outside
+spaces_around_operators = true
+trim_trailing_whitespace = true
+
+[*.html]
+end_of_line = lf
+insert_final_newline = false
+quote_type = double
+trim_trailing_whitespace = false
+
+[*.md]
+trim_trailing_whitespace = false
