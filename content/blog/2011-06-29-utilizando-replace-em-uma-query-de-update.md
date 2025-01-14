@@ -2,8 +2,6 @@
 title = "Utilizando Replace em uma query de UPDATE"
 +++
 
-<img class="size-thumbnail wp-image-193" title="Replace SQL" src="/assets/reforma-ortogr&#225;fica-150x150.jpg" alt="Replace SQL" width="150" height="150" />
-
 <p>Depois de passar um tempo sem escrever nenhum artigo, após a transferência do servidor do blog, estou retomando as atividades por aqui.</p>
 <p>E este artigo envolve exatamente esta transferência de servidor.</p>
 <p>Por algum motivo, todos os caractéres com acentos especiais no banco, se transformaram em símbolos. Para resolver esse problema, utilizei o REPLACE, substituido todos estes carácters inválidos pelos acentos originais.</p>

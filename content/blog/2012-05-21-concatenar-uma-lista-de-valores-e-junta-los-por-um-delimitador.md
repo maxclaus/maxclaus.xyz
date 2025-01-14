@@ -2,9 +2,6 @@
 title = "Concatenar uma lista de valores e juntá-los por um delimitador"
 +++
 
-
-<img class="size-thumbnail wp-image-651" title="Join" src="/assets/Join-150x141.jpg" alt="" width="150" height="141" />
-
 <p>Quando trabalhamos com Stored Procedures&nbsp;para aumentar a performance, muitas vezes quando a situação permite, damos preferência por realizar a execução de uma única vez de uma Stored Procedure, ao invés de chamá-la para cada código contido em uma lista.</p>
 <p>Como os parâmetros de uma Stored Procedure não aceitam um tipo List como o que existe no C#, a forma mais simples de passar uma lista a Stored Procedure seria concatenar todos os códigos separados por um delimitador e tratar o parâmetro como um tipo Varchar.</p>
 <p>Por exemplo, vamos dizer que você possua uma tela de gerenciar clientes, na qual é possível alterar a situação de cada um deles. Nessa tela existe uma Gridview com Checkbox em cada linha, para que seja possível selecionar cada cliente que você deseje desabilitar.<!--more--></p>

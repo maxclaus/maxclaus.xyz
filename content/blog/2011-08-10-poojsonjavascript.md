@@ -2,8 +2,6 @@
 title = "POO JSON JavaScript"
 +++
 
-<img class="size-thumbnail wp-image-257" title="POO_JSON_JavaScript" src="/assets/POO_JSON_JavaScript-150x140.png" alt="" width="150" height="140" />
-
 <p>Quando começamos a trabalhar mais com javascript, aproveitando as vantagens de uma linguagem client-side e o código começar a crescer e ficar mais complexo, surge nessecidade de seguir algum padrão.</p>
 <p>E nada melhor, do que implementar algo que você já esteja acostumado a utlizar, como o Paradígma Orientado a Objetos(<strong>POO</strong>).</p>
 <p>Trantando como uma <strong>CLASSE</strong>, as informações manipuladas no código, torna-o mais legível, organizado e de fácil manutenção.</p>

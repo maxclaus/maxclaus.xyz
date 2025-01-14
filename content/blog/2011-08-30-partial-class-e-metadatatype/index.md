@@ -2,14 +2,11 @@
 title = "Partial class e MetaDataType"
 +++
 
-<img class="size-thumbnail wp-image-283" title="Partial Class" src="/assets/partial-class-1-150x150.jpg" alt="" width="150" height="150" />
-
 <p>Se você esta acostumado a utilizar frameworks ORM (Object-relational mapping) como LINQ to SQL, LINQ to Entity e dentre outros. Uma grande vantagem, se não necessidade, é utilizar <strong><span style="color: #3366ff;">Partial Class</span></strong> (classes parciais).</p>
 <p>Com partial class, é possível dividir a estrutura de classes em arquivos separados. E todas as partes são combinados quando o aplicativo é compilado.</p>
 <p>Pode ser usada quando trabalhamos com grande projetos, para separar definições de classes, por simples organização ou para dar autonomia que cada desenvolvedor trabalhe em arquivos separados, mas relacionados a mesma classe. E também, trabalhando com arquivos gerados automaticamente, como de frameworks ORM, atribuindo novas definições as classes geradas pelo framework.</p>
-<p><!--more--></p>
 
-<img class="size-full wp-image-280" title="partial class" src="/assets/partial-class.jpg" alt="" width="408" height="612" />
+<img class="size-full wp-image-280" title="partial class" src="./partial-class.jpg" alt="" width="408" height="612" />
 <em>Partial Class</em>
 
 <p>Para definir uma classe como parcial é necessário incluir a palavra-chave <strong><span style="color: #3366ff;">partial</span></strong> em sua definição Além das classes possuírem exatamente o mesmo nome e namespace.</p>

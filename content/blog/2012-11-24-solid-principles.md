@@ -2,9 +2,6 @@
 title = "SOLID Principles"
 +++
 
-
-<img class="size-thumbnail wp-image-764 " title="SOLID_MCN" src="/assets/SOLID_MCN-150x150.png" alt="" width="150" height="150" />
-
 <p>Robert C. Martin “Uncle Bob” descreve os princípios SOLID, em “Agile Software Development: Principles, Patterns and Practices”, como cinco diretrizes para serem seguidas no que aumentariam a qualidade do código OO, facilitando a manutenção e alterações do código de acordo com as mudanças de requisitos.</p>
 <p><!--more--></p>
 <h2><span style="font-weight: normal;"><span style="color: #f79646;">Sintomas de um Design Pobre</span></span></h2>
@@ -57,18 +54,18 @@ title = "SOLID Principles"
     }
 
 class Retangulo
-    {
-        public decimal CalcularAreaRetangulo()
-        {
-            return 0;// Suponha que esteja implementado o calculo correto
-        }
-    }
+{
+public decimal CalcularAreaRetangulo()
+{
+return 0;// Suponha que esteja implementado o calculo correto
+}
+}
 
 class RelatorioAreasService
-    {
-        public decimal CalcularAreaTotal(List<quadrado> quadrados, List<retangulo> retangulos)
-        {
-            decimal areaTotal = 0;
+{
+public decimal CalcularAreaTotal(List<quadrado> quadrados, List<retangulo> retangulos)
+{
+decimal areaTotal = 0;
 
             foreach (Quadrado item in quadrados)
                 areaTotal += item.CalcularAreaQuadrado();
@@ -79,6 +76,7 @@ class RelatorioAreasService
             return areaTotal;
         }
     }</retangulo></quadrado></pre>
+
 <p>Mas e se surgisse uma nova forma geométrica no sistema? Da forma a cima você teria que modificar a classe relatório o que violaria o OCP.</p>
 <p><strong><span style="color: #00c40f;">CORRETO</span></strong></p>
 <p>Pense da seguinte forma, você sabe que a classe relatório deve calcular a área de qualquer objeto que saiba como calcular sua própria área. Dessa forma o melhor seria que cada um desses objetos implementassem um comportamento comum definido por uma interface.</p>
@@ -89,26 +87,26 @@ class RelatorioAreasService
     }
 
 class Retangulo : IArea
-    {
-        public decimal CalcularArea()
-        {
-            return 0;// Suponha que esteja implementado o calculo correto
-        }
-    }
+{
+public decimal CalcularArea()
+{
+return 0;// Suponha que esteja implementado o calculo correto
+}
+}
 
 class Quadrado : IArea
-    {
-        public decimal CalcularArea()
-        {
-            return 0;// Suponha que esteja implementado o calculo correto
-        }
-    }
+{
+public decimal CalcularArea()
+{
+return 0;// Suponha que esteja implementado o calculo correto
+}
+}
 
 class RelatorioAreasService
-    {
-        public decimal CalcularAreaTotal(List<iarea> areas)
-        {
-            decimal areaTotal = 0;
+{
+public decimal CalcularAreaTotal(List<iarea> areas)
+{
+decimal areaTotal = 0;
 
             foreach (IArea item in areas)
                 areaTotal += item.CalcularArea();
@@ -116,6 +114,7 @@ class RelatorioAreasService
             return areaTotal;
         }
     }</iarea></pre>
+
 <p>Agora esta abordagem não está violando o OCP porque o código está fechado para modificações, se um dia surgir um objeto triangulo, não seria necessário modificar a classe relatório para realizar o calculo total e da mesma forma está aberta para extensões porque bastaria que a classe triângulo implementasse a interface IArea e ela já estaria apta para estender o relatório para essa nova forma geométrica.</p>
 <h2>&nbsp;</h2>
 <h2><span style="color: #0080ff; font-weight: normal;">LSP – O Princípio da Substituição de Liskov</span></h2>
@@ -139,11 +138,11 @@ class RelatorioAreasService
     }
 
 public class Cavalo : Animal
-    {
-        public override void Comer()
-        {
-            //Implementar comportamento
-        }
+{
+public override void Comer()
+{
+//Implementar comportamento
+}
 
         public override void Beber()
         {
@@ -166,6 +165,7 @@ public class Cavalo : Animal
             throw new NotImplementedException();
         }
     }</pre>
+
 <p>A implementação a cima foi uma forma frustrante de tentar cumprir os comportamentos impostos pela superclasse, o que nos fez violar o LSP e o SRP.</p>
 <p>Então você se pergunta, mas por que violou o LSP, se foram “implementados” todos os métodos no cavalo? Para facilitar o entendimento imagine que exista uma classe responsável por gerar o relatorio de migração dos animas, da seguinte forma:</p>
 <pre class="brush: c-sharp; toolbar: false">class RelatorioMigracao
@@ -205,8 +205,8 @@ public class Cavalo : Animal
     }
 
 class Notificador
-    {
-        private Email _email;
+{
+private Email \_email;
 
         public Notificador()
         {
@@ -218,6 +218,7 @@ class Notificador
             _email.Enviar();
         }
     }</pre>
+
 <p><strong><span style="color: #00c40f;">CORRETO</span></strong></p>
 <p>De a forma a seguir a classe de alto nível (Notificador) não depende mais de uma classe de baixo nível (Email) e sim de uma abstração (IMensagemService).</p>
 <pre class="brush: c-sharp; toolbar: false">interface IMensagemService
@@ -226,16 +227,16 @@ class Notificador
     }
 
 class Email : IMensagemService
-    {
-        public void Enviar()
-        {
+{
+public void Enviar()
+{
 
         }
     }
 
 class Notificador
-    {
-        private IMensagemService _email;
+{
+private IMensagemService \_email;
 
         public Notificador()
         {

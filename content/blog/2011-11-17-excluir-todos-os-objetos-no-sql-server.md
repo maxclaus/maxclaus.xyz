@@ -2,8 +2,6 @@
 title = "Excluir todos os Objetos no SQL Server"
 +++
 
-<img class="size-thumbnail wp-image-301 " title="reset" src="/assets/reset-150x150.gif" alt="" width="150" height="150" />
-
 <p>Este artigo é uma referência á um script que salvou tempo e serviço em um projeto atual. No qual precisávamos zerar o banco, mas com o detalhe que não poderíamos excluí-lo e criá-lo novamente.</p>
 <p>Sendo assim o que este script faz é excluir todos os objetos nesta ordem:</p>
 <div style="margin: 0 20px; padding: 0 20px;">

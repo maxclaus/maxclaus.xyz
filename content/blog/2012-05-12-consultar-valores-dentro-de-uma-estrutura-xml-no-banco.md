@@ -2,8 +2,6 @@
 title = "Consultar valores dentro de uma estrutura XML no banco"
 +++
 
-<img class="size-thumbnail wp-image-607" title="xml" src="/assets/xml-150x150.png" alt="" width="150" height="150" />
-
 <p>Acredito que hoje em dia a maioria dos bancos de dados possui suporte para estruturas XML, sendo um formato de fácil manipulação, leitura e bem organizado por possuir uma estrutura formada por nós e elementos.</p>
 <p>Já participei de um projeto no qual ao invés de criarem uma tabela específica para relacionar uma lista de ações de um usuário em um sistema, foi utilizado uma coluna do tipo XML para manter esta lista de ações, o que já atendia perfeitamente a este requisito e eliminando assim a necessidade de possuir mais uma tabela física dentro do schema no banco.</p>
 <p>Participei também de outro projeto no qual utilizavam a estrutura XML para enviar uma lista de informações como parâmetro de uma procedure ao banco. O que vejo como uma prática muito melhor, do que enviar a mesma lista separando valores por algum tipo de carácter (,;#$%…). Passando os valores em uma estrutura XML, mantêm as informações mais claras e organizadas, facilitando em muito tratá-las no banco e posterior manutenção do código.<!--more--></p>

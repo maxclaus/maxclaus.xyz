@@ -2,8 +2,6 @@
 title = "Listando mensagens do Twitter - MVC"
 +++
 
-<img class="size-thumbnail wp-image-205" title="Twitter-Mensagens-MVC" src="/assets/Twitter-Mensagens-MVC-150x150.jpg" alt="" width="150" height="150" />
-
 <p>O Twitter tornou-se uma forte ferramenta de comunicação na web. Cada vez mais empresas e usuários aderem ao Twitter. Pela sua enorme facilidade de disseminar informações.</p>
 <p>Sendo assim, se você trabalha com o desenvolvimento de websites, muito provavelmente vai passar por um projeto no qual o usuário vai solicitar que as suas últimas mensagens do twitter apareçam no site.</p>
 <p>Dito isso, vamos ao que interessa!</p>

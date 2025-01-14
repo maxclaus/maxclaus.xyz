@@ -4,8 +4,6 @@ title = "Comparação de arrays desordenados - Javascript"
 
 <p>
 
-<img class="size-thumbnail wp-image-721" title="disorderly" src="/assets/disorderly-150x150.jpg" alt="" width="150" height="150" />
-
 <p>Trabalhando com javasacript, em muitos momentos surge a necessidade de manter em hiddens ids selecionados em arrays, concatenados por algum caracter separador. E em algumas dessas situações preciso comparar esses arrays com outros arrays, que podem estar em ordens diferentes.</p>
 <p>Sendo assim uma dica rápida de como comparar arrays de objetos, dos quais estão em ordens diferentes:</p>
 <p><!--more--></p>
@@ -36,7 +34,9 @@ function disorderlyStrArraysAreEqual(strArray1, strArray2, separator) {
             return false;
     }
     return true;
+
 }</pre>
+
 <p>Para garantir que seja removido ultimo caracter&nbsp;de separação vamos utilizar a seguinte função, que remove caracter passado por parametro, se ele for o ultimo da string:</p>
 <pre class="brush: javascript">function rtrim(str, chars) {
     chars = chars || "s";

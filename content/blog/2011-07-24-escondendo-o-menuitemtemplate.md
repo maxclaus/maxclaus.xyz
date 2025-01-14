@@ -2,8 +2,6 @@
 title = "Escondendo o MenuItemTemplate"
 +++
 
-<img class="size-thumbnail wp-image-224" title="Sharepoint Menu Item Template" src="/assets/sharepoint-menu-item-template-150x86.jpg" alt="" width="150" height="86" />
-
 <p>Trabalhando com sharepoint, uma situação que eu sempre tive dificuldade em resolver e não sabia como, era a dúvida de como esconder itens do MenuTemplate do Sharepoint, associados ao um SPMenuField dentro da Gridview de acordo com cada registro.</p>
 <p><!--more--></p>
 <p><strong>Por exemplo:</strong><br />

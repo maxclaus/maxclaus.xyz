@@ -6,9 +6,6 @@ title = "Failed to generate a user instance of SQL Server ..."
 <div>
 <div>
 
-<img class="size-thumbnail wp-image-172 " style="margin: 3px;" title="erro sql server express" src="/assets/images-150x150.jpg" alt="" width="150" height="150" />
-
-
 <p>Ao abrir pelo Visual Studio, um arquivo .mdf, a conexão falhava e aparecia a seguinte mensagem <em>"Failed to generate a user instance of SQL Server due to a failure in starting the process for the user instance. The connection will be closed."</em>.</p>
 <p><!--more--></p>
 <p>Após procurar um pouco na internet achei a seguinte solução:</p>

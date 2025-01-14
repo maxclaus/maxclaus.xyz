@@ -2,8 +2,6 @@
 title = "Python no Visual Studio"
 +++
 
-<img class="size-thumbnail wp-image-317" title="Python" src="/assets/python-logo-glassy-150x150.png" alt="" width="150" height="150" />
-
 <p>Outro dia precisei trabalhar com uma linguagem, que sempre tive fascinação, mas que fazia tempo que não à utilizava.<br />
 Estou falando do Python, uma linguagem não muito conhecida e comentada aqui em Londrina. Mas que possui inúmeras vantagens.</p>
 <p>Python é uma linguagem script, multiplataforma, simples, elegante, de fácil aprendizado e desenvolvimento. Tem suporte ao paradigma OO, mas também pode ser desenvolvida no formato estrutural. Podendo ser utilizada para rodar scripts direto no shell, ou também desenvolver sistemas Desktops e Web.<!--more--></p>

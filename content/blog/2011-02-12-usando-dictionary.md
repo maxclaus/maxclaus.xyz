@@ -2,9 +2,6 @@
 title = "Usando o Dictionary"
 +++
 
-<img class="size-thumbnail wp-image-162" style="margin: 3px; border: 1px solid black;" title="Usando Dictionary c#" src="/assets/hk_20080207_dictionary-150x150.jpg" alt="Usando Dictionary c#" width="150" height="150" />
-
-
 <p>Existem muitas formas de armazenar e recuperar dados no c#. Muitas vezes recorremos a arrays, listas, datatables e dentre outros. Porêm, algumas dessas alternativas, como o array, deixa a desejar na performance.</p>
 <p>Neste artigo vou mostrar um pouco do Dictionary, uma classe contida no System.Collections.Generic, que possui uma alta performance mesmo quando utilizada com grandes quantidades de dados.</p>
 <p><span style="text-decoration: underline;">Definição</span> - <span style="color: #3366ff;"><span style="color: #3366ff;"><span style="color: #3366ff;"><strong>Dictionary:</strong></span> <span style="color: #333333;">Representa um coleção de chaves e valores.</span></span></span></p>

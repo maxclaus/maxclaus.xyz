@@ -6,8 +6,6 @@ title = "Validação com REGEX Compiled"
 <p><span style="text-decoration: underline;">Antes dos código, um pouco da definição da "Regex"<br />
 </span></p>
 
-<img class="size-thumbnail wp-image-136" style="border: 1px solid black; margin: 3px;" title="regex" src="/assets/regex-150x150.jpg" alt="" width="150" height="150" />
-
 <p><strong>Expressão Regular:</strong> <em>Uma composição de símbolos, caracteres com funções especiais, que, agrupados entre si e com caracteres literais, formam uma sequência, uma expressão. Essa expressão é interpretada como uma regra, que indicaría sucesso se uma entrada de dados qualquer casar com essa regra, ou seja, obedecer exatamente a todas as suas condições.</em></p>
 <p>Segundo testes publicados neste artigo <a href="http://dotnetperls.com/regex-performance">http://dotnetperls.com/regex-performance</a> o Regex Compiled toma 10x mais tempo na partida, mas os rendimentos de tempo de execução são 30% melhor.</p>
 <p><!--more--></p>

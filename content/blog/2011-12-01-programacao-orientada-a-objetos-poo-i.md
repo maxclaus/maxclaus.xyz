@@ -4,8 +4,6 @@ title = "Programação Orientada a Objetos (POO) - I"
 
 <div id="box_conteudo_post">
 
-<img class="size-thumbnail wp-image-463" title="Programação Orientada a Objetos" src="/assets/oop-150x150.jpg" alt="" width="150" height="150" />
-
 <h1><span class="Apple-style-span" style="font-size: 13px; font-weight: normal;">Programação Orientada a Objetos (POO)</span></h1>
 <p>Orientação a objetos é um paradigma de programação organizado através de objetos. Isto é, quando utilizamos POO, estamos facilitando a forma de compreensão e implementação de um projeto. Porque, simplesmente estamos se preocupando na forma em que as informações são definidas, como característica e comportamentos, e como elas se relacionam entre si.</p>
 <p>Para ficar mais fácil, precisamos analisar o contexto de um  projeto. Como exemplo utilizarei um time de futebol.</p>

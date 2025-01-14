@@ -2,8 +2,6 @@
 title = "Ordernar aleatoriamente uma lista"
 +++
 
-<img class="size-thumbnail wp-image-268" title="Random" src="/assets/aleatrio-150x150.jpg" alt="" width="150" height="150" />
-
 <p><strong>LINQ</strong> <em>(Language Integrated Query)</em>, além de oferecer um modelo consistente para trabalhar com dados em vários tipos de fontes de dados e formatos, outra importante característica, é facilidade em criar consultas, desde simples <em>selects</em> à outas mirabolantes expressões que uma query possa conter.</p>
 <p>Neste exemplo demonstrarei como é fácil,<strong><span style="color: #000000;"> utilizando LINQ</span></strong>, aplicar uma consulta aletória em uma <span style="color: #339966;">List</span>&lt;<span style="color: #3366ff;">int</span>&gt;.</p>
 <p>O mesmo poderia ser feito em uma lista de objetos do tipo Pessoa ou qualquer outro do seu domínio.</p>

@@ -2,9 +2,6 @@
 title = "Recuperar Query String com Javascript"
 +++
 
-
-<img class="size-thumbnail wp-image-590" title="recuperar-url-javascript" src="/assets/recuperar-url-javascript-150x150.jpg" alt="" width="150" height="150" />
-
 <p>Quando se está trabalhando com client side, tudo que for possível manter do lado do cliente e não for comprometer a segurança das informações, é preferível que não passe para o lado do servidor, por diminuir as requisições ao servidor e aumentar dessa forma a performance.</p>
 <p>Uma situação bem comum é enviar informações de uma página à outra através de query string na url. Na forma que irei apresentar aqui neste artigo, torna a tarefa de recuperar essas informações no javascript, bem mais simples e prática.</p>
 <p><!--more--></p>

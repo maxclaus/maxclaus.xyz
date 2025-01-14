@@ -2,9 +2,6 @@
 title = "Padrão de nomes"
 +++
 
-
-<img class="size-thumbnail wp-image-724" title="organizado" src="/assets/organizado-150x150.jpg" alt="" width="150" height="150" />
-
 <p>Em projetos que existem um time de desenvolvimento e um desenvolvedor depende de outros para construir um sistema, uma padronização no código deve ser tomada como regra para o bem comum do projeto.</p>
 <p>Não estou dizendo que os desenvolvedores devem ficar moldados a regras e não podem experimentar novas possibilidades. Mas que se necessário e possível, seja feito com o consentimento de todos.</p>
 <p><!--more--></p>
