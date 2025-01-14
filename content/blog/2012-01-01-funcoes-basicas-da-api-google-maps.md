@@ -1,29 +1,6 @@
----
-layout: post
-title: Funções básicas da API Google Maps
-categories:
-- JavaScript
-tags:
-- google map
-- javascript
-status: publish
-type: post
-published: true
-meta:
-  _edit_last: '1'
-  _syntaxhighlighter_encoded: '1'
-  _aioseop_keywords: api, google, map, 3, bound, resize, rota, marcadores
-  _aioseop_description: Tutorial funções básicas da API Google Maps. Carregar mapa
-    pelo endereço, localização, adicionar marcadores, corrigir fronteira do mapa...
-  _aioseop_title: Funções básicas da API Google Maps
-  simplecatch-sidebarlayout: ''
-author:
-  login: maxcnunes
-  email: maxcnunes@gmail.com
-  display_name: maxcnunes
-  first_name: ''
-  last_name: ''
----
++++
+title = "Funções básicas da API Google Maps"
++++
 
 Com o google maps cada vez mais difundido entre a população. Pela facilidade na utilização do aplicativo e pelos benefícios providos pelo mesmo. Está cada vez mais comum, nos depararmos com sites e sistemas utilizando tais funcionalidades do aplicativo, para indicar a localização de empresas, rotas e outros pontos interessantes.
 
@@ -31,13 +8,12 @@ O Google disponibiliza uma API para que os desenvolvedores utilizem os recursos 
 
 Na demonstração a seguir será abordado funcionalidades simples da API do GMaps, como:
 
-
-* Marcar um ponto no mapa pelo endereço
-* Marcar um ponto no mapa pela localização (Latitude e Longitude)
-* Criar descrição de rotas
-* Criar eventos para receber o endereço atual do marcador ao arrastá-lo
-* Customizar ícones dos marcadores com imagens diferentes do padrão
-* Definir a fronteira e o zoom do mapa, de acordo com todos os pontos adicionados nele
+- Marcar um ponto no mapa pelo endereço
+- Marcar um ponto no mapa pela localização (Latitude e Longitude)
+- Criar descrição de rotas
+- Criar eventos para receber o endereço atual do marcador ao arrastá-lo
+- Customizar ícones dos marcadores com imagens diferentes do padrão
+- Definir a fronteira e o zoom do mapa, de acordo com todos os pontos adicionados nele
 
 Para você ter uma ideia de como ficará, segue um printscreen do resultado final.
 
@@ -259,7 +235,7 @@ function Imprimir() {
 
 ```html
 <html>
-<head>
+  <head>
     <title>Google Maps API</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <!-- :: CSS - Page Layout :: -->
@@ -271,80 +247,73 @@ function Imprimir() {
     <!-- :: JS - GMaps Functions :: -->
     <script type="text/javascript" src="js/js-gmaps-functions.js"></script>
     <script type="text/javascript" language="javascript">
-        $(function () {
-            //Inicializa o mapa
-            CarregarMapa();
-        });
+      $(function () {
+        //Inicializa o mapa
+        CarregarMapa();
+      });
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <div id="wrapper">
-        <!--Valores pré-definidos para o mapa-->
-        <input id="hdnLatitude" runat="server" type="hidden" value="-23.292757" />
-        <input id="hdnLongitude" runat="server" type="hidden" value="-51.169424" />
-        <div>
-            <div class="box_left">
-                <label>
-                    Endereço:</label>
-                <input type="text" id="txtEndereco" value="Av. Tiradentes 1241, Londrina PR" size="54" />
-                <!--Botao busca o mapa pelo endereço-->
-                <a class="button" href="javascript:CarregarPeloEndereco();" title="Carregar a partir do endereço">
-                    <img src="img/search.png" alt="Buscar" />
-                </a>
-                <div class="box_middle">
-                    <label>
-                        Latitude:</label>
-                    <input type="text" id="txtLatitude" value="-23.292757" />
-                </div>
-                <div class="box_middle">
-                    <label>
-                        Longitude:</label>
-                    <input type="text" id="txtLongitude" value="-51.169424" />
-                    <!--Botao busca o mapa pela localização (Latitude e Longitude)-->
-                    <a class="button" href="javascript:CarregarMapa();" title="Carregar a partir da longitude e latitude">
-                        <img src="img/search.png" alt="Buscar" />
-                    </a>
-                </div>
-                <div>
-                    <label>
-                        Adicionar mais 1 localização
-                        <!--Botao adiciona uma nova localização no mapa-->
-                        <a class="button" href="javascript:AdicionarLocalizacao();">
-                            <img src="img/add.png" alt="Add" />
-                        </a>
-                    </label>
-                </div>
-            </div>
-            <div class="box_right">
-                <label>
-                    Como chegar?</label>
-                <input type="text" id="ondeestou" size="36" />
-                <!--Botao criar rota-->
-                <a href="javascript:CriarRota();" title="Traçar Rota" class="button">
-                    <img src="img/go.png" alt="Ir" /></a>
-                <br />
-                <span style="font-size: 8pt; color: #999;">Ex: Rua Numero, Cidade, Estado</span>
-                <br />
-                <br />
-                <!--Botao imprimir-->
-                <a href="javascript:Imprimir();" class="button">
-                    <img src="img/print.png" alt="Imprimir" /><span>Imprimir rota</span> </a>
-            </div>
+      <!--Valores pré-definidos para o mapa-->
+      <input id="hdnLatitude" runat="server" type="hidden" value="-23.292757" />
+      <input id="hdnLongitude" runat="server" type="hidden" value="-51.169424" />
+      <div>
+        <div class="box_left">
+          <label> Endereço:</label>
+          <input type="text" id="txtEndereco" value="Av. Tiradentes 1241, Londrina PR" size="54" />
+          <!--Botao busca o mapa pelo endereço-->
+          <a class="button" href="javascript:CarregarPeloEndereco();" title="Carregar a partir do endereço">
+            <img src="img/search.png" alt="Buscar" />
+          </a>
+          <div class="box_middle">
+            <label> Latitude:</label>
+            <input type="text" id="txtLatitude" value="-23.292757" />
+          </div>
+          <div class="box_middle">
+            <label> Longitude:</label>
+            <input type="text" id="txtLongitude" value="-51.169424" />
+            <!--Botao busca o mapa pela localização (Latitude e Longitude)-->
+            <a class="button" href="javascript:CarregarMapa();" title="Carregar a partir da longitude e latitude">
+              <img src="img/search.png" alt="Buscar" />
+            </a>
+          </div>
+          <div>
+            <label>
+              Adicionar mais 1 localização
+              <!--Botao adiciona uma nova localização no mapa-->
+              <a class="button" href="javascript:AdicionarLocalizacao();">
+                <img src="img/add.png" alt="Add" />
+              </a>
+            </label>
+          </div>
         </div>
-        <div>
-            <div class="box_left">
-                <!--Div que armazenará o mapa-->
-                <div id="gmap">
-                </div>
-            </div>
-            <div class="box_right">
-                <!--Div que armazenará a descrição da rota-->
-                <div id="rota_gmap">
-                </div>
-            </div>
+        <div class="box_right">
+          <label> Como chegar?</label>
+          <input type="text" id="ondeestou" size="36" />
+          <!--Botao criar rota-->
+          <a href="javascript:CriarRota();" title="Traçar Rota" class="button"> <img src="img/go.png" alt="Ir" /></a>
+          <br />
+          <span style="font-size: 8pt; color: #999;">Ex: Rua Numero, Cidade, Estado</span>
+          <br />
+          <br />
+          <!--Botao imprimir-->
+          <a href="javascript:Imprimir();" class="button">
+            <img src="img/print.png" alt="Imprimir" /><span>Imprimir rota</span>
+          </a>
         </div>
+      </div>
+      <div>
+        <div class="box_left">
+          <!--Div que armazenará o mapa-->
+          <div id="gmap"></div>
+        </div>
+        <div class="box_right">
+          <!--Div que armazenará a descrição da rota-->
+          <div id="rota_gmap"></div>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
 ```
-

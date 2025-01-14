@@ -1,13 +1,6 @@
----
-layout: post
-title: Set temp directory for NPM scripts running with root user (Docker)
-categories:
-- docker
-- nodejs
-tags:
-- docker
-- nodejs
----
++++
+title = "Set temp directory for NPM scripts running with root user (Docker)"
++++
 
 Running scripts through `npm` with root user will not respect the `TMPDIR` or any other environment variable used to set the temp directory.
 

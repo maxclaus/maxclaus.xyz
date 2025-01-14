@@ -1,15 +1,6 @@
----
-layout: post
-title: Libxmljs - Finding XML elements with namespaces using xpath
-categories:
-- Js
-tags:
-- js
-- libxmljs
-- xpath
-- namespace
-- xml
----
++++
+title = "Libxmljs - Finding XML elements with namespaces using xpath"
++++
 
 Today I spent a stupid time trying to parse a XML input to JS. Even using a great module [libxmljs](https://github.com/polotek/libxmljs) I was having problems to read any element that was not inside of client element (xpath: `//client`).
 
@@ -31,17 +22,16 @@ Today I spent a stupid time trying to parse a XML input to JS. Even using a grea
 
 Why I could not get any of these elements?
 
-* **soap:Envelope** - xpath: `//soap:Envelope`
-* **soap:Body** - xpath: `//soap:Body`
-* **Response** - xpath: `//Response`
-* **Result** - xpath: `//Result`
+- **soap:Envelope** - xpath: `//soap:Envelope`
+- **soap:Body** - xpath: `//soap:Body`
+- **Response** - xpath: `//Response`
+- **Result** - xpath: `//Result`
 
 This question forced me study a bit more about xml structure. In a first moment I didn't want to study it because XML is too boring. But I was spending too much time just guessing and searching a solved solution for my problem.
 
 Reading [XML Namespaces and How They Affect XPath and XSLT](http://msdn.microsoft.com/en-us/library/ms950779.aspx) I could finally understand why I could get only elements inside of **client**.
 
 Summarizing that article there are three types of namespaces:
-
 
 ### Prefix Namespaces
 
@@ -88,10 +78,8 @@ If an element has blank namespace (`xmlns=""`) then it is a **undeclared** names
 </bookstore>
 ```
 
-
 Understanding these namespaces helped me finally solve my problem. The reason I could only get the **client** element and its children was because it was using an undeclared namespace. Using **libxmljs** is necessary specify the namespace on reading an element with namespace. Which means I was not passing the namespace for those elements with namespace and their children.
 
 This is simple example to clarify the final solution:
 
 {% gist maxcnunes/36dc98c0be4e00ad4c6c %}
-

@@ -1,27 +1,7 @@
----
-layout: post
-title: Comparação de arrays desordenados - Javascript
-categories:
-- JavaScript
-tags:
-- javascript
-status: publish
-type: post
-published: true
-meta:
-  _edit_last: '1'
-  _aioseop_keywords: 'Comparação, arrays, desordenados, Javascript, compare, '
-  _aioseop_description: Uma dica rápida de como comparar arrays de objetos, dos quais
-    estão em ordens diferentes.
-  _aioseop_title: Comparação de arrays desordenados - Javascript
-  simplecatch-sidebarlayout: ''
-author:
-  login: maxcnunes
-  email: maxcnunes@gmail.com
-  display_name: maxcnunes
-  first_name: ''
-  last_name: ''
----
++++
+title = "Comparação de arrays desordenados - Javascript"
++++
+
 <p>
 
 <img class="size-thumbnail wp-image-721" title="disorderly" src="/assets/disorderly-150x150.jpg" alt="" width="150" height="150" />
@@ -32,12 +12,12 @@ author:
 <pre class="brush: javascript">//Compara string de arrays [strArray1 = lista 1, strArray2 = lista 2, separator = separador]
 function disorderlyStrArraysAreEqual(strArray1, strArray2, separator) {
     //Verifica se os valores estao vazios
-    if (strArray1 == '' || strArray1 == 'undefined' || 
+    if (strArray1 == '' || strArray1 == 'undefined' ||
         strArray2 == '' || strArray2 == 'undefined') {
         return (strArray1 == strArray2);
     }
 
-    //Separa os valores pelo caracter separador 
+    //Separa os valores pelo caracter separador
     //e remove o ultimo separador se for o ultimo caracter da string
     var array1 = rtrim(strArray1, separator).split(separator);
     var array2 = rtrim(strArray2, separator).split(separator);

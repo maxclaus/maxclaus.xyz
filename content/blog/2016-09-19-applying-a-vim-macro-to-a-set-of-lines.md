@@ -1,9 +1,6 @@
----
-layout: post
-title: Applying a VIM macro to a set of lines
-tags:
-- vim
----
++++
+title = "Applying a VIM macro to a set of lines"
++++
 
 <script type="text/javascript" src="https://asciinema.org/a/86341.js" id="asciicast-86341" data-size="small" async></script>
 
@@ -15,5 +12,5 @@ tags:
 
 **Reference:**
 
-* http://stackoverflow.com/questions/390174/in-vim-how-do-i-apply-a-macro-to-a-set-of-lines
-* https://github.com/tpope/vim-surround
+- http://stackoverflow.com/questions/390174/in-vim-how-do-i-apply-a-macro-to-a-set-of-lines
+- https://github.com/tpope/vim-surround

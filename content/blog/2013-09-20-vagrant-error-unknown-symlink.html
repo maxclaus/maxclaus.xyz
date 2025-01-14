@@ -1,27 +1,7 @@
----
-layout: post
-title: 'Vagrant - Error: UNKNOWN, symlink'
-categories:
-- Linux
-- Nodejs
-- Shell
-tags:
-- symlink
-- vagrant
-status: publish
-type: post
-published: true
-meta:
-  _edit_last: '1'
-  _headspace_page_title: 'Vagrant - Error: UNKNOWN, symlink'
-  _headspace_description: 'How to fix the Vagrant - Error: UNKNOWN, symlink'
-author:
-  login: maxcnunes
-  email: maxcnunes@gmail.com
-  display_name: maxcnunes
-  first_name: ''
-  last_name: ''
----
++++
+title = "Vagrant - Error: UNKNOWN, symlink"
++++
+
 <p>Why does with Windows always has a problem or is more difficult to work with nice non-Microsoft stuff?! I was configuring Vagrant to run a project with Nodejs. Everything was going really well when my host machine was the Mac. But when I had to use the Windows as host machine then I got my first problem to run the command npm install inside the guest Ubuntu machine:</p>
 <pre class="brush: shell">Error: UNKNOWN, symlink</pre>
 <p>After some attempts the only solution that works was use a parameter to not force use symlink when installing npm dependencies:</p>

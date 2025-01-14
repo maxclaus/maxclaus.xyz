@@ -1,10 +1,6 @@
----
-layout: post
-title: Running a simple web server from any directory
-tags:
-- mac
-- web server
----
++++
+title = "Running a simple web server from any directory"
++++
 
 You just need [Python](https://www.python.org/) installed to run a simple web server from any directory.
 On Mac Python is already installed. So you just need follow these steps below:

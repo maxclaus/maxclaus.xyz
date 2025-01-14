@@ -1,18 +1,6 @@
----
-layout: post
-title: Mounting an EBS persistent volume into an EC2 instance with CoreOS
-categories:
-- coreos
-- aws
-tags:
-- coreos
-- aws
-- ec2
-- ebs
-- persistent
-- volume
-- mount
----
++++
+title = "Mounting an EBS persistent volume into an EC2 instance with CoreOS"
++++
 
 In the last weeks I have been working a lot with [AWS](https://aws.amazon.com/). At Bravi we are deploying most of our production services and applications on AWS through the [CloudFormation](https://aws.amazon.com/cloudformation/). Which really is a powerful tool to provision the whole infrastructure.
 

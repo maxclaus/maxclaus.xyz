@@ -1,10 +1,6 @@
----
-layout: post
-title: Understanding a Phoenix application and it's lifecycle
-tags:
-- elixir
-- phoenix
----
++++
+title = "Understanding a Phoenix application and it's lifecycle"
++++
 
 > It is a post for beginners in Elixir and Phoenix. Has intention to help understanding how a Phoenix application works and a bit of its lifecycle.
 
@@ -14,22 +10,20 @@ I started the day thinking in write an chat application to apply what I have lea
 
 So instead of writing a chat app from scratch. What we gonna do is understand how the [chat app](https://github.com/chrismccord/phoenix_chat_example) built by Chris McCord works.
 
-
 Before understanding, lets see the application running:
 
-  * Clone the repo [chrismccord/phoenix_chat_example](https://github.com/chrismccord/phoenix_chat_example), then cd to the new directory
-  * Install dependencies with `mix deps.get`
-  * (optional) Install npm dependencies to customize the ES6 js/Sass `npm install`
-  * Start Phoenix router with `mix phoenix.server`
+- Clone the repo [chrismccord/phoenix_chat_example](https://github.com/chrismccord/phoenix_chat_example), then cd to the new directory
+- Install dependencies with `mix deps.get`
+- (optional) Install npm dependencies to customize the ES6 js/Sass `npm install`
+- Start Phoenix router with `mix phoenix.server`
 
 Now you can visit localhost:4000 from your browser.
-
 
 ### mix.exs
 
 Contains the definition for all dependencies and configures the OTP application.
 
-> Check out [elixir/Application](http://elixir-lang.org/docs/stable/elixir/Application.html) to understand what is an OTP application.  And the presentation [OTP Has Done It - by Nick DeMonner](https://www.youtube.com/watch?v=yBReonQlfL4) also gives an idea about it.
+> Check out [elixir/Application](http://elixir-lang.org/docs/stable/elixir/Application.html) to understand what is an OTP application. And the presentation [OTP Has Done It - by Nick DeMonner](https://www.youtube.com/watch?v=yBReonQlfL4) also gives an idea about it.
 
 ```elixir
 defmodule Chat.Mixfile do
@@ -67,7 +61,6 @@ end
 ```
 
 In the `application` function is defined the `Chat` as the startup module. And also is defined all applications your application depends on at runtime.
-
 
 ### lib/chat.ex
 
@@ -284,10 +277,11 @@ end
 ```
 
 Pretty simple, it handles:
-  * new users join the channel
-  * broadcast new users in the chat
-  * send ping messages
-  * broadcast a user's message
+
+- new users join the channel
+- broadcast new users in the chat
+- send ping messages
+- broadcast a user's message
 
 > Check out [Phoenix.Channel](http://hexdocs.pm/phoenix/Phoenix.Channel.html) for a further explanation.
 

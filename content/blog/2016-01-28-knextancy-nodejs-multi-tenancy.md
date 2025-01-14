@@ -1,15 +1,12 @@
----
-layout: post
-title: Knextancy - Node JS Multi Tenancy
-tags:
-- nodejs
----
++++
+title = "Knextancy - Node JS Multi Tenancy"
++++
 
 At Bravi every project has multi tenant support since the beginning of the development.
 This because we have built a solution that is so easy to use that is almost imperceptible we are developing a multi tenant application. The only thing we have to care about is:
 
-* pass ahead in the HTTP header the tenant id for every consumed API/application
-* use a prefix in the table on executing SQL queries `select * from "$_mytable"`
+- pass ahead in the HTTP header the tenant id for every consumed API/application
+- use a prefix in the table on executing SQL queries `select * from "$_mytable"`
 
 And that is it. You are already building a multi tenant application.
 
@@ -38,4 +35,4 @@ After that knextancy injects in the request an instance of [knex](knexjs.org) wi
 Then to execute any SQL query with multi tenant support is just required to use the `req.knex` and any table must have prefix `$_` to allow knextancy resolve the table for the current client.
 
 > Simple example of how to build a multi tenant REST API. Using knextancy with express and PostgreSQL database.
->  https://github.com/bravi-software/knextancy-example
+> https://github.com/bravi-software/knextancy-example

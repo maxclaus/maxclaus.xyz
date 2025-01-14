@@ -1,9 +1,6 @@
----
-layout: post
-title: Debug nodejs v0.10 with 100% cpu usage
-tags:
-- nodejs
----
++++
+title = "Debug nodejs v0.10 with 100% cpu usage"
++++
 
 Last week a worker at my job written in Nodejs v0.10 started to fail. At some point the worker would consume 100% of CPU and gradually would increase the memory usage as well. That job was been forced to stop once all the memory available was consumed.
 
@@ -44,7 +41,7 @@ As we can see the [cycle](https://github.com/dscape/cycle) is the guilty one. Cy
 
 But that was part of the problem. We know who is the responsible. But who is calling that function?
 
-Looking into the **[Top down (heavy) profile]** I find out that [winston](https://github.com/winstonjs/winston) module is the one using the cycle. Winston is a library for logging. So are suspicion was right. Probably is a JS object been saved to the log. 
+Looking into the **[Top down (heavy) profile]** I find out that [winston](https://github.com/winstonjs/winston) module is the one using the cycle. Winston is a library for logging. So are suspicion was right. Probably is a JS object been saved to the log.
 
 ```
 [Top down (heavy) profile]:

@@ -1,7 +1,6 @@
----
-layout: post
-title: Suspend vagrant before Mac sleep
----
++++
+title = "Suspend vagrant before Mac sleep"
++++
 
 Lately I was getting a lot of problems with my VM and even with the bluetooth on Mac.
 Just because the vmware VM was not recovering well after my macbook waking up.

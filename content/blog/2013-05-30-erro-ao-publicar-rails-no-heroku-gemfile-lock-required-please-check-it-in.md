@@ -1,29 +1,6 @@
----
-layout: post
-title: Erro ao publicar Rails no Heroku - "Gemfile.lock required. Please check it in."
-categories:
-- Rails
-- Ruby
-tags:
-- deploy
-- heroku
-- rails
-status: publish
-type: post
-published: true
-meta:
-  _edit_last: '1'
-  _aioseop_keywords: heroku, rails, gemfile.lock, required, error
-  _aioseop_description: Solução para o erro que ocorre ao publicar Rails no Heroku "Gemfile.lock required. Please check it in."
-  _aioseop_title: Erro ao publicar Rails no Heroku
-  simplecatch-sidebarlayout: ''
-author:
-  login: maxcnunes
-  email: maxcnunes@gmail.com
-  display_name: maxcnunes
-  first_name: ''
-  last_name: ''
----
++++
+title = "Erro ao publicar Rails no Heroku - Gemfile.lock required. Please check it in."
++++
 
 Passei um bom tempo quebrando a cabeça por causa desse problema a baixo que ocorria toda vez que eu tentava publicar o Rails no Heroku:
 

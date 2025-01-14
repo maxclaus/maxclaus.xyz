@@ -1,12 +1,6 @@
----
-layout: post
-title: LXC + Docker
-categories:
-- docker
-tags:
-- lxc
-- docker
----
++++
+title = "LXC + Docker"
++++
 
 In October I gave a presentation at Bravi about LXC + Docker. Since I was working hard in project at that time I almost forgot to post my presentation here.
 
@@ -18,5 +12,5 @@ But I recorded this presentation. I will try to included the video here later.
 
 **References:**
 
-- The images of the first part were took from Ben *Golub - Docker Presentation*.
-- The images about Docker images and containers were took from *Docker documentation*.
+- The images of the first part were took from Ben _Golub - Docker Presentation_.
+- The images about Docker images and containers were took from _Docker documentation_.

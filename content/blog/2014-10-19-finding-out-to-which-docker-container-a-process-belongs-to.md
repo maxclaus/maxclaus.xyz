@@ -1,12 +1,6 @@
----
-layout: post
-title: Finding out to which docker container a process belongs to
-categories:
-- Docker
-tags:
-- docker
-- linux
----
++++
+title = "Finding out to which docker container a process belongs to"
++++
 
 Linux containers run all over the same Linux Kernel. It means all process running inside each container will be visible in the host machine. Due that, how do we know if a process is running in the host or in a container? And how do we discover in which container that process is running? Lets solve that based in a real example.
 

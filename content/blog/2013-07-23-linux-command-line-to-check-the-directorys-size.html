@@ -1,29 +1,7 @@
----
-layout: post
-title: Linux command line to check the directory's size
-categories:
-- Linux
-- Rails
-- Ruby
-tags:
-- command line
-- Linux
-- shell
-status: publish
-type: post
-published: true
-meta:
-  _edit_last: '1'
-  _headspace_page_title: Linux command line to check the directory's size
-  _headspace_description: Command line to shows how much space one ore more files
-    or directories is using
-author:
-  login: maxcnunes
-  email: maxcnunes@gmail.com
-  display_name: maxcnunes
-  first_name: ''
-  last_name: ''
----
++++
+title = "Linux command line to check the directory's size"
++++
+
 <p>Using the Nitrous.io I got this message "<strong>disk quota exceeded</strong>" after try install mongoid. The initial plan available for free accounts on Nitrous provides 750MB storage.</p>
 <p>But I was asking myself how could my application in rails, that I just started to code, get all this space used? Try to guess could no help me to solve this problem then I learned this new linux command line to check the directories size:</p>
 <pre class="brush: shell">du -h --max-depth=1 ~/ | sort -n -r</pre>

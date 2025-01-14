@@ -1,11 +1,6 @@
----
-layout: post
-title: Javascript Double Not-Operator(!!)
-categories:
-- Javascript
-tags:
-- js
----
++++
+title = "Javascript Double Not-Operator(!!)"
++++
 
 In javascript Falsy and Truthy values are used all over the place.
 
@@ -45,7 +40,7 @@ var xIsEmpty = !!x;
 Actually `!!` is not a operator it is only the `!` operator twice. The first `!` will cast to boolean inverting the result. Then the second `!` will invert again the value so it is the expected boolean value.
 
 ```js
-var x = 0;        // falsy
-console.log(!x);  // true   (it is not what we want)
+var x = 0; // falsy
+console.log(!x); // true   (it is not what we want)
 console.log(!!x); // false
 ```

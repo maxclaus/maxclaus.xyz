@@ -1,17 +1,6 @@
----
-layout: post
-title: CoreOS scheduled tasks
-categories:
-- coreos
-tags:
-- coreos
-- scheduled task
-- cron
-- fleet
-- timer
-- service
-- systemd
----
++++
+title = "CoreOS scheduled tasks"
++++
 
 CoreOS uses the Systemd that has built in a bunch of helpful features and tools. For example, instead of using [Cron](https://help.ubuntu.com/community/CronHowto) that is the most common way to run scheduled tasks in most of the Linux distributions, Systemd has the Timer unit configuration that schedules the execution of a Service unit.
 

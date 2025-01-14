@@ -1,12 +1,6 @@
----
-layout: post
-title: Node Inspect Snippet for Sublime
-categories:
-- Sublime
-tags:
-- Sublime
-- Node
----
++++
+title = "Node Inspect Snippet for Sublime"
++++
 
 Is pretty common use console logs in nodejs to check the value of variables you are working on.
 
@@ -21,9 +15,10 @@ Due that I wrote a simple sublime snippet to help me create the logs:
 Typing `inspect` will generate this snippet:
 
 ```js
-console.log('\n---->', require('util').inspect(obj, { depth: null, colors: true }));
+console.log("\n---->", require("util").inspect(obj, { depth: null, colors: true }));
 ```
 
 Which will print something like this:
 
 ![Node Inspect](/assets/node-inspect.png)
+
