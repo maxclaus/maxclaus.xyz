@@ -1,0 +1,205 @@
+
+{% extends "index.html" %}
+
+{% block description %}Max resume{% endblock description %}
+{% block breadcrumb %}<li><span aria-current="page">Resume</span></li>{% endblock breadcrumb %}
+
+{% block content %}
+<div id="resume">
+  <div class="container meta">
+    <h1>Max Claus</h1>
+    <div class="tagline">Senior Software Engineer</div>
+    <ul class="contact">
+      <li><a href="mailto:maxclaus@posteo.com">maxclaus@posteo.com</a></li>
+      <li aria-hidden="true" role="presentation"></li>
+      <li><a href="https://maxclaus.xyz">maxclaus.xyz</a></li>
+      <li aria-hidden="true" role="presentation"></li>
+      <li><a href="http://github.com/maxclaus">github.com/maxclaus</a></li>
+      <li class="download-resume" aria-hidden="true" role="presentation"></li>
+      <li class="download-resume"><a href="{{ get_url(path="max-claus-resume.pdf") }}">Download resume</a></li>
+  </div>
+  <div class="container intro">
+    <h2>Introduction</h2>
+    <p>
+      15 years of experience in backend development, with a passion for solving problems creatively, enhancing user experiences through excellent products, and collaborating effectively with team members.
+    </p>
+  </div>
+
+  <div class="container skills">
+    <h2>Relevant skills</h2>
+    <ul>
+      <li>Go</li>
+      <li>JavaScript/Node.js/Typescript</li>
+      <li>Rust</li>
+      <li>Backend</li>
+      <li>Microservices</li>
+      <li>Relational and Object-Oriented Databases</li>
+      <li>Eventbus</li>
+      <li>AWS services</li>
+      <li>React.js</li>
+    </ul>
+  </div>
+
+  <div class="container experiences">
+    <h2>Experiences</h2>
+
+    <div class="timeline">
+      <div class="work">
+        <div class="work__dot"></div>
+        <header>
+          <h3>Staff Software Engineer</h3>
+          <div class="work__info">
+            <span class="work__location">
+              Worked remotely at <a href="https://www.linkedin.com/company/invisionapp">InVisionApp Inc</a> while based in Florianópolis, Brazil
+            </span>
+            <span class="work__date">(Dec 2016 - Jan 2025)</span>
+          </div>
+        </header>
+        <ul>
+          <li>Collaborated on many teams and worked on almost all areas of the product, such as data migration and backend for our prototyping and whiteboard apps.</li>
+          <li>Led multiple technical work streams, investigated appropriate solutions, documented them in technical specifications, and collaborated with other engineers to gather feedback and ensure the chosen solutions aligned with our team and company goals.</li>
+          <li>Worked on both new projects, such as developing an API for scheduled notifications, and legacy codebases, including a Photoshop plugin.</li>
+          <li>Walked my way through legacy codebases.</li>
+          <li>Was often on-call to handle any possible incidents in production.</li>
+          <li>Built open source tools and libraries on my own time which were used later by other engineers at the company.</li>
+          <li>Wrote public posts sharing insights from my work, such as investigating and resolving performance issues in production.</li>
+          <li>Conducted interviews for software engineering candidates.</li>
+          <li>Helped with the shutdown process of the company at the final end.</li>
+          <li>Some of the technologies I have worked with include Go, Node.js, MySQL, PostgreSQL, Redis, Kafka, WebSockets, Protobuf, React, and others.</li>
+        </ul>
+      </div>
+
+      <div class="work">
+        <div class="work__dot"></div>
+        <header>
+          <h3>Senior Software Developer</h3>
+          <div class="work__info">
+            <span class="work__location">
+              Worked on-site at <a href="https://www.linkedin.com/company/bravidoes">Bravi Software</a> in Florianópolis, Brazil
+            </span>
+            <span class="work__date">(Sep 2012 - Nov 2016)</span>
+          </div>
+        </header>
+        <ul>
+          <li>Developed Micro Services with Multi Tenancy support for different clients.</li>
+          <li>Developed a notification system with targets for IOS and Android devices (push notifications), SMS and email.</li>
+          <li>Developed a game ranking service: implemented a n-ary tree for high performance of the current game session.</li>
+          <li>Developed a OAuth2 service: the basic authentication for the public API.</li>
+          <li>Developed a reverse proxy: a gateway over the public API with some basic routing rules.</li>
+          <li>Maintained Devops infrastructure - configuring and maintaining: CI, development, QA and production environments.</li>
+          <li>Some of the technologies I have worked with include Go, Node.js, C#, Python, Ruby, MySQL, SQLServer, Redis, RabbitMQ, WebSockets, React, and others.</li>
+        </ul>
+      </div>
+
+
+      <div class="work">
+        <div class="work__dot"></div>
+        <header>
+          <h3>Tech Lead of the .NET team</h3>
+          <div class="work__info">
+            <span class="work__location">
+              Worked on-site at <a href="https://br.linkedin.com/company/ftitecnologia">FTI Tecnologia da Informação</a> in Londrina, Brazil
+            </span>
+            <span class="work__date">(Sep 2012 - Nov 2016)</span>
+          </div>
+        </header>
+        <ul>
+          <li>Software development with .NET framework in C# and VB.NET. Also lead the .NET team at the company.</li>
+          <li>Developed a website and an application management system for house rentals.</li>
+          <li>Developed new features and fixed bugs for a big Brazilian banking company.</li>
+          <li>Collaborated on a project focused on solutions for pharmacy distributors.</li>
+          <li>Also migrated the existing source code system in SVN to TFS.</li>
+          <li>I taught subjects like OOP and C# in a course offered by the company for .NET developers.</li>
+          <li>Some of the technologies I have used at work include C#, .NET, SQL Server, TFS, and others.</li>
+        </ul>
+      </div>
+
+      <div class="work">
+        <div class="work__dot"></div>
+        <header>
+          <h3>Software Developer</h3>
+          <div class="work__info">
+            <span class="work__location">
+              Worked on-site at <a href="https://www.linkedin.com/company/cantoni-revis-es">Cantoni Revisões</a> in Londrina, Brazil
+            </span>
+            <span class="work__date">(Dec 2010 - Sep 2011)</span>
+          </div>
+        </header>
+        <ul>
+          <li>
+            Helped developing an application for managing all the company departaments. Composed of many modules such as: financial, human resources, task calendars and stock. I worked in all modules but was more responsible for the stock and human resource modules.
+          </li>
+          <li>Some of the technologies I have used at work include C#, .NET, SQL Server, TFS, Sharepoint, and others.</li>
+        </ul>
+      </div>
+
+      <div class="work">
+        <div class="work__dot"></div>
+        <header>
+          <h3>Trainee Web Developer</h3>
+          <div class="work__info">
+            <span class="work__location">
+              Worked on-site at <a href="#">Weblite</a> in Florianopolis, Brazil
+            </span>
+            <span class="work__date">(Mar 2010 - Dec 2010)</span>
+          </div>
+        </header>
+        <ul>
+          <li>It was my first professional experience as a software developer. Working in a agency gave me a great opportunity to build many different websites.</li>
+          <li>Some of the technologies I have used at work include C#, .NET, SQL Server, and others.</li>
+        </ul>
+      </div>
+
+      <div class="work work--last">
+        <div class="work__dot"></div>
+        <header>
+          <h3>Trainee Technical Support</h3>
+          <div class="work__info">
+            <span class="work__location">
+              Worked on-site at <a href="https://www.linkedin.com/company/cia-cacique-de-caf-sol-vel">Cia Cacique</a> in Florianopolis, Brazil
+            </span>
+            <span class="work__date">(Sep 2008 - Mar 2010)</span>
+          </div>
+        </header>
+        <ul>
+          <li>Trainee on technical support of computers.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- <div class="container more"> -->
+    <!--   More on LinkedIn: <a href="https://www.linkedin.com/in/maxclaus">https://www.linkedin.com/in/maxclaus</a> -->
+    <!-- </div> -->
+
+    <div class="container experiences">
+      <h2>Education</h2>
+      <div class="timeline">
+        <div class="work">
+          <div class="work__dot"></div>
+          <header>
+            <h3>Postgraduate Degree: Computer Software Engineering</h3>
+            <div class="work__info">
+              <span class="work__location">
+                Studied at <a href="https://www.linkedin.com/school/unifiloficial/">UNIFIL </a> in Londrina, Brazil
+              </span>
+              <span class="work__date">(2011-2012)</span>
+            </div>
+          </header>
+        </div>
+        <div class="work work--last">
+          <div class="work__dot"></div>
+          <header>
+            <h3>Bachelor's Degree: Computer Systems Analysis</h3>
+            <div class="work__info">
+              <span class="work__location">
+                Studied at <a href="https://www.linkedin.com/school/unopar---universidade-norte-do-paran-">UNOPAR </a> in Londrina, Brazil
+              </span>
+              <span class="work__date">(2008-2011)</span>
+            </div>
+          </header>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

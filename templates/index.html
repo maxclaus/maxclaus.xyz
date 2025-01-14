@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{% block description %}Max homepage{% endblock description %}">
+    <meta name="author" content="{{ config.extra.author }}">
+    <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+    <link rel="stylesheet" href="{{ get_url(path="site.css", cachebust=true) }}" />
+    <!-- <link rel="shortcut icon" type="image/png" href="{{ get_url(path="favicon.ico") }}"/> -->
+    <link href="{{ get_url(path="rss.xml") }}" rel="feed" type="application/rss+xml" title="{{ config.title }}" />
+    <!-- <script src="https://kit.fontawesome.com/f91b95dbd1.js" crossorigin="anonymous"></script> -->
+  </head>
+
+  <body>
+    <div id="root">
+      <header id="header">
+        <ul class="breadcrumb">
+          <li><a href="/">Max Claus</a></li>
+          {% block breadcrumb %}{% endblock breadcrumb %}
+        </ul>
+        <ul class="menu">
+          <li><a href="/">About</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/resume/">Resume</a></li>
+        </ul>
+      </header>
+
+      <div id="content">
+        {% block content %}
+        <div id="home-intro">
+          <img class="avatar" src="/avatar.jpeg" alt="Max's profile picture">
+          <p>
+          Hello! I'm <b>Max</b>, a developer from Brazil.
+          </p>
+          <p>I am currently seeking a new remote job, check out my <a href="/resume">resume</a>. Previously, I worked at <a href="https://www.linkedin.com/company/invisionapp">InVision</a> over 8 years.</p>
+          <!-- <a href="{{ get_url(path="rss.xml") }}"> RSS </a> -->
+          <p>
+          You can also find me on <a href="https://github.com/maxclaus">GitHub</a> and <a href="https://www.linkedin.com/in/maxclaus/">LinkedIn</a>.
+          </p>
+          <p>
+          <a href="mailto:maxclaus@posteo.com">Say hi</a> or <a href="/blog/">check out my posts</a>.
+          </p>
+        </div>
+        {% endblock content %}
+      </div>
+      <footer id="footer">
+        <p> Copyright © 2025 Max Claus. All rights reserved. </p>
+      </footer>
+    </div>
+  </body>
+</html>

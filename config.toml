@@ -1,0 +1,20 @@
+title = "Max Claus"
+base_url = "https://maxclaus.xyz"
+description = "Max blog"
+
+generate_feeds = true
+feed_filenames = ["rss.xml"]
+
+compile_sass = true
+
+[markdown]
+highlight_code = true
+highlight_theme = "cheerfully-light"
+
+[link_checker]
+skip_anchor_prefixes = [
+    "https://github.com/",
+]
+
+[extra]
+author = "Max"

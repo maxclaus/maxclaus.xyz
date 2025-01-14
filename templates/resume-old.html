@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Resume</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <style media="screen, print">
+    * {
+      print-color-adjust: exact;
+    }
+    #root {
+      display: flex;
+      font-family: "Roboto", serif;
+      font-style: normal;
+    }
+    body {
+      margin: 0;
+    }
+    h1, h2, h3, h4, h5, hgroup {
+      font-family: Lora, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    h1, h2, h3, h4, h5 {
+      font-weight: 700;
+    }
+    .fa-solid {
+      color: rgb(204, 204, 204);
+      width: 15px;
+    }
+    .sidebar {
+      background: #f8f8f8;
+    }
+    .contact-info {
+      background: #213555;
+      color: #ffffff;
+      padding: 30px 20px 20px 20px;
+      font-size: 14px;
+      letter-spacing: 0.05rem;
+    }
+    .contact-info hgroup {
+      margin-bottom: 20px;
+    }
+    .contact-info hgroup h1 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-weight: 600;
+      font-size: 2em;
+    }
+    .contact-info hgroup p {
+      margin: 0;
+      font-size: 1.5em;
+      line-height: 24px;
+      font-style: italic;
+    }
+    .contact-info ul {
+      padding-left: 0px;
+    }
+    .contact-info li {
+      display: block;
+    }
+    .contact-info .social {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+    }
+    .contact-info .social a{
+      display: block;
+      color: white;
+    }
+    .education, .skills {
+      padding: 20px 10px;
+    }
+    .education h2, .skills h2 {
+      margin-top: 0px;
+      margin-bottom: 8px;
+    }
+    .education>div {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .degree {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .degree .date {
+      font-size: 14px;
+    }
+    .skills ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .content {
+      padding: 30px 20px;
+      color: rgba(0, 0, 0, 0.87);
+    }
+    .career-objective {
+      margin-bottom: 20px;
+    }
+    .career-objective h2 {
+      margin-top: 8px;
+      margin-bottom: 8px;
+    }
+    .career-objective p {
+      margin: 0px;
+    }
+    .work-experience h2 {
+      margin: 0;
+    }
+    .experiences {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .experience hgroup {
+      margin-bottom: 10px;
+    }
+    .experience hgroup h3 {
+      margin-top: 0;
+      margin-bottom: 0;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 36px;
+      font-style: italic;
+    }
+    .experience hgroup>div {
+      margin: 0;
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      font-size: 14px;
+    }
+
+    @media print {
+      .break-page-print {
+        break-before: page;
+        padding-top: 30px;
+      }
+      .sidebar {
+        min-width: 210px;
+      }
+      .contact-info {
+        font-size: 14px;
+      }
+    }
+  </style>
+    <script src="https://kit.fontawesome.com/f91b95dbd1.js" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <div id="root">
+      <div class="sidebar">
+        <div class="contact-info">
+          <hgroup>
+            <h1>Max Claus</h1>
+            <p>Staff Software Engineer at InVisionApp Inc</p>
+          </hgroup>
+          <ul>
+            <li><i class="fa-solid fa-envelope"></i> maxclaus@posteo.com</li>
+            <li><i class="fa-solid fa-location-dot"></i> Florinópolis, Brazil</li>
+          </ul>
+          <div class="social">
+            <a href="https://www.linkedin.com/in/maxcnunes" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/maxcnunes" target="_blank"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+        <div class="education">
+          <h2>Education</h2>
+          <div>
+            <div class="degree">
+              <div>Postgraduate Degree</div>
+              <div>Computer Software Engineering</div>
+              <div>at <b>UNIFIL</b></div>
+              <div class="date"><i class="fa-solid fa-calendar-days"></i> Jan 2011 - Dec 2012</div>
+            </div>
+            <div class="degree">
+              <div>Bachelor's Degree</div>
+              <div>Computer Systems Analysis</div>
+              <div>at <b>UNOPAR</b></div>
+              <div class="date"><i class="fa-solid fa-calendar-days"></i> Jan 2008 - Dec 2011</div>
+            </div>
+          </div>
+        </div>
+        <div class="skills">
+          <h2>Relevant Skills</h2>
+          <ul>
+            <li>Go</li>
+            <li>Node.js</li>
+            <li>Rust</li>
+            <li>Backend</li>
+            <li>Microservices</li>
+            <li>Relational and Object-Oriented Databases</li>
+            <li>Eventbus</li>
+            <li>AWS services</li>
+            <li>React.js</li>
+          </ul>
+        </div>
+      </div>
+      <div class="content">
+      <div class="career-objective">
+        <h2>Career Objective</h2>
+        <p>15 years of experience in backend development, with a passion for solving problems creatively, enhancing user experiences through excellent products, and collaborating effectively with team members.</p>
+      </div>
+      <div class="work-experience">
+        <h2>Work Experience</h2>
+        <div class="experiences">
+          <div class="experience">
+            <hgroup>
+              <h3>Staff Software Engineer</h3>
+              <div>
+                <div><i class="fa-solid fa-building"></i> <b>InVisionApp Inc</b></div>
+                <div><i class="fa-solid fa-calendar-days"></i> Dec 2016 - current</div>
+                <div><i class="fa-solid fa-location-dot"></i> Remote</div>
+              </div>
+            </hgroup>
+            <ul>
+              <li>Collaborated on many teams and worked on almost all areas of the product, such as data migration and backend for our prototyping and whiteboard apps.</li>
+              <li>Led multiple technical work streams, investigated appropriate solutions, documented them in technical specifications, and collaborated with other engineers to gather feedback and ensure the chosen solutions aligned with our team and company goals.</li>
+              <li>Worked on both new projects, such as developing an API for scheduled notifications, and legacy codebases, including a Photoshop plugin.</li>
+              <li>Walked my way through legacy codebases.</li>
+              <li>Was often on-call to handle any possible incidents in production.</li>
+              <li>Built open source tools and libraries on my own time which were used later by other engineers at the company.</li>
+              <li>Wrote public posts sharing insights from my work, such as investigating and resolving performance issues in production.</li>
+              <li>Conducted interviews for software engineering candidates.</li>
+              <li>Helped with the shutdown process of the company at the final end.</li>
+              <li>Some of the technologies I have worked with include Go, Node.js, MySQL, PostgreSQL, Redis, Kafka, WebSockets, Protobuf, React, and others.</li>
+            </ul>
+          </div>
+          <div class="experience">
+            <hgroup>
+              <h3>Senior Full Stack Software Developer</h3>
+              <div>
+                <div><i class="fa-solid fa-building"></i> <b>Bravi Software</b></div>
+                <div><i class="fa-solid fa-calendar-days"></i> Sep 2012 - Nov 2016</div>
+                <div><i class="fa-solid fa-location-dot"></i> Florianopolis, Brazil</div>
+              </div>
+            </hgroup>
+            <ul>
+              <li>Developed Micro Services with Multi Tenancy support for different clients.</li>
+              <li>Developed a notification system with targets for IOS and Android devices (push notifications), SMS and email.</li>
+              <li>Developed a game ranking service: implemented a n-ary tree for high performance of the current game session.</li>
+              <li>Developed a OAuth2 service: the basic authentication for the public API.</li>
+              <li>Developed a reverse proxy: a gateway over the public API with some basic routing rules.</li>
+              <li>Maintained Devops infrastructure - configuring and maintaining: CI, development, QA and production environments.</li>
+              <li>Some of the technologies I have worked with include Go, Node.js, C#, Python, Ruby, MySQL, SQLServer, Redis, RabbitMQ, WebSockets, React, and others.</li>
+            </ul>
+          </div>
+          <div class="experience">
+            <div class="break-page-print"></div>
+            <hgroup>
+              <h3>.NET Technical Leader</h3>
+              <div>
+                <div><i class="fa-solid fa-building"></i> <b>FTI Tecnologia da Informação</b></div>
+                <div><i class="fa-solid fa-calendar-days"></i> Oct 2011 - Nov 2012</div>
+                <div><i class="fa-solid fa-location-dot"></i> Londrina, Brazil</div>
+              </div>
+            </hgroup>
+            <ul>
+              <li>Software development with .NET framework in C# and VB.NET. Also lead the .NET team at the company.</li>
+              <li>Developed a website and an application management system for house rentals.</li>
+              <li>Developed new features and fixed bugs for a big Brazilian banking company.</li>
+              <li>Collaborated on a project focused on solutions for pharmacy distributors.</li>
+              <li>Also migrated the existing source code system in SVN to TFS.</li>
+              <li>I taught subjects like OOP and C# in a course offered by the company for .NET developers.</li>
+              <li>Some of the technologies I have used at work include C#, .NET, SQL Server, TFS, and others.</li>
+            </ul>
+          </div>
+          <div class="experience">
+            <hgroup>
+              <h3>Software Developer</h3>
+              <div>
+                <div><i class="fa-solid fa-building"></i> <b>Cantoni Revisões</b></div>
+                <div><i class="fa-solid fa-calendar-days"></i> Dec 2010 - Sep 2011</div>
+                <div><i class="fa-solid fa-location-dot"></i> Londrina, Brazil</div>
+              </div>
+            </hgroup>
+            <ul>
+              <li>
+                Helped developing an application for managing all the company departaments. Composed of many modules such as: financial, human resources, task calendars and stock. I worked in all modules but was more responsible for the stock and human resource modules.
+              </li>
+              <li>Some of the technologies I have used at work include C#, .NET, SQL Server, TFS, Sharepoint, and others.</li>
+            </ul>
+          </div>
+          <div class="experience">
+            <hgroup>
+              <h3>Web Developer - Trainee</h3>
+              <div>
+                <div><i class="fa-solid fa-building"></i> <b>Weblite</b></div>
+                <div><i class="fa-solid fa-calendar-days"></i> Mar 2010 - Dec 2010</div>
+                <div><i class="fa-solid fa-location-dot"></i> Londrina, Brazil</div>
+              </div>
+            </hgroup>
+            <ul>
+              <li>It was my first professional experience as a software developer. Working in a agency gave me a great opportunity to build many different websites.</li>
+              <li>Some of the technologies I have used at work include C#, .NET, SQL Server, and others.</li>
+            </ul>
+          </div>
+          <div class="experience">
+            <hgroup>
+              <h3>Technical Support Trainee</h3>
+              <div>
+                <div><i class="fa-solid fa-building"></i> <b>Cia Cacique</b></div>
+                <div><i class="fa-solid fa-calendar-days"></i> Sep 2008 - Mar 2010</div>
+                <div><i class="fa-solid fa-location-dot"></i> Londrina, Brazil</div>
+              </div>
+            </hgroup>
+            <ul>
+              <li>Trainee on technical support of computers.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    </div>
+  </body>
+</html>
