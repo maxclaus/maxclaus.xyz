@@ -4,8 +4,6 @@ title = "Running Python, Virtualenv, Flask and GAE on Windows"
 
 <p>This is a short tutorial explaining how to configure a environment on windows to create an application with python, flask and google app engine.</p>
 
-<img class="size-full wp-image-846" title="python flask gae windows" alt="" src="/assets/python_flask_gae_windows.jpg" width="500" height="500" />
-
 <p>Before start the article I would say the best operation system to work with python is not the Windows. Should be really easier if you work with the Linux or IOS, that are more supported for this kind of development. But anyway is possible do the same on the Windows, so lets begin...<!--more--></p>
 <p><strong>Install Python</strong></p>
 <ol>
@@ -44,12 +42,12 @@ title = "Running Python, Virtualenv, Flask and GAE on Windows"
 <p><strong>Create the project</strong></p>
 <ol>
 <li>Create a directory for your project</li>
-<li>Create the main of your application <a href="https://github.com/maxcnunes/flaskgaedemo/blob/master/main.py">main.py</a></li>
-<li>Create the configuration of your application for Google App Engine<a href="https://github.com/maxcnunes/flaskgaedemo/blob/master/app.yaml">app.yaml</a></li>
-<li>Create a file to let GAE initialize your application <a href="https://github.com/maxcnunes/flaskgaedemo/blob/master/initialize_gae.py">initialize_gae.py</a></li>
+<li>Create the main of your application <a href="https://github.com/maxclaus/flaskgaedemo/blob/master/main.py">main.py</a></li>
+<li>Create the configuration of your application for Google App Engine<a href="https://github.com/maxclaus/flaskgaedemo/blob/master/app.yaml">app.yaml</a></li>
+<li>Create a file to let GAE initialize your application <a href="https://github.com/maxclaus/flaskgaedemo/blob/master/initialize_gae.py">initialize_gae.py</a></li>
 </ol>
 <blockquote>
-<div>Look a example of the code here:&nbsp;<a href="https://github.com/maxcnunes/flaskgaedemo" rel="nofollow">https://github.com/maxcnunes/flaskgaedemo</a></div>
+<div>Look a example of the code here:&nbsp;<a href="https://github.com/maxclaus/flaskgaedemo" rel="nofollow">https://github.com/maxclaus/flaskgaedemo</a></div>
 </blockquote>
 <p><strong>Install Flask to run Locally</strong></p>
 <ol>

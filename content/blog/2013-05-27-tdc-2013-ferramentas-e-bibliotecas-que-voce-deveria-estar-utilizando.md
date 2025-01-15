@@ -7,4 +7,4 @@ title = "TDC 2013 - Ferramentas e Bibliotecas que você deveria estar utilizando
 
 <iframe src="//www.slideshare.net/slideshow/embed_code/22002052" width="512" height="421" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 
-<p><strong>Código fonte dos exemplos apresentados</strong>:&nbsp;<a href="https://github.com/maxcnunes/TDC-2013">https://github.com/maxcnunes/TDC-2013</a></p>
+<p><strong>Código fonte dos exemplos apresentados</strong>:&nbsp;<a href="https://github.com/maxclaus/TDC-2013">https://github.com/maxclaus/TDC-2013</a></p>

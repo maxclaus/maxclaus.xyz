@@ -18,7 +18,7 @@ So this is the flow I followed to find out the problem:
 1. Once the process get in high CPU usage stop it.
 1. The profile will have created `v8.log` file.
 1. In node v0.10 has not a built in tool to process this file. Because of that install one with `npm -g install tick`.
-1. Execute `node-tick-processor` and it will print the explained results about the profile log [v8-profile-cpu-100-usage.txt](https://gist.github.com/maxcnunes/66bb591c1f62f922254597353cd757b3).
+1. Execute `node-tick-processor` and it will print the explained results about the profile log [v8-profile-cpu-100-usage.txt](https://gist.github.com/maxclaus/66bb591c1f62f922254597353cd757b3).
 
 Looking the **[Bottom up (heavy) profile]** section I could find out the module causing the 100% CPU usage.
 

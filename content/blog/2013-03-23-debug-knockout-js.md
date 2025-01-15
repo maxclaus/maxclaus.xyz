@@ -8,4 +8,20 @@ title = "Debug Knockout js"
 {% gist maxcnunes/5229570 %}
 
 <p>Um exemplo dos dados serializados em JSON seria assim:</p>
-<p style="text-align: center;"><a href="http://blog2.maxcnunes.com/wp-content/uploads/2013/03/ViewModelJson.png"><img class="size-full wp-image-886 aligncenter" alt="" src="/assets/ViewModelJson.png" width="350" height="335" /></a></p>
+<pre>
+<code>
+{
+  "categories": [
+    "id": 1,
+    "name": "Transport",
+    "parent": 0,
+    "isNullo": false,
+    "isDirty": false,
+      "_moduleId_": "models/model.category"
+  ],
+  "pageDisplayName": "List Category",
+  "pageDescription": "All your categories",
+  "_moduleId_ _": "viewmodels/category/show"
+}
+</code>
+</pre>

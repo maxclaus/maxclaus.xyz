@@ -4,7 +4,7 @@ title = "Understanding a Phoenix application and it's lifecycle"
 
 > It is a post for beginners in Elixir and Phoenix. Has intention to help understanding how a Phoenix application works and a bit of its lifecycle.
 
-I started the day thinking in write an chat application to apply what I have learned so far of Elixir. But even after reading the whole [Elixir - Getting Started](http://elixir-lang.org/getting-started/introduction.html) and [Phoenix - Up And Running](http://www.phoenixframework.org/docs/up-and-running). I was not really feeling prepared to write an application on my own.
+I started the day thinking in write an chat application to apply what I have learned so far of Elixir. But even after reading the whole [Elixir - Getting Started](http://elixir-lang.org/getting-started/introduction.html) and Phoenix - Up And Running. I was not really feeling prepared to write an application on my own.
 
 > P.S. I didn't read the Phoenix framework documentation before start the application. I'm sure if I had read the docs, everything would makes sense. But I was just too excited to start coding :D.
 
@@ -23,7 +23,7 @@ Now you can visit localhost:4000 from your browser.
 
 Contains the definition for all dependencies and configures the OTP application.
 
-> Check out [elixir/Application](http://elixir-lang.org/docs/stable/elixir/Application.html) to understand what is an OTP application. And the presentation [OTP Has Done It - by Nick DeMonner](https://www.youtube.com/watch?v=yBReonQlfL4) also gives an idea about it.
+> Check out [OTP Has Done It - by Nick DeMonner](https://www.youtube.com/watch?v=yBReonQlfL4) to understand what is an OTP application.
 
 ```elixir
 defmodule Chat.Mixfile do
@@ -150,8 +150,6 @@ end
 ```
 
 In `lib/chat/endpoint.ex` is used a lot `Plug`. It allows compose modules between web applications. With `Plug` is possible to change the request and response data through the connection lifecycle. It is comparable to a middleware in Node JS.
-
-> Check out [understanding-plug](http://www.phoenixframework.org/docs/understanding-plug) and [plug project](https://github.com/elixir-lang/plug).
 
 ### web/router.ex
 
