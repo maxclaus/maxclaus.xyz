@@ -10,7 +10,16 @@ For these cases I usually use [`inspect`](http://nodejs.org/api/util.html#util_u
 
 Due that I wrote a simple sublime snippet to help me create the logs:
 
-{% gist maxcnunes/5c8793b3b36364b9511a node.util.inspect.sublime-snippet %}
+```xml
+<snippet>
+  <content><![CDATA[
+console.log(${1:'\n---->${2}', }require('util').inspect(${3:arguments}, { depth: null, colors: true }));
+]]></content>
+  <tabTrigger>inspect</tabTrigger>
+  <scope>source.js</scope>
+  <description>nodejs - util.inspect</description>
+</snippet>
+```
 
 Typing `inspect` will generate this snippet:
 

@@ -2,6 +2,12 @@
 title = "VIM - Select the word under the cursor"
 +++
 
-<p>Type in normal mode:<br />
+Type in normal mode:
 
-{% gist maxcnunes/7284424 select-the-word-under-the-cursor %}
+```
+#yank inner word
+yiw
+
+#visually select inner word
+viw
+```

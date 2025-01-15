@@ -5,7 +5,9 @@ title = "Debug Knockout js"
 <p>Tenho utilizado knockout js em alguns projetos e o desacoplamento que ele possibilita aplicando o padrão MVVM é fascinante. &nbsp;</p>
 <p>Um forma simples que tenho utilizado para facilitar os binds durante o desenvolvimento é exibir serializado em JSON quais os dados estão sendo passados para viewmodel.</p>
 
-{% gist maxcnunes/5229570 %}
+```html
+<pre data-bind="text: ko.toJSON($data, null, 2)"></pre>
+```
 
 <p>Um exemplo dos dados serializados em JSON seria assim:</p>
 <pre>

@@ -4,7 +4,23 @@ title = "Erro ao publicar Rails no Heroku - Gemfile.lock required. Please check 
 
 Passei um bom tempo quebrando a cabeça por causa desse problema a baixo que ocorria toda vez que eu tentava publicar o Rails no Heroku:
 
-{% gist maxcnunes/5675847 %}
+```sh
+maxcnunes@Max-Mint-Office-VM ~/Development/bravi-ideas $ git push heroku master
+Counting objects: 218, done.
+Compressing objects: 100% (189/189), done.
+Writing objects: 100% (218/218), 108.27 KiB, done.
+Total 218 (delta 66), reused 0 (delta 0)
+
+-----> Ruby/NoLockfile app detected
+ !
+ !     Gemfile.lock required. Please check it in.
+ !
+ !     Heroku push rejected, failed to compile Ruby/NoLockfile app
+
+To git@heroku.com:bravi-ideas.git
+ ! [remote rejected] master -> master (pre-receive hook declined)
+error: failed to push some refs to 'git@heroku.com:bravi-ideas.git'
+```
 
 No final das contas a solução foi simples, mas como pode ser que ocorra com alguém mais, então esta foi a minha solução:
 
