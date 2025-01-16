@@ -30,7 +30,8 @@
       <div id="content">
         {% block content %}
         <div id="home-intro">
-          <img class="avatar" src="/avatar.jpeg" alt="Max's profile picture">
+          {% set avatar = resize_image(path="/avatar.jpeg", width=125, op="fit_width", quality=100) %}
+          <img class="avatar" src="{{ avatar.url }}" alt="Max's profile picture">
           <p>
           Hello! I'm <b>Max</b>, a developer from Brazil.
           </p>
