@@ -2,41 +2,69 @@
 title = "Configurando Continuous Integration para .NET com AppHarbor e Github"
 +++
 
-<img class="size-full wp-image-965" alt="Continuous Integration" src="./CI-Build.png" width="235" height="141" />
+![Continuous Integration](./CI-Build.png)
 
-<p>Um dos projetos que tenho trabalhado ultimamente tem crescido aos poucos e já começa a apresentar alguns problemas comuns de qualquer projeto. As alterações no código realizadas por implementações de novas features ou correções de bugs podem ser commitadas com algum problema que quebre o build ou até mesmo imperceptivelmente interfira&nbsp;no comportamento&nbsp;de uma feature existente.</p>
-<h3>&nbsp;<!--more--></h3>
-<h4>&nbsp;</h4>
-<h4>&nbsp;</h4>
-<h4>Como identificar que tais alterações estão afetando as featurues existentes?&nbsp;</h4>
-<ul>
-<li><span style="color: #3366ff;"><strong>Testes!</strong></span></li>
-</ul>
-<h4>Como identificar tais problemas da formar mais cedo possível?</h4>
-<ul>
-<li><span style="color: #3366ff;"><strong>Integração Contínua (CI)</strong></span></li>
-</ul>
-<p>Martin Fowler define a Integração Contínua da seguinte forma:</p>
-<blockquote><p><em>Continuous Integration is a software development practice where members of a team integrate their work frequently, usually each person integrates at least daily – leading to multiple integrations per day. Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible. Many teams find that this approach leads to significantly reduced integration problems and allows a team to develop cohesive software more rapidly. </em>&nbsp;– Martin Fowler</p></blockquote>
-<p>Ou seja, é uma prática de desenvolvimento para facilitar a identificação de erros provocados por integrações de tarefas realizadas diariamente. É contínuo exatamente porque o quanto antes for identificado o problema, melhor. E para que realmente seja um processo contínuo, deve ser automatizado.</p>
-<p>Então automatizando builds e testes para serem executados a partir de cada integração você conseguirá identificar qual foi o commit e desenvolvedor responsável pelo problema.</p>
-<p style="text-align: center;"><strong><em>Continuous Integration Workflow</em></strong></p>
-<p style="text-align: center;"><img class="size-full wp-image-947   aligncenter" alt="Continuous Integration Workflow" src="./CI.png" width="425" height="672" /></p>
-<p style="text-align: center;"><em>http://blogs.collab.net/cloudforge/continuous-integration-overview-best-practice</em></p>
-<h3>AppHarbor</h3>
-<p>AppHarbor é uma hospedagem para aplicações web na plataforma .NET. Dentre vários add-ons disponíveis, ela ainda possui serviço de Continuous Integration. O mais interessante é que o serviço de CI é gratuito e fácil de configurar com o Github.</p>
-<p><strong>Configurando Continuous Integration no AppHarbor e Github</strong></p>
-<p><span style="line-height: 13px;">1. Crie uma Application para o seu projeto</span><span style="line-height: 13px;">&nbsp;no AppHarbor</span><span style="line-height: 13px;">.</span></p>
-<p><a href="./CreateApp-AppHarbor.png"><img class="aligncenter  wp-image-958" alt="CreateApp-AppHarbor" src="./CreateApp-AppHarbor.png" width="600" /></a></p>
-<p>2. Autorize o acesso da sua conta no Github.</p>
-<p><a href="./Authorize-AppHarbor.png"><img class="aligncenter size-full wp-image-954" alt="Authorize-AppHarbor" src="./Authorize-AppHarbor.png" width="426" height="285" /></a></p>
-<p>3. Selecione o repositório relacionado a esta aplicação.</p>
-<p><a href="./SelectRepository-AppHarbor.png"><img class="aligncenter size-full wp-image-955" alt="SelectRepository-AppHarbor" src="./SelectRepository-AppHarbor.png" width="577" height="127" /></a></p>
-<p>4. Acesse o Settings do seu repositório no Github para confirmar se a configuração foi realizada &nbsp;com sucesso.</p>
-<p style="text-align: center;"><a href="./ServiceHooks-AppHarbor.png"><img class="aligncenter  wp-image-956" alt="ServiceHooks-AppHarbor" src="./ServiceHooks-AppHarbor.png" width="600" /></a></p>
-<p style="text-align: left;">5. De volta no AppHarbor acesse o painel de controle referente a esta aplicação e agora irá conter informações sobre os builds realizados.</p>
-<p style="text-align: center;"><a href="./BuildStatus-AppHarbor.png"><img class="aligncenter  wp-image-957" alt="BuildStatus-AppHarbor" src="./BuildStatus-AppHarbor.png" width="600" /></a></p>
-<p style="text-align: left;">6. Clique sobre o build e será exibido informações mais detalhadas.</p>
-<p style="text-align: center;"><a href="./BuildInfo-AppHarbor.png"><img class="aligncenter  wp-image-960" alt="BuildInfo-AppHarbor" src="./BuildInfo-AppHarbor.png" width="600" /></a></p>
-<p style="text-align: left;">7. Através do Commit Id você consegue descobrir quem realizou o commit.</p>
-<p style="text-align: left;"><a href="./CommitInfo-Git.png"><img class="aligncenter size-full wp-image-961" alt="CommitInfo-Git" src="./CommitInfo-Git.png" width="395" height="111" /></a></p>
+Um dos projetos que tenho trabalhado ultimamente tem crescido aos poucos e já começa a apresentar alguns problemas comuns de qualquer projeto. As alterações no código realizadas por implementações de novas features ou correções de bugs podem ser commitadas com algum problema que quebre o build ou até mesmo imperceptivelmente interfira no comportamento de uma feature existente.
+
+###  
+
+####  
+
+####  
+
+#### Como identificar que tais alterações estão afetando as featurues existentes? 
+
+- **Testes!**
+
+#### Como identificar tais problemas da formar mais cedo possível?
+
+- **Integração Contínua (CI)**
+
+Martin Fowler define a Integração Contínua da seguinte forma:
+
+> _Continuous Integration is a software development practice where members of a team integrate their work frequently, usually each person integrates at least daily – leading to multiple integrations per day. Each integration is verified by an automated build (including test) to detect integration errors as quickly as possible. Many teams find that this approach leads to significantly reduced integration problems and allows a team to develop cohesive software more rapidly._  – Martin Fowler
+
+Ou seja, é uma prática de desenvolvimento para facilitar a identificação de erros provocados por integrações de tarefas realizadas diariamente. É contínuo exatamente porque o quanto antes for identificado o problema, melhor. E para que realmente seja um processo contínuo, deve ser automatizado.
+
+Então automatizando builds e testes para serem executados a partir de cada integração você conseguirá identificar qual foi o commit e desenvolvedor responsável pelo problema.
+
+**_Continuous Integration Workflow_**
+
+![Continuous Integration Workflow](./CI.png)
+
+_http://blogs.collab.net/cloudforge/continuous-integration-overview-best-practice_
+
+### AppHarbor
+
+AppHarbor é uma hospedagem para aplicações web na plataforma .NET. Dentre vários add-ons disponíveis, ela ainda possui serviço de Continuous Integration. O mais interessante é que o serviço de CI é gratuito e fácil de configurar com o Github.
+
+**Configurando Continuous Integration no AppHarbor e Github**
+
+1\. Crie uma Application para o seu projeto no AppHarbor.
+
+[![CreateApp-AppHarbor](./CreateApp-AppHarbor.png)](./CreateApp-AppHarbor.png)
+
+2\. Autorize o acesso da sua conta no Github.
+
+[![Authorize-AppHarbor](./Authorize-AppHarbor.png)](./Authorize-AppHarbor.png)
+
+3\. Selecione o repositório relacionado a esta aplicação.
+
+[![SelectRepository-AppHarbor](./SelectRepository-AppHarbor.png)](./SelectRepository-AppHarbor.png)
+
+4\. Acesse o Settings do seu repositório no Github para confirmar se a configuração foi realizada  com sucesso.
+
+[![ServiceHooks-AppHarbor](./ServiceHooks-AppHarbor.png)](./ServiceHooks-AppHarbor.png)
+
+5\. De volta no AppHarbor acesse o painel de controle referente a esta aplicação e agora irá conter informações sobre os builds realizados.
+
+[![BuildStatus-AppHarbor](./BuildStatus-AppHarbor.png)](./BuildStatus-AppHarbor.png)
+
+6\. Clique sobre o build e será exibido informações mais detalhadas.
+
+[![BuildInfo-AppHarbor](./BuildInfo-AppHarbor.png)](./BuildInfo-AppHarbor.png)
+
+7\. Através do Commit Id você consegue descobrir quem realizou o commit.
+
+[![CommitInfo-Git](./CommitInfo-Git.png)](./CommitInfo-Git.png)
+

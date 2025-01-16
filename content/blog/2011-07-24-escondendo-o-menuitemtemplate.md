@@ -2,105 +2,124 @@
 title = "Escondendo o MenuItemTemplate"
 +++
 
-<p>Trabalhando com sharepoint, uma situação que eu sempre tive dificuldade em resolver e não sabia como, era a dúvida de como esconder itens do MenuTemplate do Sharepoint, associados ao um SPMenuField dentro da Gridview de acordo com cada registro.</p>
-<p><!--more--></p>
-<p><strong>Por exemplo:</strong><br />
-Em uma lista de clientes, que irei carregar na gridview, podem possuir duas situações.<br />
-O cliente pode estar como cadastrado ou excluído.<br />
-E meu sharepoint menu template pode possuir duas opções, ver os detalhes do cliente ou excluí-lo.<br />
-Sendo assim, não faz sentido manter a opção de excluir visível quando o cliente já estiver sido excluído.<br />
-Não é?</p>
-<p>A solução para isso é muito simples.<br />
-Utilizando o evento "<span style="color: #ff0000;">RowCreated</span>" da Gridview, será percorrido linha-à-linha da Gridview. Recuperando o 1º Controle da 1ª Célula de cada linha, que neste exemplo é onde o SPMenufield está localizado.<br />
-Com o SPMenuField recuperado, basta passar o Id do MenuItemTemplate que não deverá estar visível na linha atual.</p>
-<p>Primeiro monte a página aspx, com os controles Sharepoint:MenuTemplate, Sharepoint:MenuItemTemplate, SharePoint:SPMenuField e SPGridView ou a GridView padrão mesmo.</p>
-<p>[sourcecode language="html"]<br />
-    &lt;!-- Sharepoint MenuTemplate --&gt;<br />
-    &lt;SharePoint:MenuTemplate ID=&quot;mtEventMenu&quot; runat=&quot;server&quot;&gt;</p>
-<p>        &lt;%-- 1º Item Menu - Detalhe --%&gt;<br />
-        &lt;SharePoint:MenuItemTemplate ID=&quot;mitDetails&quot; runat=&quot;server&quot; Text=&quot;Detalhes&quot;<br />
-            ImageUrl=&quot;/_layouts/images/details.gif&quot;<br />
-            ClientOnClickScript=&quot;performPostBack('DETAILS,%Id%');&quot; Title=&quot;Detalhes&quot;&gt;<br />
-        &lt;/SharePoint:MenuItemTemplate&gt;</p>
-<p>        &lt;%-- 2º Item Menu - Excluir --%&gt;<br />
-        &lt;SharePoint:MenuItemTemplate ID=&quot;mitDelete&quot; runat=&quot;server&quot; Text=&quot;Excluir&quot;<br />
-            ImageUrl=&quot;/_layouts/images/delete.gif&quot;<br />
-            ClientOnClickScript=&quot;performPostBack('DELETE,%Id%');&quot; Title=&quot;Excluir&quot;&gt;<br />
-        &lt;/SharePoint:MenuItemTemplate&gt;</p>
-<p>    &lt;/SharePoint:MenuTemplate&gt;</p>
-<p>    &lt;!-- Poderia ter utilizado uma SPGridView ao invés da GridView--&gt;<br />
-    &lt;asp:GridView ID=&quot;GridView1&quot; runat=&quot;server&quot; DataKeyNames=&quot;Id&quot;<br />
-        onrowcreated=&quot;GridView1_RowCreated&quot;&gt;<br />
-        &lt;Columns&gt;<br />
-            &lt;SharePoint:SPMenuField<br />
-                HeaderText=&quot;Nome&quot;<br />
-                TextFields=&quot;Nome&quot;<br />
-                MenuTemplateId=&quot;mtEventMenu&quot;<br />
-                TokenNameAndValueFields=&quot;Id=Id&quot;<br />
-                SortExpression=&quot;Id&quot; /&gt;<br />
-            &lt;%-- adicione codigo para outras colunas --%&gt;<br />
-        &lt;/Columns&gt;<br />
-    &lt;/asp:GridView&gt;<br />
-[/sourcecode]</p>
-<p>E no codebehind, veja como é facil esconder o MenuItemTemplate de cada linha da gridview, utilizando o evento RowCreated:</p>
-<p>[sourcecode language="csharp" highlight="29,41,45,51"]<br />
-using System;<br />
-using System.Collections.Generic;<br />
-using System.Linq;<br />
-using System.Web;<br />
-using System.Web.UI;<br />
-using System.Web.UI.WebControls;</p>
-<p>namespace WebApplication1<br />
-{<br />
-    public partial class _Default : System.Web.UI.Page<br />
-    {<br />
-        //Como demonstraçao, foi criado um enum de situacoes do cliente<br />
-        enum Situacao { Cadastrado = 0, Excluido = 1 };</p>
-<p>        protected void Page_Load(object sender, EventArgs e)<br />
-        {<br />
-            //Uma lista para preencher a gridview<br />
-            var Clientes = new List()<br />
-            {<br />
-                new Cliente(){ Id = 1, Nome = &quot;Pedro&quot;, Situacao = (int)Situacao.Cadastrado},<br />
-                new Cliente(){ Id = 2, Nome = &quot;João&quot;, Situacao = (int)Situacao.Excluido}<br />
-            };</p>
-<p>            //Carregando a gridview<br />
-            GridView1.DataSource = Clientes;<br />
-            GridView1.DataBind();<br />
-        }</p>
-<p>        protected void GridView1_RowCreated(object sender, GridViewRowEventArgs e)<br />
-        {<br />
-            //Só se a linah for do tipo DataRow<br />
-            if (!(e.Row.RowType == DataControlRowType.DataRow))<br />
-                return;</p>
-<p>            //Cria um objeto cliente, referente aos dados da linha atual<br />
-            var item = e.Row.DataItem as Cliente;<br />
-            if (item == null)<br />
-                return;</p>
-<p>            //Recupera o controle SPMenuField desta linha<br />
-            var thisSPMenu = e.Row.Cells[0].Controls[0] as Microsoft.SharePoint.WebControls.Menu;<br />
-            if (thisSPMenu == null)<br />
-                return;</p>
-<p>            if (item.Situacao == (int)Situacao.Excluido)<br />
-            {<br />
-                /*<br />
-                 * Esconde o 2º Item Menu - Excluir<br />
-                 * Passando o Id do MenuItemTemplate desejado<br />
-                 */<br />
-                 thisSPMenu.HiddenMenuItemIds = &quot;mitDelete&quot;;</p>
-<p>                /*<br />
-                 * Para esconder mais itens, separe os Ids por ','<br />
-                 * Exemplo:<br />
-                 * thisSPMenu.HiddenMenuItemIds = &quot;mitDetails,mitDelete&quot;;<br />
-                 */</p>
-<p>            }</p>
-<p>        }<br />
-    }</p>
-<p>    class Cliente<br />
-    {<br />
-        public int Id { get; set; }<br />
-        public string Nome { get; set; }<br />
-        public int Situacao { get; set; }<br />
-    }<br />
-}</p>
-<p>[/sourcecode]</p>
+Trabalhando com sharepoint, uma situação que eu sempre tive dificuldade em resolver e não sabia como, era a dúvida de como esconder itens do MenuTemplate do Sharepoint, associados ao um SPMenuField dentro da Gridview de acordo com cada registro.
+
+**Por exemplo:**
+Em uma lista de clientes, que irei carregar na gridview, podem possuir duas situações.
+O cliente pode estar como cadastrado ou excluído.
+E meu sharepoint menu template pode possuir duas opções, ver os detalhes do cliente ou excluí-lo.
+Sendo assim, não faz sentido manter a opção de excluir visível quando o cliente já estiver sido excluído.
+Não é?
+
+A solução para isso é muito simples.
+Utilizando o evento "RowCreated" da Gridview, será percorrido linha-à-linha da Gridview. Recuperando o 1º Controle da 1ª Célula de cada linha, que neste exemplo é onde o SPMenufield está localizado.
+Com o SPMenuField recuperado, basta passar o Id do MenuItemTemplate que não deverá estar visível na linha atual.
+
+Primeiro monte a página aspx, com os controles Sharepoint:MenuTemplate, Sharepoint:MenuItemTemplate, SharePoint:SPMenuField e SPGridView ou a GridView padrão mesmo.
+
+```html
+<!-- Sharepoint MenuTemplate -->
+<SharePoint:MenuTemplate ID="mtEventMenu" runat="server">
+  <%-- 1º Item Menu - Detalhe --%>
+  <SharePoint:MenuItemTemplate
+    ID="mitDetails"
+    runat="server"
+    Text="Detalhes"
+    ImageUrl="/_layouts/images/details.gif"
+    ClientOnClickScript="performPostBack('DETAILS,%Id%');"
+    Title="Detalhes"
+  >
+  </SharePoint:MenuItemTemplate>
+
+  <%-- 2º Item Menu - Excluir --%>
+  <SharePoint:MenuItemTemplate
+    ID="mitDelete"
+    runat="server"
+    Text="Excluir"
+    ImageUrl="/_layouts/images/delete.gif"
+    ClientOnClickScript="performPostBack('DELETE,%Id%');"
+    Title="Excluir"
+  >
+  </SharePoint:MenuItemTemplate>
+</SharePoint:MenuTemplate>
+
+<!-- Poderia ter utilizado uma SPGridView ao invés da GridView-->
+<asp:GridView ID="GridView1" runat="server" DataKeyNames="Id" onrowcreated="GridView1_RowCreated">
+  <Columns>
+    <SharePoint:SPMenuField
+      HeaderText="Nome"
+      TextFields="Nome"
+      MenuTemplateId="mtEventMenu"
+      TokenNameAndValueFields="Id=Id"
+      SortExpression="Id"
+    />
+    <%-- adicione codigo para outras colunas --%>
+  </Columns>
+</asp:GridView>
+```
+
+E no codebehind, veja como é facil esconder o MenuItemTemplate de cada linha da gridview, utilizando o evento RowCreated:
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace WebApplication1 {
+  public partial class
+  _Default : System.Web.UI.Page {
+    // Como demonstraçao, foi criado um enum de situacoes do cliente
+    enum Situacao { Cadastrado = 0, Excluido = 1 }
+    ;
+
+    protected void Page_Load(object sender, EventArgs e) {
+      // Uma lista para preencher a gridview
+      var Clientes = new List() { new Cliente() { Id = 1, Nome = "Pedro", Situacao = (int)Situacao.Cadastrado },
+                                  new Cliente() { Id = 2, Nome = "João", Situacao = (int)Situacao.Excluido } };
+
+      // Carregando a gridview
+      GridView1.DataSource = Clientes;
+      GridView1.DataBind();
+    }
+
+    protected void GridView1_RowCreated(object sender, GridViewRowEventArgs e) {
+      // Só se a linah for do tipo DataRow
+      if (!(e.Row.RowType == DataControlRowType.DataRow))
+        return;
+
+      // Cria um objeto cliente, referente aos dados da linha atual
+      var item = e.Row.DataItem as Cliente;
+      if (item == null)
+        return;
+
+      // Recupera o controle SPMenuField desta linha
+      var thisSPMenu = e.Row.Cells\[0\].Controls\[0\] as Microsoft.SharePoint.WebControls.Menu;
+      if (thisSPMenu == null)
+        return;
+
+      if (item.Situacao == (int)Situacao.Excluido) {
+        /\*
+\* Esconde o 2º Item Menu - Excluir
+\* Passando o Id do MenuItemTemplate desejado
+\* / thisSPMenu.HiddenMenuItemIds = "mitDelete";
+
+        /\*
+\*Para esconder mais itens, separe os Ids por ','
+\*Exemplo :
+\*thisSPMenu.HiddenMenuItemIds = "mitDetails,mitDelete";
+        \* /
+      }
+    }
+  }
+
+  class Cliente {
+    public int Id { get; set; }
+    public string Nome { get; set; }
+    public int Situacao { get; set; }
+  }
+}
+```
+

@@ -2,64 +2,84 @@
 title = "Partial class e MetaDataType"
 +++
 
-<p>Se você esta acostumado a utilizar frameworks ORM (Object-relational mapping) como LINQ to SQL, LINQ to Entity e dentre outros. Uma grande vantagem, se não necessidade, é utilizar <strong><span style="color: #3366ff;">Partial Class</span></strong> (classes parciais).</p>
-<p>Com partial class, é possível dividir a estrutura de classes em arquivos separados. E todas as partes são combinados quando o aplicativo é compilado.</p>
-<p>Pode ser usada quando trabalhamos com grande projetos, para separar definições de classes, por simples organização ou para dar autonomia que cada desenvolvedor trabalhe em arquivos separados, mas relacionados a mesma classe. E também, trabalhando com arquivos gerados automaticamente, como de frameworks ORM, atribuindo novas definições as classes geradas pelo framework.</p>
+Se você esta acostumado a utilizar frameworks ORM (Object-relational mapping) como LINQ to SQL, LINQ to Entity e dentre outros. Uma grande vantagem, se não necessidade, é utilizar **Partial Class** (classes parciais).
 
-<img class="size-full wp-image-280" title="partial class" src="./partial-class.jpg" alt="" width="408" height="612" />
-<em>Partial Class</em>
+Com partial class, é possível dividir a estrutura de classes em arquivos separados. E todas as partes são combinados quando o aplicativo é compilado.
 
-<p>Para definir uma classe como parcial é necessário incluir a palavra-chave <strong><span style="color: #3366ff;">partial</span></strong> em sua definição Além das classes possuírem exatamente o mesmo nome e namespace.</p>
-<p>Ficando assim:</p>
-<p>[sourcecode language="csharp"]<br />
-    //Classe parcial no arquivo Pessoa1.cs<br />
-    public partial class Pessoa<br />
-    {<br />
-        public string nome { get; set; }<br />
-        public int idade { get; set; }</p>
-<p>        public string GetNome()<br />
-        {<br />
-            return this.nome;<br />
-        }<br />
-    }</p>
-<p>    //Classe parcial no arquivo Pessoa2.cs<br />
-    public partial class Pessoa<br />
-    {<br />
-        public string sobreNome { get; set; }</p>
-<p>        public string GetNomeCompleto()<br />
-        {<br />
-            return this.nome + this.sobreNome;<br />
-        }<br />
-    }<br />
-[/sourcecode]</p>
-<p>Estanciando a classe Pessoa, temos acesso as definições contidas em as classes:</p>
-<p>[sourcecode language="csharp"]<br />
-    Pessoa p = new Pessoa();<br />
-    p.nome = &quot;Fulano&quot;;<br />
-    p.sobreNome = &quot;Ciclano&quot;;<br />
-    p.idade = 23;<br />
-    string nome = p.GetNome();<br />
-    string nomeCompleto = p.GetNomeCompleto();<br />
-[/sourcecode]</p>
-<p>Porém, se em uma partial class você define um atributo ou método que já exista, ao compilar retonará a seguinte mensagem:</p>
-<h5 style="padding-left: 30px;"><em><span style="color: #ff0000;">The type 'NOME_DA_CLASSE' already contains a definition for 'NOME_PROPRIEDADE_REPITIDA'.</span></em></h5>
-<p>Mas então você se pergunta, porque eu teria a idéia de criar um atributo que já existe?  Bem, se você trabalha com MVC, conhece as ótimas vantagens do <a title="Entenda mais sobre Data Annotation" href="http://msdn.microsoft.com/en-us/library/dd901590%28v=vs.95%29.aspx" target="_blank">Data Annotation</a>, customizações de classes para especificar regras de validações. O que necessita que reescreva a propriedade, adicionando regras de validações do data annotation.</p>
-<p>Porém, utilizando o ORM, as classes já são geradas automaticamente pelo framework. Complicando a definição de atributos de validação do Data Annotation para as propriedades da classe.</p>
-<p>Sendo assim, a solução para esse problema é utilizar <strong><span style="color: #3366ff;">MetadataType</span></strong>. Habilitando a associação de uma classe diferente à outra do tipo partial class.</p>
-<p>Entenda melhor no exemplo:</p>
-<p>[sourcecode language="csharp"]<br />
-    //Supondo que a classe Pessoa ja tenha sido definida</p>
-<p>    //Associa a classe PessoaMetaData à Pessoa<br />
-    [MetadataType(typeof(PessoaMetaData))]<br />
-    public partial class Pessoa<br />
-    {<br />
-        //Aqui você pode adicionar novas propriedades e metodos à classe<br />
-    }</p>
-<p>    public class PessoaMetaData<br />
-    {<br />
-        //Data Annotation<br />
-        [Required(ErrorMessage = &quot;O Nome deve ser preenchido&quot;)]<br />
-        public string nome { get; set; }<br />
-    }<br />
-[/sourcecode]</p>
-<p>Obs: Imagem utilizada para demonstrar a partial class foi retirada <a href="http://www.codeproject.com/KB/dotnet/PartialMethod.aspx">deste artigo</a>.</p>
+Pode ser usada quando trabalhamos com grande projetos, para separar definições de classes, por simples organização ou para dar autonomia que cada desenvolvedor trabalhe em arquivos separados, mas relacionados a mesma classe. E também, trabalhando com arquivos gerados automaticamente, como de frameworks ORM, atribuindo novas definições as classes geradas pelo framework.
+
+![](./partial-class.jpg "partial class")
+_Partial Class_
+
+Para definir uma classe como parcial é necessário incluir a palavra-chave **partial** em sua definição Além das classes possuírem exatamente o mesmo nome e namespace.
+
+Ficando assim:
+
+```cs
+//Classe parcial no arquivo Pessoa1.cs
+public partial class Pessoa
+{
+    public string nome { get; set; }
+    public int idade { get; set; }
+
+    public string GetNome()
+    {
+        return this.nome;
+    }
+}
+
+//Classe parcial no arquivo Pessoa2.cs
+public partial class Pessoa
+{
+    public string sobreNome { get; set; }
+
+    public string GetNomeCompleto()
+    {
+        return this.nome + this.sobreNome;
+    }
+}
+```
+
+Estanciando a classe Pessoa, temos acesso as definições contidas em as classes:
+
+```cs
+Pessoa p = new Pessoa();
+p.nome = "Fulano";
+p.sobreNome = "Ciclano";
+p.idade = 23;
+string nome = p.GetNome();
+string nomeCompleto = p.GetNomeCompleto();
+```
+
+Porém, se em uma partial class você define um atributo ou método que já exista, ao compilar retonará a seguinte mensagem:
+
+##### _The type 'NOME_DA_CLASSE' already contains a definition for 'NOME_PROPRIEDADE_REPITIDA'._
+
+Mas então você se pergunta, porque eu teria a idéia de criar um atributo que já existe?  Bem, se você trabalha com MVC, conhece as ótimas vantagens do [Data Annotation](http://msdn.microsoft.com/en-us/library/dd901590%28v=vs.95%29.aspx "Entenda mais sobre Data Annotation"), customizações de classes para especificar regras de validações. O que necessita que reescreva a propriedade, adicionando regras de validações do data annotation.
+
+Porém, utilizando o ORM, as classes já são geradas automaticamente pelo framework. Complicando a definição de atributos de validação do Data Annotation para as propriedades da classe.
+
+Sendo assim, a solução para esse problema é utilizar **MetadataType**. Habilitando a associação de uma classe diferente à outra do tipo partial class.
+
+Entenda melhor no exemplo:
+
+```cs
+//Supondo que a classe Pessoa ja tenha sido definida
+
+//Associa a classe PessoaMetaData à Pessoa
+\[MetadataType(typeof(PessoaMetaData))\]
+public partial class Pessoa
+{
+//Aqui você pode adicionar novas propriedades e metodos à classe
+}
+
+public class PessoaMetaData
+{
+//Data Annotation
+\[Required(ErrorMessage = "O Nome deve ser preenchido")\]
+public string nome { get; set; }
+}
+```
+
+Obs: Imagem utilizada para demonstrar a partial class foi retirada [deste artigo](http://www.codeproject.com/KB/dotnet/PartialMethod.aspx).
+

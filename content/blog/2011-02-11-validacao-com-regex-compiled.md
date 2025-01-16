@@ -2,114 +2,140 @@
 title = "Validação com REGEX Compiled"
 +++
 
-<p>Uma classe simples de expressões regulares com vários tipos de validações.</p>
-<p><span style="text-decoration: underline;">Antes dos código, um pouco da definição da "Regex"<br />
-</span></p>
+Uma classe simples de expressões regulares com vários tipos de validações.
 
-<p><strong>Expressão Regular:</strong> <em>Uma composição de símbolos, caracteres com funções especiais, que, agrupados entre si e com caracteres literais, formam uma sequência, uma expressão. Essa expressão é interpretada como uma regra, que indicaría sucesso se uma entrada de dados qualquer casar com essa regra, ou seja, obedecer exatamente a todas as suas condições.</em></p>
-<p>Segundo testes publicados neste artigo <a href="http://dotnetperls.com/regex-performance">http://dotnetperls.com/regex-performance</a> o Regex Compiled toma 10x mais tempo na partida, mas os rendimentos de tempo de execução são 30% melhor.</p>
-<p><!--more--></p>
-<p>Primeiro crie a classe de validação:</p>
-<p>[csharp title="Validate.cs"]<br />
-using System;<br />
-using System.Collections.Generic;<br />
-using System.Linq;<br />
-using System.Web;<br />
-using System.Text.RegularExpressions;</p>
-<p>/// summary<br />
-/// Classe de validação<br />
-/// summary<br />
-public static class ValidateField<br />
-{<br />
-    /// summary<br />
-    /// Enum com os tipos de Validacoes<br />
-    /// summary<br />
-    public static enum TipoValidacao { CPF, CNPJ, Data, Tempo, Email, CEP, Telefone, Decimal, URL };</p>
-<p>    /// summary<br />
-    /// Expressão regular com as regras do CPF<br />
-    /// summary<br />
-    protected static Regex _cpf = new Regex(@&quot;^d{3}.?d{3}.?d{3}-?d{2}$&quot;, RegexOptions.Compiled);</p>
-<p>    /// &lt;summary&gt;<br />
-    /// Expressão regular com as regras de cnpj<br />
-    /// &lt;/summary&gt;<br />
-    protected static Regex _cnpj = new Regex(@&quot;(^(d{2}.d{3}.d{3}/d{4}-d{2})|(d{14})$)&quot;);</p>
-<p>    /// &lt;summary&gt;<br />
-    /// Expressão regular com as regras de data Ex: 23/09/2011<br />
-    /// &lt;/summary&gt;<br />
-    protected static Regex _data = new Regex(@&quot;^((0[1-9]|[12]d)/(0[1-9]|1[0-2])|30/(0[13-9]|1[0-2])|31/(0[13578]|1[02]))/d{4}$&quot;, RegexOptions.Compiled);</p>
-<p>    /// &lt;summary&gt;<br />
-    /// Expressão regular com as regras de tempo Ex: 12:35<br />
-    /// &lt;/summary&gt;<br />
-    protected static Regex _tempo = new Regex(@&quot;(([0-1][0-9])|([2][0-3])):([0-5][0-9])&quot;);</p>
-<p>    /// &lt;summary&gt;<br />
-    /// Expressão regular com as regras de e-mail Ex: nickname@email.com<br />
-    /// &lt;/summary&gt;<br />
-    protected static Regex _email = new Regex(@&quot;^[A-Za-z0-9](([_.-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([.-]?[a-zA-Z0-9]+)*).([A-Za-z]{2,})$&quot;);</p>
-<p>    /// &lt;summary&gt;<br />
-    /// Expressão regular com as regras de cep Ex: 87094-132<br />
-    /// &lt;/summary&gt;<br />
-    protected static Regex _cep = new Regex(@&quot;^[0-9]{5}-[0-9]{3}$&quot;);</p>
-<p>    /// &lt;summary&gt;<br />
-    /// Expressão regular com as regras de telefone Ex: (44)3344-4332<br />
-    /// &lt;/summary&gt;<br />
-    protected static Regex _telefone = new Regex(@&quot;^(d{2})d{4}-d{4}$&quot;);</p>
-<p>    /// &lt;summary&gt;<br />
-    /// Expressão regular com as regras de telefone Ex: 405,00 ou 405.00<br />
-    /// &lt;/summary&gt;<br />
-    protected static Regex _decimal = new Regex(@&quot;^(?=d+)d{0,4}([.,]d{0,2})?$&quot;);</p>
-<p>    /// &lt;summary&gt;<br />
-    /// Expressão regular com as regras de url Ex: http://www.maxcnunes.com<br />
-    /// &lt;/summary&gt;<br />
-    protected static Regex _url = new Regex(@&quot;^(ht|f)tp(s?)://[0-9a-zA-Z]([-.w]*[0-9a-zA-Z])*(:(0-9)*)*(/?)([a-zA-Z0-9-.?,'/+&amp;amp;amp;%$#_]*)?$&quot;);</p>
-<p>    /// &lt;summary&gt;<br />
-    /// Método de validação<br />
-    /// &lt;/summary&gt;<br />
-    /// &lt;param name=&quot;value&quot;&gt;Valor string a ser validado&lt;/param&gt;<br />
-    /// &lt;param name=&quot;type&quot;&gt;Tipo enum da validação&lt;/param&gt;<br />
-    /// &lt;returns&gt;False se estiver inv lido&lt;/returns&gt;<br />
-    public static bool ValidateField(string value, TipoValidacao type)<br />
-    {<br />
-        bool validate = false;</p>
-<p>        switch (type)<br />
-        {<br />
-            case TipoValidacao.CPF: validate = _cpf.IsMatch(value) ? true : false;<br />
-                break;<br />
-            case TipoValidacao.CNPJ: validate = _cnpj.IsMatch(value) ? true : false;<br />
-                break;<br />
-            case TipoValidacao.Data: validate = _data.IsMatch(value) ? true : false;<br />
-                break;<br />
-            case TipoValidacao.Tempo: validate = _tempo.IsMatch(value) ? true : false;<br />
-                break;<br />
-            case TipoValidacao.Email: validate = _email.IsMatch(value) ? true : false;<br />
-                break;<br />
-            case TipoValidacao.CEP: validate = _cep.IsMatch(value) ? true : false;<br />
-                break;<br />
-            case TipoValidacao.Telefone: validate = _telefone.IsMatch(value) ? true : false;<br />
-                break;<br />
-            case TipoValidacao.Decimal: validate = _decimal.IsMatch(value) ? true : false;<br />
-                break;<br />
-            case TipoValidacao.URL: validate = _url.IsMatch(value) ? true : false;<br />
-                break;<br />
-            default: validate = false;<br />
-                break;<br />
-        }<br />
-        return validate;<br />
-    }<br />
-}<br />
-[/csharp]</p>
-<p>Utilizar a classe onde desejar, exemplo ao disparar o evento click do botão em uma p gina ASP.NET:</p>
-<p>[sourcecode language="csharp"]<br />
-protected void ButtonValidate_Click(object sender, EventArgs e)<br />
- {<br />
-     if (!Validate(TextBoxCPF.Text, ValidateField.TipoValidacao.CPF))<br />
-     {<br />
-         Response.Write(&quot;CPF est  em um formato inv lido!&quot;);<br />
-         return;<br />
-     }<br />
-     if (!Validate(TextBoxDataNascimento.Text, ValidateField.TipoValidacao.Data))<br />
-     {<br />
-         Response.Write(&quot;Data de nascimento est  em um formato inv lido!&quot;);<br />
-         return;<br />
-     }<br />
- }<br />
-[/sourcecode]</p>
+Antes dos código, um pouco da definição da "Regex"
+
+**Expressão Regular:** _Uma composição de símbolos, caracteres com funções especiais, que, agrupados entre si e com caracteres literais, formam uma sequência, uma expressão. Essa expressão é interpretada como uma regra, que indicaría sucesso se uma entrada de dados qualquer casar com essa regra, ou seja, obedecer exatamente a todas as suas condições._
+
+Segundo testes publicados neste artigo [http://dotnetperls.com/regex-performance](http://dotnetperls.com/regex-performance) o Regex Compiled toma 10x mais tempo na partida, mas os rendimentos de tempo de execução são 30% melhor.
+
+Primeiro crie a classe de validação:
+
+```cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Text.RegularExpressions;
+
+/// summary
+/// Classe de validação
+/// summary
+public static class ValidateField {
+  /// summary
+  /// Enum com os tipos de Validacoes
+  /// summary
+  public static enum TipoValidacao { CPF, CNPJ, Data, Tempo, Email, CEP, Telefone, Decimal, URL }
+  ;
+
+  /// summary
+  /// Expressão regular com as regras do CPF
+  /// summary
+  protected static Regex _cpf = new Regex(@"^d{3}.?d{3}.?d{3}-?d{2}$", RegexOptions.Compiled);
+
+  /// <summary>
+  /// Expressão regular com as regras de cnpj
+  /// </summary>
+  protected static Regex _cnpj = new Regex(@"(^(d{2}.d{3}.d{3}/d{4}-d{2})|(d{14})$)");
+
+  /// <summary>
+  /// Expressão regular com as regras de data Ex: 23/09/2011
+  /// </summary>
+  protected static Regex _data =
+      new Regex(@"^((0\[1-9\]|\[12\]d)/(0\[1-9\]|1\[0-2\])|30/(0\[13-9\]|1\[0-2\])|31/(0\[13578\]|1\[02\]))/d{4}$",
+                RegexOptions.Compiled);
+
+  /// <summary>
+  /// Expressão regular com as regras de tempo Ex: 12:35
+  /// </summary>
+  protected static Regex _tempo = new Regex(@"((\[0-1\]\[0-9\])|(\[2\]\[0-3\])):(\[0-5\]\[0-9\])");
+
+  /// <summary>
+  /// Expressão regular com as regras de e-mail Ex: nickname@email.com
+  /// </summary>
+  protected static Regex _email = new Regex(
+      @"^\[A-Za-z0-9\]((\[_.-\]?\[a-zA-Z0-9\]+)\*)@(\[A-Za-z0-9\]+)((\[.-\]?\[a-zA-Z0-9\]+)\*).(\[A-Za-z\]{2,})$");
+
+  /// <summary>
+  /// Expressão regular com as regras de cep Ex: 87094-132
+  /// </summary>
+  protected static Regex _cep = new Regex(@"^\[0-9\]{5}-\[0-9\]{3}$");
+
+  /// <summary>
+  /// Expressão regular com as regras de telefone Ex: (44)3344-4332
+  /// </summary>
+  protected static Regex _telefone = new Regex(@"^(d{2})d{4}-d{4}$");
+
+  /// <summary>
+  /// Expressão regular com as regras de telefone Ex: 405,00 ou 405.00
+  /// </summary>
+  protected static Regex _decimal = new Regex(@"^(?=d+)d{0,4}(\[.,\]d{0,2})?$");
+
+  /// <summary>
+  /// Expressão regular com as regras de url Ex: http://www.maxcnunes.com
+  /// </summary>
+  protected static Regex _url = new Regex(
+      @"^(ht|f)tp(s?)://\[0-9a-zA-Z\](\[-.w\]\*\[0-9a-zA-Z\])\*(:(0-9)\*)\*(/?)(\[a-zA-Z0-9-.?,'/+&amp;amp;%$#_\]\*)?$");
+
+  /// <summary>
+  /// Método de validação
+  /// </summary>
+  /// <param name="value">Valor string a ser validado</param>
+  /// <param name="type">Tipo enum da validação</param>
+  /// <returns>False se estiver inv lido</returns>
+  public static bool ValidateField(string value, TipoValidacao type) {
+    bool validate = false;
+
+    switch (type) {
+      case TipoValidacao.CPF:
+        validate = _cpf.IsMatch(value) ? true : false;
+        break;
+      case TipoValidacao.CNPJ:
+        validate = _cnpj.IsMatch(value) ? true : false;
+        break;
+      case TipoValidacao.Data:
+        validate = _data.IsMatch(value) ? true : false;
+        break;
+      case TipoValidacao.Tempo:
+        validate = _tempo.IsMatch(value) ? true : false;
+        break;
+      case TipoValidacao.Email:
+        validate = _email.IsMatch(value) ? true : false;
+        break;
+      case TipoValidacao.CEP:
+        validate = _cep.IsMatch(value) ? true : false;
+        break;
+      case TipoValidacao.Telefone:
+        validate = _telefone.IsMatch(value) ? true : false;
+        break;
+      case TipoValidacao.Decimal:
+        validate = _decimal.IsMatch(value) ? true : false;
+        break;
+      case TipoValidacao.URL:
+        validate = _url.IsMatch(value) ? true : false;
+        break;
+      default:
+        validate = false;
+        break;
+    }
+    return validate;
+  }
+}
+```
+
+Utilizar a classe onde desejar, exemplo ao disparar o evento click do botão em uma p gina ASP.NET:
+
+```cs
+protected void ButtonValidate_Click(object sender, EventArgs e) {
+  if (!Validate(TextBoxCPF.Text, ValidateField.TipoValidacao.CPF)) {
+    Response.Write("CPF est em um formato inv lido!");
+    return;
+  }
+  if (!Validate(TextBoxDataNascimento.Text, ValidateField.TipoValidacao.Data)) {
+    Response.Write("Data de nascimento est em um formato inv lido!");
+    return;
+  }
+}
+```
+

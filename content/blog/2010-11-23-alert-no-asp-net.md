@@ -2,59 +2,69 @@
 title = "Alert no ASP.NET"
 +++
 
-<p>Forma simples e pr tica de utilizar o alert no asp.net.</p>
-<p>Utilizando essa classe estática, basta chamar diretamente o método em qualquer página que você estiver desenvolvendo.</p>
-<p>Métodos da classe:</p>
-<ol>
-<li><strong>br()</strong> -&gt; Pula uma linha dentro do alert.</li>
-<li><strong>Exibir()</strong> - <em>2 Parâmetros</em> -&gt; Exibi uma caixa de mensagem, o alert.</li>
-<li><strong>Exibir()</strong> - <em>3 Par</em><em>â</em><em>metros</em> -&gt; Exibi uma caixa de mensagem, o alert. Posteriormete redireciona para a p gina desejada.</li>
-<li><strong>ExibirNovaJanela()</strong> -&gt; Exibi uma caixa de mensagem, o alert. Posteriormete abre a p gina desejada em uma nova janela.</li>
-</ol>
-<p><!--more--></p>
-<p>A classe cMensagem.cs</p>
-<p>[sourcecode language="csharp"]</p>
-<p>    public static string br()<br />
-    {<br />
-        return &quot;n&quot;;<br />
-    }</p>
-<p>    /// &lt;summary&gt;<br />
-    /// Exibi uma janela de alerta<br />
-    /// &lt;/summary&gt;<br />
-    /// &lt;param name=&quot;mensagem&quot;&gt;Mensagem a ser exibida&lt;/param&gt;<br />
-    /// &lt;param name=&quot;pagina&quot;&gt;Página atual&lt;/param&gt;<br />
-    public static void Exibir(string mensagem, Page pagina)<br />
-    {<br />
-        ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), Guid.NewGuid().ToString(), &quot;alert('&quot; + mensagem + &quot;');&quot;, true);<br />
-    }</p>
-<p>    /// &lt;summary&gt;<br />
-    /// Exibi uma janela de alerta e posteriormente redireciona para outra p gina<br />
-    /// &lt;/summary&gt;<br />
-    /// &lt;param name=&quot;mensagem&quot;&gt;Mensagem a ser exibid&lt;/param&gt;<br />
-    /// &lt;param name=&quot;url&quot;&gt;;Página para qual ser  redirecionada&lt;/param&gt;<br />
-    /// &lt;param name=&quot;pagina&quot;&gt;Página atual&lt;/param&gt;<br />
-    public static void Exibir(string mensagem, string url, Page pagina)<br />
-    {<br />
-        //Esconde conteudo da página pagina.<br />
-        pagina.Form.Attributes.CssStyle.Add(&quot;display&quot;, &quot;none&quot;);<br />
-        ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), Guid.NewGuid().ToString(), &quot;alert('&quot; + mensagem + &quot;'); location='&quot; + url + &quot;';&quot;, true);<br />
-    }</p>
-<p>    public static void ExibirNovaJanela(string mensagem, string url, Page pagina)<br />
-    {<br />
-        ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), Guid.NewGuid().ToString(), &quot;alert('&quot; + mensagem + &quot;'); window.open('&quot; + url + &quot;','_blank');&quot;, true);<br />
-    }<br />
-[/sourcecode]</p>
-<p>Exibindo o alert em um click do botão por exemplo:</p>
-<p>[sourcecode language="csharp"]</p>
-<p>protected void btnEnviar_Click(object sender, EventArgs e)<br />
-{<br />
-      cMensagem.Exibir(&quot;Ola  Mundo!&quot;, this.Page);<br />
-}</p>
-<p>[/sourcecode]</p>
-<p>Exibindo um alert e em seguida redirecionando para a p gina desejada:</p>
-<p>[sourcecode language="csharp"]</p>
-<p>protected void btnEnviar_Click(object sender, EventArgs e)<br />
-{</p>
-<p>      cMensagem.Exibir(&quot;Você ser  redirecionado para a página de cadastro!&quot;, &quot;PaginaCadastro.aspx&quot;, this.Page);<br />
-}</p>
-<p>[/sourcecode]</p>
+Forma simples e pr tica de utilizar o alert no asp.net.
+
+Utilizando essa classe estática, basta chamar diretamente o método em qualquer página que você estiver desenvolvendo.
+
+Métodos da classe:
+
+1.  **br()** -> Pula uma linha dentro do alert.
+2.  **Exibir()** - _2 Parâmetros_ -> Exibi uma caixa de mensagem, o alert.
+3.  **Exibir()** - _3 Par**â**metros_ -> Exibi uma caixa de mensagem, o alert. Posteriormete redireciona para a p gina desejada.
+4.  **ExibirNovaJanela()** -> Exibi uma caixa de mensagem, o alert. Posteriormete abre a p gina desejada em uma nova janela.
+
+A classe `cMensagem.cs`
+
+```cs
+public static string br()
+{
+    return "n";
+}
+
+/// <summary>
+/// Exibi uma janela de alerta
+/// </summary>
+/// <param name="mensagem">Mensagem a ser exibida</param>
+/// <param name="pagina">Página atual</param>
+public static void Exibir(string mensagem, Page pagina)
+{
+    ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), Guid.NewGuid().ToString(), "alert('" + mensagem + "');", true);
+}
+
+/// <summary>
+/// Exibi uma janela de alerta e posteriormente redireciona para outra p gina
+/// </summary>
+/// <param name="mensagem">Mensagem a ser exibid</param>
+/// <param name="url">;Página para qual ser redirecionada</param>
+/// <param name="pagina">Página atual</param>
+public static void Exibir(string mensagem, string url, Page pagina)
+{
+    //Esconde conteudo da página pagina.
+    pagina.Form.Attributes.CssStyle.Add("display", "none");
+    ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), Guid.NewGuid().ToString(), "alert('" + mensagem + "'); location='" + url + "';", true);
+}
+
+public static void ExibirNovaJanela(string mensagem, string url, Page pagina)
+{
+    ScriptManager.RegisterStartupScript(pagina, pagina.GetType(), Guid.NewGuid().ToString(), "alert('" + mensagem + "'); window.open('" + url + "','\_blank');", true);
+}
+```
+
+Exibindo o alert em um click do botão por exemplo:
+
+```cs
+protected void btnEnviar_Click(object sender, EventArgs e)
+{
+    cMensagem.Exibir("Ola Mundo!", this.Page);
+}
+```
+
+Exibindo um alert e em seguida redirecionando para a p gina desejada:
+
+```cs
+protected void btnEnviar_Click(object sender, EventArgs e)
+{
+    cMensagem.Exibir("Você ser redirecionado para a página de cadastro!", "PaginaCadastro.aspx", this.Page);
+}
+```
+

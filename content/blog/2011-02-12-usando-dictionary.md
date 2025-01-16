@@ -2,40 +2,55 @@
 title = "Usando o Dictionary"
 +++
 
-<p>Existem muitas formas de armazenar e recuperar dados no c#. Muitas vezes recorremos a arrays, listas, datatables e dentre outros. Porêm, algumas dessas alternativas, como o array, deixa a desejar na performance.</p>
-<p>Neste artigo vou mostrar um pouco do Dictionary, uma classe contida no System.Collections.Generic, que possui uma alta performance mesmo quando utilizada com grandes quantidades de dados.</p>
-<p><span style="text-decoration: underline;">Definição</span> - <span style="color: #3366ff;"><span style="color: #3366ff;"><span style="color: #3366ff;"><strong>Dictionary:</strong></span> <span style="color: #333333;">Representa um coleção de chaves e valores.</span></span></span></p>
-<p><span style="color: #3366ff;"><span style="color: #3366ff;"><span style="color: #333333;"><!--more--></span></span></span></p>
-<p>[csharp title="Inicializando o objeto com valores pré-definidos"]<br />
-public Dictionary Frutas = new Dictionary()<br />
-    {<br />
-        {0,  Laranja  },<br />
-        {1,  Maçã  },<br />
-        {2,  Goiaba  }<br />
-    };<br />
-[/csharp]</p>
-<p>&nbsp;</p>
-<p>[csharp title="Adicionando novos intens em tempo de execução"]<br />
-        Frutas.Add(3,  Pêssego );<br />
-        Frutas.Add(4,  Melancia );<br />
-        Frutas.Add(5,  Abacaxi );<br />
-[/csharp]</p>
-<p>&nbsp;</p>
-<p>[csharp title="Removendo um item em tempo de execução"]<br />
-        Frutas.Remove(3);//Remove o Pêssego<br />
-[/csharp]</p>
-<p>&nbsp;</p>
-<p>[csharp title="Recuperando um valor de um item em tempo de execução"]<br />
-        //Uma opção<br />
-        string minhaFruta = Frutas[1];//Retorna a Melancia</p>
-<p>        //Outra opção - usando linq e lambda<br />
-        string outraFruta = Frutas.First(f =&gt; f.Key == 2).Value;<br />
-[/csharp]</p>
-<p>&nbsp;</p>
-<p>[csharp title="Populando um dropdownlist através de um Dictionary"]<br />
-        DropDownListFrutas.DataSource = Frutas;<br />
-        DropDownListFrutas.DataValueField =  Key ;<br />
-        DropDownListFrutas.DataTextField =  Value ;<br />
-        DropDownListFrutas.DataBind();<br />
-[/csharp]</p>
-<p>Como vocês viram, o dictionary trabalha com uma chave e um valor. Sendo assim, ele não aceita valores repetidos para a chave.</p>
+Existem muitas formas de armazenar e recuperar dados no c#. Muitas vezes recorremos a arrays, listas, datatables e dentre outros. Porêm, algumas dessas alternativas, como o array, deixa a desejar na performance.
+
+Neste artigo vou mostrar um pouco do Dictionary, uma classe contida no `System.Collections.Generic`, que possui uma alta performance mesmo quando utilizada com grandes quantidades de dados.
+
+Definição - **Dictionary:** Representa um coleção de chaves e valores.
+
+Inicializando o objeto com valores pré-definidos
+
+```cs
+public Dictionary Frutas = new Dictionary()
+{
+    {0, Laranja },
+    {1, Maçã },
+    {2, Goiaba }
+};
+```
+
+Adicionando novos intens em tempo de execução
+
+```cs
+Frutas.Add(3, Pêssego );
+Frutas.Add(4, Melancia );
+Frutas.Add(5, Abacaxi );
+```
+
+Removendo um item em tempo de execução
+
+```cs
+Frutas.Remove(3);//Remove o Pêssego
+```
+
+Recuperando um valor de um item em tempo de execução
+
+```cs
+//Uma opção
+string minhaFruta = Frutas\[1\];//Retorna a Melancia
+
+//Outra opção - usando linq e lambda
+string outraFruta = Frutas.First(f => f.Key == 2).Value;
+```
+
+Populando um dropdownlist através de um Dictionary
+
+```cs
+DropDownListFrutas.DataSource = Frutas;
+DropDownListFrutas.DataValueField = Key ;
+DropDownListFrutas.DataTextField = Value ;
+DropDownListFrutas.DataBind();
+```
+
+Como vocês viram, o dictionary trabalha com uma chave e um valor. Sendo assim, ele não aceita valores repetidos para a chave.
+

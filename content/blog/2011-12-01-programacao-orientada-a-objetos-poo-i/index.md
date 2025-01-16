@@ -2,283 +2,228 @@
 title = "Programação Orientada a Objetos (POO) - I"
 +++
 
-<div id="box_conteudo_post">
+# Programação Orientada a Objetos (POO)
 
-<h1><span class="Apple-style-span" style="font-size: 13px; font-weight: normal;">Programação Orientada a Objetos (POO)</span></h1>
-<p>Orientação a objetos é um paradigma de programação organizado através de objetos. Isto é, quando utilizamos POO, estamos facilitando a forma de compreensão e implementação de um projeto. Porque, simplesmente estamos se preocupando na forma em que as informações são definidas, como característica e comportamentos, e como elas se relacionam entre si.</p>
-<p>Para ficar mais fácil, precisamos analisar o contexto de um  projeto. Como exemplo utilizarei um time de futebol.</p>
-<p><!--more--></p>
-<h2>Classes</h2>
-<p>Classes organizam características e comportamentos comuns a um grupo de informações.</p>
-<p>Sendo assim podemos definir que todas as pessoas em um time de futebol, fazem parte da classe <strong>Pessoa</strong>.  Pois, todas elas possuem características e comportamentos comuns.</p>
-<table class="table_post_max" border="1" cellspacing="1" cellpadding="1">
-<tbody>
-<tr>
-<td colspan="2" valign="top" width="638">
-<p align="center"><strong>Classe Pessoa</strong></p>
-</td>
-</tr>
-<tr>
-<td valign="top" width="390"> <a href="http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-jogadores.jpg"><img class="aligncenter size-full wp-image-394" title="POO-jogadores" src="./POO-jogadores.jpg" alt="POO-jogadores" width="466" height="108" /></a></td>
-<td valign="top" width="248"><strong><span style="text-decoration: underline;"> </span></strong><strong><span style="text-decoration: underline;">Características</span></strong></p>
-<ul>
-<li>Nome</li>
-<li>Idade</li>
-<li>Salário</li>
-</ul>
-<p><strong><span style="text-decoration: underline;">Comportamentos</span></strong></p>
-<ul>
-<li>Participa dos jogos</li>
-<li>Participa dos treinos</li>
-</ul>
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top" width="638"> <a href="http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-DC-Pessoa.png"><img class="aligncenter size-full wp-image-402" title="POO-DC-Pessoa" src="./POO-DC-Pessoa.png" alt="" width="562" height="251" /></a></td>
-</tr>
-<tr>
-<td colspan="2" valign="top" width="638">[sourcecode language="csharp"]<br />
-public class Pessoa<br />
-{<br />
-    public string nome;<br />
-    public int idade;<br />
-    public decimal salario;</p>
-<p>    public void participarJogo()<br />
-    {</p>
-<p>    }</p>
-<p>    public void participarTreino()<br />
-    {</p>
-<p>    }<br />
-}<br />
-[/sourcecode]</td>
-</tr>
-</tbody>
-</table>
-<h2>Atributos</h2>
-<p>São as características de cada objeto. Como: <strong><em>Nome, Idade, Situação e Salário</em></strong>.</p>
-<table class="table_post_max" border="1" cellspacing="1" cellpadding="1">
-<tbody>
-<tr>
-<td valign="top" width="638">[sourcecode language="csharp"]<br />
-        public string nome;<br />
-        public int idade;<br />
-        public decimal salario;</p>
-<p>[/sourcecode]</td>
-</tr>
-</tbody>
-</table>
-<h2></h2>
-<h2>Métodos</h2>
-<p>São comportamentos de cada objeto. Como: <strong><em>Participar do jogo e Participar do treino</em></strong>.</p>
-<table class="table_post_max" border="1" cellspacing="1" cellpadding="1">
-<tbody>
-<tr>
-<td valign="top" width="638">[sourcecode language="csharp"]<br />
-        public void participarJogo()<br />
-        {</p>
-<p>        }</p>
-<p>        public void participarTreino()<br />
-        {</p>
-<p>        }</p>
-<p>[/sourcecode]</td>
-</tr>
-</tbody>
-</table>
-<h2></h2>
-<h2></h2>
-<h2>Objetos</h2>
-<p>São instancias de uma classe. Ou seja, sendo que definimos uma Classe Pessoa possui características como: <strong><em>Nome, Idade, Situação e Salário</em></strong> e comportamentos como:<strong><em> Participar do jogo e Participar do treino</em></strong>. Ao instanciar um objeto desta classe, devemos cria-lo segundo as definições da classe que ele está sendo gerado.</p>
-<p>Por exemplo:</p>
-<table class="table_post_max" border="1" cellspacing="1" cellpadding="1">
-<tbody>
-<tr>
-<td colspan="2" valign="top" width="638">
-<p align="center"><strong>Pessoas - Time Futebol</strong></p>
-</td>
-</tr>
-<tr>
-<td valign="top" width="319"> <a href="http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-neymar.jpg"><img class="aligncenter size-full wp-image-396" title="POO-neymar" src="./POO-neymar.jpg" alt="" width="195" height="258" /></a></td>
-<td valign="top" width="319"><strong>Tipo do objeto:</strong>Pessoa<strong><span style="text-decoration: underline;">Características</span></strong></p>
-<ul>
-<li>Nome: Neymar</li>
-<li>Idade: 19 anos</li>
-<li>Salário: 800.000,00</li>
-</ul>
-<p><strong><span style="text-decoration: underline;">Comportamentos</span></strong></p>
-<ul>
-<li>Participa dos jogos</li>
-<li>Participa dos treinos</li>
-</ul>
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top" width="638">[sourcecode language="csharp"]<br />
-            //Istanciação do objeto<br />
-            Pessoa pes_Neymar = new Pessoa();</p>
-<p>            //Atribuição de valores aos atributos<br />
-            pes_Neymar.nome = &quot;Neymar&quot;;<br />
-            pes_Neymar.idade = 19;<br />
-            pes_Neymar.salario = 8000000;</p>
-<p>            //Execução dos métodos<br />
-            pes_Neymar.participarJogo();<br />
-            pes_Neymar.participarTreino();</p>
-<p>[/sourcecode]</td>
-</tr>
-</tbody>
-</table>
-<h2>Método Construtor</h2>
-<p>Para estanciar um objeto, utilizamos o método construtor da classe. Método construtor deve ter exatamente o mesmo nome da classe e não devem possuir um tipo de retorno na sua definição. Porque, ele já é responsável por retornar um objeto do tipo da classe que pertence.</p>
-<table class="table_post_max" border="1" cellspacing="1" cellpadding="1">
-<tbody>
-<tr>
-<td valign="top" width="638">[sourcecode language="csharp"]<br />
-    public class Pessoa<br />
-    {<br />
-        public int idade;</p>
-<p>        protected string nome;</p>
-<p>        private decimal salario;</p>
-<p>        //Método construtor<br />
-        public Pessoa()<br />
-        {<br />
-            //Possui o mesmo nome da classe<br />
-            //Não possui um tipo de retorno<br />
-        }</p>
-<p>        public void participarJogo()<br />
-        {</p>
-<p>        }</p>
-<p>        public void participarTreino()<br />
-        {</p>
-<p>        }<br />
-    }</p>
-<p>[/sourcecode]</td>
-</tr>
-</tbody>
-</table>
-<h2></h2>
-<h2>Herança</h2>
-<p>É a generalização das informações. Ou seja, dentro de um time de futebol temos dois tipos de pessoas: jogadores e o técnico. E cada um desses tipos, possui algumas características e comportamentos, comuns e outras diferentes.</p>
-<p>Um jogador, além de possuir as outras características de pessoas, possui também <strong><em>quantidade de gols marcados, peso, velocidade</em></strong> e o comportamento de <strong><em>marcar gol</em></strong>.</p>
-<p>Um técnico, além de possuir as outras características de pessoas, possui também <strong><em>técnicas de treino</em></strong> e o comportamento de <strong><em>marcar treino</em></strong>.</p>
-<p>Para atender a este tipo de situação, podemos criar duas classes diferentes, mas herdando características e comportamentos comuns, definidos na classe Pessoa.</p>
-<table class="table_post_max" border="1" cellspacing="1" cellpadding="1">
-<tbody>
-<tr>
-<td colspan="3" valign="top" width="638">
-<p align="center"><strong>Pessoas - Time Futebol</strong></p>
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top" width="452">
-<p align="center"><strong>Jogadores</strong></p>
-</td>
-<td valign="top" width="186">
-<p align="center"><strong>Técnico</strong></p>
-</td>
-</tr>
-<tr>
-<td colspan="2" width="452"> <a href="http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-PessoaJogdores.jpg"><img class="aligncenter size-full wp-image-398" title="POO-PessoaJogdores" src="./POO-PessoaJogdores.jpg" alt="" width="369" height="254" /></a></td>
-<td width="186"> <a href="http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-PessoaTecnico.jpg"><img class="aligncenter size-full wp-image-399" title="POO-PessoaTecnico" src="./POO-PessoaTecnico.jpg" alt="" width="172" height="183" /></a></td>
-</tr>
-<tr>
-<td colspan="3" width="638"> <a href="http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-DC-Heranca.png"><img class="aligncenter size-full wp-image-404" title="POO-DC-Heranca" src="./POO-DC-Heranca.png" alt="" width="555" height="533" /></a></td>
-</tr>
-<tr>
-<td width="347">[sourcecode language="csharp"]<br />
-public class Jogador : Pessoa<br />
-{<br />
-    public int qtdeGolMarcado;<br />
-    public decimal peso;<br />
-    public int velocidade;</p>
-<p>    public void marcarGol()<br />
-    {</p>
-<p>    }<br />
-}</p>
-<p>[/sourcecode]</td>
-<td colspan="2" width="291">[sourcecode language="csharp"]<br />
-public class Tecnico : Pessoa<br />
-{<br />
-   public string tecnicasTreino;</p>
-<p>   public void marcarTreino()<br />
-   {</p>
-<p>   }<br />
-}</p>
-<p>[/sourcecode]</p>
-<p align="center">
-</td>
-</tr>
-</tbody>
-</table>
-<h2></h2>
-<h2>Sobrecarga</h2>
-<p>São como comportamentos comuns, na vida real. Mas com algumas particularidades, que os diferem.</p>
-<p>Na POO, são métodos com o mesmo nome, mas com a assinatura dos parâmetros diferentes.</p>
-<table class="table_post_max" border="1" cellspacing="1" cellpadding="1">
-<tbody>
-<tr>
-<td valign="top" width="638">[sourcecode language="csharp"]<br />
-        public void marcarTreino(string local)<br />
-        {<br />
-            //Marca o treino definindo apenas o local<br />
-        }</p>
-<p>        public void marcarTreino(string local, int horario)<br />
-        {<br />
-            //Marca o treino definindo o local e o horário<br />
-        }</p>
-<p>        public void marcarTreino(string local,int horario, int qtdJogadores)<br />
-        {<br />
-            //Marca o treino definindo o local, horário e quantidade de jogadores<br />
-        }</p>
-<p>[/sourcecode]</td>
-</tr>
-</tbody>
-</table>
-<h2></h2>
-<h2>Referência this</h2>
-<p>Especifica que estamos referenciando apenas as características e métodos da própria classe.</p>
-<p>Por exemplo, se eu passo por parâmetro a quantidade de gols marcado em uma partida, com o mesmo nome, da propriedade <strong><em>qtdeGolMarcado</em></strong>, existente na classe. Para especificar qual é variável, que representa minha propriedade existente na classe, devo utilizar o prefixo <strong><em>this.</em></strong></p>
-<table class="table_post_max" border="1" cellspacing="1" cellpadding="1">
-<tbody>
-<tr>
-<td valign="top" width="638">[sourcecode language="csharp"]<br />
-        public void marcarGol(int qtdeGolMarcado)<br />
-        {<br />
-            this.qtdeGolMarcado = qtdeGolMarcado;<br />
-        }</p>
-<p>[/sourcecode]</td>
-</tr>
-</tbody>
-</table>
-<h2>Modificadores de Acesso</h2>
-<p>Um modificador de acesso determina até onde o atributo ou método pode ser visualizado, ou seja,  determinam quais os locais ele pode ser usado. Eles são o utilizados no encapsulamento. Temos pelo menos 3 tipos de modificadores de acesso padrões, na maioria das linguagens POO:</p>
-<table class="table_post_max" border="1" cellspacing="1" cellpadding="1">
-<tbody>
-<tr>
-<td><a href="http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-pulica.png"><img class="aligncenter size-full wp-image-419" title="POO-pulica" src="./POO-pulica.png" alt="" width="21" height="19" /></a></td>
-<td><strong>public </strong>Acesso não é restrito. Membro é acessado de qualquer lugar.</td>
-</tr>
-<tr>
-<td><a href="http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-protected.png"><img class="aligncenter size-full wp-image-420" title="POO-protected" src="./POO-protected.png" alt="" width="25" height="20" /></a></td>
-<td><strong>protected</strong> Pode ser acessado dentro da classe que o define e pelas classes que a herdam.</td>
-</tr>
-<tr>
-<td><a href="http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-private.png"><img class="aligncenter size-full wp-image-421" title="POO-private" src="./POO-private.png" alt="" width="21" height="21" /></a></td>
-<td><strong>private </strong>Membro pode ser a cessado somente dentro da classe que o define.</td>
-</tr>
-</tbody>
-</table>
-<table class="table_post_max" border="1" cellspacing="1" cellpadding="1">
-<tbody>
-<tr>
-<td valign="top" width="638"> <a href="http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-DC-ModificadorAcesso.png"><img class="aligncenter size-full wp-image-406" title="POO-DC-ModificadorAcesso" src="./POO-DC-ModificadorAcesso.png" alt="" width="591" height="389" /></a></td>
-</tr>
-<tr>
-<td valign="top" width="638">[sourcecode language="csharp"]<br />
-        public int idade;</p>
-<p>        protected string nome;</p>
-<p>        private decimal salario;<br />
-[/sourcecode]</td>
-</tr>
-</tbody>
-</table>
-<p>Por enquanto é isto. No próximo artigo continuarei com outros conceitos de POO.</p>
-</div>
+Orientação a objetos é um paradigma de programação organizado através de objetos. Isto é, quando utilizamos POO, estamos facilitando a forma de compreensão e implementação de um projeto. Porque, simplesmente estamos se preocupando na forma em que as informações são definidas, como característica e comportamentos, e como elas se relacionam entre si.
+
+Para ficar mais fácil, precisamos analisar o contexto de um  projeto. Como exemplo utilizarei um time de futebol.
+
+## Classes
+
+Classes organizam características e comportamentos comuns a um grupo de informações.
+
+Sendo assim podemos definir que todas as pessoas em um time de futebol, fazem parte da classe **Pessoa**.  Pois, todas elas possuem características e comportamentos comuns.
+
+**Classe Pessoa**
+
+ [![POO-jogadores](./POO-jogadores.jpg "POO-jogadores")](http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-jogadores.jpg)
+
+**Características**
+
+- Nome
+- Idade
+- Salário
+
+**Comportamentos**
+
+- Participa dos jogos
+- Participa dos treinos
+
+ [![](./POO-DC-Pessoa.png "POO-DC-Pessoa")](http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-DC-Pessoa.png)
+
+```cs
+public class Pessoa
+{
+    public string nome;
+    public int idade;
+    public decimal salario;
+
+    public void participarJogo() { }
+
+    public void participarTreino() { }
+}
+```
+
+## Atributos
+
+São as características de cada objeto. Como: **_Nome, Idade, Situação e Salário_**.
+
+```cs
+public string nome;
+public int idade;
+public decimal salario;
+```
+
+## Métodos
+
+São comportamentos de cada objeto. Como: **_Participar do jogo e Participar do treino_**.
+
+```cs
+public void participarJogo() { }
+
+public void participarTreino() { }
+```
+
+## Objetos
+
+São instancias de uma classe. Ou seja, sendo que definimos uma Classe Pessoa possui características como: **_Nome, Idade, Situação e Salário_** e comportamentos como: **_Participar do jogo e Participar do treino_**. Ao instanciar um objeto desta classe, devemos cria-lo segundo as definições da classe que ele está sendo gerado.
+
+Por exemplo:
+
+**Pessoas - Time Futebol**
+
+ [![](./POO-neymar.jpg "POO-neymar")](http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-neymar.jpg)
+
+**Tipo do objeto:**Pessoa**Características**
+
+- Nome: Neymar
+- Idade: 19 anos
+- Salário: 800.000,00
+
+**Comportamentos**
+
+- Participa dos jogos
+- Participa dos treinos
+
+```cs
+//Istanciação do objeto
+Pessoa pes_Neymar = new Pessoa();
+
+//Atribuição de valores aos atributos
+pes_Neymar.nome = "Neymar";
+pes_Neymar.idade = 19;
+pes_Neymar.salario = 8000000;
+
+//Execução dos métodos
+pes_Neymar.participarJogo();
+pes_Neymar.participarTreino();
+```
+
+## Método Construtor
+
+Para estanciar um objeto, utilizamos o método construtor da classe. Método construtor deve ter exatamente o mesmo nome da classe e não devem possuir um tipo de retorno na sua definição. Porque, ele já é responsável por retornar um objeto do tipo da classe que pertence.
+
+```cs
+public class Pessoa
+{
+    public int idade;
+    protected string nome;
+    private decimal salario;
+
+    //Método construtor
+    public Pessoa()
+    {
+        //Possui o mesmo nome da classe
+        //Não possui um tipo de retorno
+    }
+
+    public void participarJogo() { }
+
+    public void participarTreino() { }
+}
+```
+
+## Herança
+
+É a generalização das informações. Ou seja, dentro de um time de futebol temos dois tipos de pessoas: jogadores e o técnico. E cada um desses tipos, possui algumas características e comportamentos, comuns e outras diferentes.
+
+Um jogador, além de possuir as outras características de pessoas, possui também **_quantidade de gols marcados, peso, velocidade_** e o comportamento de **_marcar gol_**.
+
+Um técnico, além de possuir as outras características de pessoas, possui também **_técnicas de treino_** e o comportamento de **_marcar treino_**.
+
+Para atender a este tipo de situação, podemos criar duas classes diferentes, mas herdando características e comportamentos comuns, definidos na classe Pessoa.
+
+**Pessoas - Time Futebol**
+
+**Jogadores**
+
+**Técnico**
+
+ [![](./POO-PessoaJogdores.jpg "POO-PessoaJogdores")](http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-PessoaJogdores.jpg)
+
+ [![](./POO-PessoaTecnico.jpg "POO-PessoaTecnico")](http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-PessoaTecnico.jpg)
+
+ [![](./POO-DC-Heranca.png "POO-DC-Heranca")](http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-DC-Heranca.png)
+
+```
+public class Jogador : Pessoa
+{
+    public int qtdeGolMarcado;
+    public decimal peso;
+    public int velocidade;
+
+    public void marcarGol() { }
+}
+```
+
+```cs
+public class Tecnico : Pessoa
+{
+    public string tecnicasTreino;
+
+    public void marcarTreino() { }
+}
+```
+
+## Sobrecarga
+
+São como comportamentos comuns, na vida real. Mas com algumas particularidades, que os diferem.
+
+Na POO, são métodos com o mesmo nome, mas com a assinatura dos parâmetros diferentes.
+
+```cs
+public void marcarTreino(string local)
+{
+    //Marca o treino definindo apenas o local
+}
+
+public void marcarTreino(string local, int horario)
+{
+    //Marca o treino definindo o local e o horário
+}
+
+public void marcarTreino(string local,int horario, int qtdJogadores)
+{
+    //Marca o treino definindo o local, horário e quantidade de jogadores
+}
+```
+
+## Referência this
+
+Especifica que estamos referenciando apenas as características e métodos da própria classe.
+
+Por exemplo, se eu passo por parâmetro a quantidade de gols marcado em uma partida, com o mesmo nome, da propriedade **_qtdeGolMarcado_**, existente na classe. Para especificar qual é variável, que representa minha propriedade existente na classe, devo utilizar o prefixo **_this._**
+
+```cs
+public void marcarGol(int qtdeGolMarcado)
+{
+    this.qtdeGolMarcado = qtdeGolMarcado;
+}
+```
+
+## Modificadores de Acesso
+
+Um modificador de acesso determina até onde o atributo ou método pode ser visualizado, ou seja,  determinam quais os locais ele pode ser usado. Eles são o utilizados no encapsulamento. Temos pelo menos 3 tipos de modificadores de acesso padrões, na maioria das linguagens POO:
+
+[![](./POO-pulica.png "POO-pulica")](http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-pulica.png)
+
+**public** Acesso não é restrito. Membro é acessado de qualquer lugar.
+
+[![](./POO-protected.png "POO-protected")](http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-protected.png)
+
+**protected** Pode ser acessado dentro da classe que o define e pelas classes que a herdam.
+
+[![](./POO-private.png "POO-private")](http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-private.png)
+
+**private** Membro pode ser a cessado somente dentro da classe que o define.
+
+ [![](./POO-DC-ModificadorAcesso.png "POO-DC-ModificadorAcesso")](http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-DC-ModificadorAcesso.png)
+
+```cs
+public int idade;
+protected string nome;
+private decimal salario;
+```
+
+Por enquanto é isto. No próximo artigo continuarei com outros conceitos de POO.
+

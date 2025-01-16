@@ -2,70 +2,79 @@
 title = "Imprimir uma parte da página com prévia de impressão"
 +++
 
-<p>Plugin JQuery desenvolvido por mim, para impressão de uma parte selecionada de p gina web com prévia de impressão em uma nova janela.</p>
-<p>Demo: <a title="Demo WindowPrint" href="http://www.maxcnunes.com/demos/windowprint/" target="_blank">WindowPrint</a></p>
-<p>Download:<a title="Download" href="http://www.maxcnunes.com/demos/windowprint/WindowPrint.rar"> Projeto Demo WindowPrint</a></p>
-<p><!--more--></p>
-<p>O código HTML - index.html</p>
-<p>[sourcecode language="html"]<br />
-&lt;!DOCTYPE html PUBLIC  -//W3C//DTD XHTML 1.0 Transitional//EN   http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd &gt;<br />
-&lt;html xmlns= http://www.w3.org/1999/xhtml &gt;<br />
-&lt;head id= Head1  runat= server &gt;<br />
-    &lt;title&gt;Window Print&lt;/title&gt;<br />
-    &lt;script src=&quot;Js/jquery-1.4.1.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;<br />
-    &lt;script src=&quot;Js/jquery-JCustom-Print.js&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;<br />
-&lt;/head&gt;<br />
-&lt;body&gt;<br />
-    &lt;form id=&quot;form1&quot; runat=&quot;server&quot;&gt;<br />
-    &lt;script type=&quot;text/javascript&quot;&gt;<br />
-        $(document).ready(function () {<br />
-            $('.buttonPrint').WindowPrint();<br />
-        });</p>
-<p>    &lt;/script&gt;<br />
-    &lt;div id=&quot;divPrint&quot; style=&quot;text-align: center;&quot;&gt;<br />
-        Cras rutrum, nulla quis facilisis hendrerit, mauris augue bibendum urna, a ultrices<br />
-        libero leo in quam.<br />
-        &lt;br /&gt;<br />
-        Nullam ultrices cursus leo nec venenatis. Suspendisse facilisis, massa in pretium<br />
-        pellentesque, nisi sem pretium ipsum, et dapibus diam orci non arcu. Mauris venenatis<br />
-        fringilla mauris mollis condimentum.<br />
-        &lt;br /&gt;<br />
-        &lt;img src=&quot;Img/Penguins.jpg&quot; width=&quot;250&quot; /&gt;<br />
-        &lt;br /&gt;<br />
-        Phasellus arcu enim, lacinia eu vestibulum vitae, congue eu nunc. Curabitur nec<br />
-        metus sapien. In a dolor enim.<br />
-        &lt;br /&gt;<br />
-        Ut ultrices ultrices est eget suscipit.<br />
-        &lt;br /&gt;<br />
-    &lt;/div&gt;<br />
-    &lt;a href=&quot;javascript:;&quot;&gt;Imprimir Conteudo da Div ID = divPrint &lt;/a&gt;<br />
-    &lt;/form&gt;<br />
-&lt;/body&gt;<br />
-&lt;/html&gt;</p>
-<p>[/sourcecode]</p>
-<p>Aplicando o plugin ao botão de impressão</p>
-<p>[sourcecode language="javascript"]</p>
-<p>$(document).ready(function () {<br />
-        $('.buttonPrint').WindowPrint();<br />
-    });<br />
-[/sourcecode]</p>
-<p>Caso sua dive possua outro ID, basta passar um novo parametro:</p>
-<p>[sourcecode language="javascript"]</p>
-<p> $(document).ready(function () {<br />
-        $('.buttonPrint').WindowPrint({ area:  #MeuID  });<br />
-    });<br />
-[/sourcecode]</p>
-<p>Lista de parametros opcionais:</p>
-<ol>
-<li><strong>area</strong>: <em>"#divPrint"</em>,- - - - - - -  Seletor Css do conteudo a ser impresso</li>
-<li><strong>title</strong>: <em>"Imprimir"</em>, -  -  -  Nome da pagina prévia</li>
-<li><strong>srcImgHead</strong>: <em>"http://www.google.com.br/intl/en_com/images/srpr/logo1w.png"</em>,- - - - -  Origem da imagem do cabeçalho</li>
-<li><strong>srcIconePrint</strong>: <em>"http://cdn1.iconfinder.com/data/icons/aspneticons_v1.0_Nov2006/print_16x16.gif"</em>,- - - - -  Origem do icone de impressão</li>
-<li><strong>head</strong>: <em>true</em>, -  - -  Se possui o cabeçalho na impressão</li>
-<li><strong>windowStatus</strong>: <em>false</em>,- - - -  Se estar visivel na nova janela o Status</li>
-<li><strong>windowScrollbars</strong>: <em>true</em>,- -  Se estar visivel na nova janela a Barra de Rolagem</li>
-<li><strong>windowToolbar</strong>: <em>false</em>,- - -  Se estar visivel na nova janela o ToolBar</li>
-<li><strong>windowWith</strong>: <em>0</em>,- - - -  Largura da janela, se for 0, pega automatico</li>
-<li><strong>windowHeight</strong>: <em>0</em>,- -  Altura da janela, se for 0, pega automatico</li>
-<li><strong>srcCSS</strong>: "",- - -  Origem do css da p gina</li>
-</ol>
+Plugin JQuery desenvolvido por mim, para impressão de uma parte selecionada de p gina web com prévia de impressão em uma nova janela.
+
+Demo: [WindowPrint](http://www.maxcnunes.com/demos/windowprint/ "Demo WindowPrint")
+
+Download: [Projeto Demo WindowPrint](http://www.maxcnunes.com/demos/windowprint/WindowPrint.rar "Download")
+
+O código HTML - index.html
+
+```html
+<!DOCTYPE html PUBLIC -//W3C//DTD XHTML 1.0 Transitional//EN http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd >
+<html xmlns= http://www.w3.org/1999/xhtml >
+<head id= Head1 runat= server >
+<title>Window Print</title>
+<script src="Js/jquery-1.4.1.js" type="text/javascript"></script>
+<script src="Js/jquery-JCustom-Print.js" type="text/javascript"></script>
+</head>
+<body>
+<form id="form1" runat="server">
+<script type="text/javascript">
+$(document).ready(function () {
+$('.buttonPrint').WindowPrint();
+});
+
+</script>
+<div id="divPrint" style="text-align: center;">
+Cras rutrum, nulla quis facilisis hendrerit, mauris augue bibendum urna, a ultrices
+libero leo in quam.
+<br />
+Nullam ultrices cursus leo nec venenatis. Suspendisse facilisis, massa in pretium
+pellentesque, nisi sem pretium ipsum, et dapibus diam orci non arcu. Mauris venenatis
+fringilla mauris mollis condimentum.
+<br />
+<img src="Img/Penguins.jpg" width="250" />
+<br />
+Phasellus arcu enim, lacinia eu vestibulum vitae, congue eu nunc. Curabitur nec
+metus sapien. In a dolor enim.
+<br />
+Ut ultrices ultrices est eget suscipit.
+<br />
+</div>
+<a href="javascript:;">Imprimir Conteudo da Div ID = divPrint </a>
+</form>
+</body>
+</html>
+```
+
+Aplicando o plugin ao botão de impressão
+
+```js
+$(document).ready(function () {
+  $(".buttonPrint").WindowPrint();
+});
+```
+
+Caso sua dive possua outro ID, basta passar um novo parametro:
+
+```js
+$(document).ready(function () {
+    $('.buttonPrint').WindowPrint({ area: #MeuID });
+});
+```
+
+Lista de parametros opcionais:
+
+1.  **area**: `#divPrint`, Seletor Css do conteudo a ser impresso
+2.  **title**: `Imprimir`,  Nome da pagina prévia
+3.  **srcImgHead**: `http://www.google.com.br/intl/en\_com/images/srpr/logo1w.png`, Origem da imagem do cabeçalho
+4.  **srcIconePrint**: `http://cdn1.iconfinder.com/data/icons/aspneticons\_v1.0\_Nov2006/print\_16x16.gif`,  Origem do icone de impressão
+5.  **head**: `true`,  Se possui o cabeçalho na impressão
+6.  **windowStatus**: `false`, Se estar visivel na nova janela o Status
+7.  **windowScrollbars**: `true`,  Se estar visivel na nova janela a Barra de Rolagem
+8.  **windowToolbar**: `false`,  Se estar visivel na nova janela o ToolBar
+9.  **windowWith**: `0`,  Largura da janela, se for 0, pega automatico
+10. **windowHeight**: `0`,  Altura da janela, se for 0, pega automatico
+11. **srcCSS**: ` `,  Origem do css da p gina
+

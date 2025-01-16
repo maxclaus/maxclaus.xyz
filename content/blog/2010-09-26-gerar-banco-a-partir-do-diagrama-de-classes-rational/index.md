@@ -2,81 +2,77 @@
 title = "Gerar banco a partir do diagrama de classes (Rational)"
 +++
 
-<p>Após finalizar toda an lise sobre a estrutura e funcionalidade do sistema a se densenvolver o próximo passo, basicamente, seria partir para o desenvolvimento.</p>
-<p>Sendo assim, por que não aproveitarmos o que j desenvolvido no diagrama de classes?</p>
-<p>Por isso, o Rational Rose disponibliza gerar o banco a partir do mapeamento das tabelas de acordo com o nosso diagrama de classes.<!--more--></p>
-<p>Como exemplo, desenvolvi um diagrama de classes simples, referente a pedidos de compras de um cliente.</p>
-<ul>
-<li>Abrir Rational Rose</li>
-<li>Adicionar a pasta Logica View, do novo projeto, um package para conter nosso diagrama de classes.</li>
-<li>Montar o nosso diagrama de classes dentro desse package.</li>
-</ul>
+Após finalizar toda an lise sobre a estrutura e funcionalidade do sistema a se densenvolver o próximo passo, basicamente, seria partir para o desenvolvimento.
 
-<img class="size-full wp-image-39" title="Criar Package Diagrama" src="./CriarPackageDiagrama.png" alt="" width="489" height="369" />
-<em>Criar Package Diagrama</em>
+Sendo assim, por que não aproveitarmos o que j desenvolvido no diagrama de classes?
 
-<img class="size-medium wp-image-32 " title="Diagrama De Classes Pedido" src="./diagramaDeClassesPedido-300x259.png" alt="" width="450" height="388.5" />
-<em>Diagrama De Classes Pedido</em>
+Por isso, o Rational Rose disponibliza gerar o banco a partir do mapeamento das tabelas de acordo com o nosso diagrama de classes.
 
-<p style="text-align: center;">Ã‰ interessante que você já defina o tipo(string, bollean...) de cada atributo de suas classes para ficar mais consistente o diagrama de classes com o banco gerado. (Se não definir agora, ele ir gerar tudo com small int)</p>
-<p>Após finalizado seu diagrama de classes, devemos definir quais classes se tornarão tabelas no nosso banco. Para isso fação seguinte em todas as tabelas.</p>
-<ul>
-<li>Botão direito na classe, Open Specification..</li>
-<li>Aba Detail..</li>
-<li>Marque a opção Persistent</li>
-</ul>
+Como exemplo, desenvolvi um diagrama de classes simples, referente a pedidos de compras de um cliente.
 
-<img class="size-full wp-image-42" title="Classes Persistentes" src="./ClassesPersistentes.png" alt="" width="518" height="457" />
-<em>Classes Persistentes (Futuras tabelas no banco)</em>
+- Abrir Rational Rose
+- Adicionar a pasta Logica View, do novo projeto, um package para conter nosso diagrama de classes.
+- Montar o nosso diagrama de classes dentro desse package.
 
-<p><em>Caso você possua atributo de identificação em suas classes ("id_cliente", "codigo_cliente"...) você deve defini-los como parte do objeto de identificação, se não o Rational ir criar identificadores automaticamente ao gerar as tabelas.</em></p>
-<p><em>Para isso faça o seguinte:</em></p>
-<ul>
-<li><em>Pelo menu em rvore abra a pasta do package que contem seu diagrama de classes.</em></li>
-<li><em>Abra classe por classe e clique com o botão direito no atributo de identificação.</em></li>
-<li><em>Em Data Modeler defina como Part of Object Identity</em></li>
-</ul>
-<p><strong>Obs: Essa parte Ã  cima não é muito aconcelhavel pois, na realidade no diagrama de classes não deve conter os diagramas identificadores. Porém, pra quem gosta de trabalhar desta forma, ficou a dica.</strong></p>
-<ul>
-<li>Agora vamos criar nosso banco, para manter nossas tabelas, que serão geradas posteriormente.</li>
-</ul>
+![](./CriarPackageDiagrama.png "Criar Package Diagrama")
+_Criar Package Diagrama_
 
-<img class="size-full wp-image-34 " title="Criar Banco" src="./CriarBanco1-e1285526718680.png" alt="" width="900" height="568.5" />
-<em>Criar Banco - Para manter nossas tabelas (Deixe o nome como BancoDados )</em>
+![](./diagramaDeClassesPedido-300x259.png "Diagrama De Classes Pedido")
+_Diagrama De Classes Pedido_
 
-<ul>
-<li>Transformar nosso modelo de objetos em modelo de dados.</li>
-</ul>
+E interessante que você já defina o tipo(string, bollean...) de cada atributo de suas classes para ficar mais consistente o diagrama de classes com o banco gerado. (Se não definir agora, ele ir gerar tudo com small int)
 
-<img class="size-full wp-image-41" title="Transforma Modelo Dados" src="./TransformaModeloDados.png" alt="" width="586" height="452" />
-<em>Transforma Modelo Dados</em>
+Após finalizado seu diagrama de classes, devemos definir quais classes se tornarão tabelas no nosso banco. Para isso fação seguinte em todas as tabelas.
 
-<ul>
-<li>Na janela que abrir , selecione em Target Database o banco que criamos.</li>
-<li>Caso você não deseje que ele criei prefixos no nome de suas tabelas, deixe o Prefix vazio ( Eu sempre deixo vazio).</li>
-<li>Clique em ok.</li>
-</ul>
-<p>Agora v em em Schemas, dentro da pasta Logical View e abra o nosso schema criado. Dentro dele estar todas as nossas tabelas geradas ( se estiver faltando alguma é porque você não a marcou como persistente anteriormente.)</p>
-<p style="text-align: left;">Próximo passo, criar o diagrma do modelo de dados:</p>
+- Botão direito na classe, Open Specification..
+- Aba Detail..
+- Marque a opção Persistent
 
-<img class="size-full wp-image-45 " title="DataModelDiagram" src="./DataModelDiagram-e1285531220880.png" alt="" width="500" height="307" />
-<em>Diagrama do modelo de dados (Renomeie o arquivo para ModelodeDados )</em>
+![](./ClassesPersistentes.png "Classes Persistentes")
 
-<p>Para adicionar nossas tabelas ao diagrama é muito simples. Basta você arrastar as tabelas do nosso Schema para dentro do nosso Modelo de Dados.</p>
+_Classes Persistentes (Futuras tabelas no banco)_
 
-<img class="size-full wp-image-46" title="Diagrama Modelo de Dados" src="./ModelodeDados-e1285532759266.png" alt="" width="500" height="351" />
-<em>Diagrama Modelo de Dados</em>
+_Caso você possua atributo de identificação em suas classes ("id_cliente", "codigo_cliente"...) você deve defini-los como parte do objeto de identificação, se não o Rational ir criar identificadores automaticamente ao gerar as tabelas._
 
-<p>Após terminar de adicionar todas as tabelas ao modelo você notar que surgiram automaticamente o relacionamento entre as tabelas. Perceba também,-  que se surgiram automaticamente nossas colunas identificadoras, com o sufixo _ID do nome de cada tabela.</p>
-<ul>
-<li>Agora passe de coluna em coluna em todas as tabelas definindo o tipo e tamanho de cada coluna. <em>(Se você ja havia definido corretamente o tipo de cada atributo no diagrama de classes, basta você definir o tamanho correto para cada coluna)</em></li>
-</ul>
-<p>Finalmente, vamos gerar nosso script sql do banco:</p>
+_Para isso faça o seguinte:_
 
-<img class="size-full wp-image-47" title="ForwardEngineer" src="./ForwardEngineer-e1285533769679.png" alt="" width="500" height="343" />
-<em>Forward Engineer</em>
+- _Pelo menu em rvore abra a pasta do package que contem seu diagrama de classes._
+- _Abra classe por classe e clique com o botão direito no atributo de identificação._
+- _Em Data Modeler defina como Part of Object Identity_
 
-<ul>
-<li>Na janela que abriu de NEXT/ NEXT/ selecione o nome e local do arquivo sql/NEXT/FINISH.</li>
-</ul>
-<p>Pronto, você acabou de gerar o script sql do banco a partir do seu diagrama de classes!!</p>
+**Obs: Essa parte Ã  cima não é muito aconcelhavel pois, na realidade no diagrama de classes não deve conter os diagramas identificadores. Porém, pra quem gosta de trabalhar desta forma, ficou a dica.**
+
+- Agora vamos criar nosso banco, para manter nossas tabelas, que serão geradas posteriormente.
+
+![](./CriarBanco1-e1285526718680.png "Criar Banco")_Criar Banco - Para manter nossas tabelas (Deixe o nome como BancoDados )_
+
+- Transformar nosso modelo de objetos em modelo de dados.
+
+![](./TransformaModeloDados.png "Transforma Modelo Dados")_Transforma Modelo Dados_
+
+- Na janela que abrir , selecione em Target Database o banco que criamos.
+- Caso você não deseje que ele criei prefixos no nome de suas tabelas, deixe o Prefix vazio ( Eu sempre deixo vazio).
+- Clique em ok.
+
+Agora v em em Schemas, dentro da pasta Logical View e abra o nosso schema criado. Dentro dele estar todas as nossas tabelas geradas ( se estiver faltando alguma é porque você não a marcou como persistente anteriormente.)
+
+Próximo passo, criar o diagrma do modelo de dados:
+
+![](./DataModelDiagram-e1285531220880.png "DataModelDiagram")_Diagrama do modelo de dados (Renomeie o arquivo para ModelodeDados )_
+
+Para adicionar nossas tabelas ao diagrama é muito simples. Basta você arrastar as tabelas do nosso Schema para dentro do nosso Modelo de Dados.
+
+![](./ModelodeDados-e1285532759266.png "Diagrama Modelo de Dados")_Diagrama Modelo de Dados_
+
+Após terminar de adicionar todas as tabelas ao modelo você notar que surgiram automaticamente o relacionamento entre as tabelas. Perceba também,-  que se surgiram automaticamente nossas colunas identificadoras, com o sufixo \_ID do nome de cada tabela.
+
+- Agora passe de coluna em coluna em todas as tabelas definindo o tipo e tamanho de cada coluna. _(Se você ja havia definido corretamente o tipo de cada atributo no diagrama de classes, basta você definir o tamanho correto para cada coluna)_
+
+Finalmente, vamos gerar nosso script sql do banco:
+
+![](./ForwardEngineer-e1285533769679.png "ForwardEngineer")_Forward Engineer_
+
+- Na janela que abriu de NEXT/ NEXT/ selecione o nome e local do arquivo sql/NEXT/FINISH.
+
+Pronto, você acabou de gerar o script sql do banco a partir do seu diagrama de classes!!
+

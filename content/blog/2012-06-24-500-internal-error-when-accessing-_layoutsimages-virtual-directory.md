@@ -1,9 +1,14 @@
 +++
-title = "500 Internal Error when accessing _layouts/images virtual directory"
+title = "500 Internal Error when accessing layouts/images virtual directory"
 +++
 
-<p>Outro dia passei por esse problema, fiquei cerca de 1 dia procurando uma solução de como resolver. Como estava utilizando&nbsp;Autenticação Baseada em Declarações (Claims Authentication), imaginei que fosse alguma falta de permissão para os usuários e acabei ficando preso a essa possibilidade. O que me levou a ficar todas essas horas definindo permissões de todas formas possíveis, na pasta LAYOUTS, no IIS, nas configurações do site collection. Mas nada resolvia e o bendito 500 Internal continuava a aparecer.</p>
-<p>A minha grande falha foi tentar resolver um problema em cima de um problema genérico. Porque quando adicionei o <span style="color: #ff0000;">&lt;customErrors mode="Off" /&gt;</span>&nbsp;ao webconfig na pasta LAYOUTS o problema foi resolvido em 10 segundos.</p>
-<p>Na minha situação, eu havia deixado uma tag incorreta dentro do&nbsp;do webconfig do site que estava apresentando o problema.</p>
-<p>Caminho da pasta LAYOUTS:&nbsp;<span style="color: #ff0000;"><em>C:Program FilesCommon FilesMicrosoft SharedWeb Server Extensions14TEMPLATELAYOUTS</em></span></p>
-<p>Fica a dica então:&nbsp;<strong>Nunca tente resolver um problema em cima de uma descrição genérica, se é possível obter informações mais específicas.</strong></p>
+Outro dia passei por esse problema, fiquei cerca de 1 dia procurando uma solução de como resolver. Como estava utilizando Autenticação Baseada em Declarações (Claims Authentication), imaginei que fosse alguma falta de permissão para os usuários e acabei ficando preso a essa possibilidade. O que me levou a ficar todas essas horas definindo permissões de todas formas possíveis, na pasta LAYOUTS, no IIS, nas configurações do site collection. Mas nada resolvia e o bendito 500 Internal continuava a aparecer.
+
+A minha grande falha foi tentar resolver um problema em cima de um problema genérico. Porque quando adicionei o `<customErrors mode="Off" />` ao webconfig na pasta LAYOUTS o problema foi resolvido em 10 segundos.
+
+Na minha situação, eu havia deixado uma tag incorreta dentro do do webconfig do site que estava apresentando o problema.
+
+Caminho da pasta LAYOUTS: `C:Program FilesCommon FilesMicrosoft SharedWeb Server Extensions14TEMPLATELAYOUTS`
+
+Fica a dica então: **Nunca tente resolver um problema em cima de uma descrição genérica, se é possível obter informações mais específicas.**
+

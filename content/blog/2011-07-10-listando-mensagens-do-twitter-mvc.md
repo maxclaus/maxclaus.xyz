@@ -2,164 +2,159 @@
 title = "Listando mensagens do Twitter - MVC"
 +++
 
-<p>O Twitter tornou-se uma forte ferramenta de comunicação na web. Cada vez mais empresas e usuários aderem ao Twitter. Pela sua enorme facilidade de disseminar informações.</p>
-<p>Sendo assim, se você trabalha com o desenvolvimento de websites, muito provavelmente vai passar por um projeto no qual o usuário vai solicitar que as suas últimas mensagens do twitter apareçam no site.</p>
-<p>Dito isso, vamos ao que interessa!</p>
-<p>A parte mais iportante desse código é representada pela classe Twitter.cs. Tratando cada mensagem como um objeto, esta classe possui as propriedades como <strong>Autor da mensagem, Link, Foto do Autor, Conteúdo da Mensagem</strong>. O que essa classe faz é uma requisição para a API do Twitter passando um filtro desejado, formado através de querys strings.</p>
-<p>Para entender mais sobre a API e seus filtros acesse <a href="http://dev.twitter.com/" target="_blank">http://dev.twitter.com/</a>.</p>
-<p><!--more--></p>
-<p>A classe Twitter:</p>
-<p>[sourcecode language="csharp"]<br />
-    public class Twitter<br />
-    {<br />
-        public string AuthorName { get; set; }<br />
-        public string AuthorUri { get; set; }<br />
-        public string Content { get; set; }<br />
-        public string Updated { get; set; }<br />
-        public string Link { get; set; }</p>
-<p>        public static List&lt;Twitter&gt; GetTwitter(string search)<br />
-        {<br />
-            //Faz a pesquisa no twitter de acordo com o filtro passado<br />
-            var request = WebRequest.Create(&quot;http://search.twitter.com/search.atom?&quot; + search) as HttpWebRequest;<br />
-            var twitterViewData = new List&lt;Twitter&gt;();</p>
-<p>            if (request != null)<br />
-            {<br />
-                using (var response = request.GetResponse() as HttpWebResponse)<br />
-                {<br />
-                    //Lê o xml do resultado da pesquisa<br />
-                    using (var reader = new StreamReader(response.GetResponseStream()))<br />
-                    {<br />
-                        var document = XDocument.Parse(reader.ReadToEnd());<br />
-                        XNamespace xmlns = &quot;http://www.w3.org/2005/Atom&quot;;</p>
-<p>                        //Cria uma lista do resultado<br />
-                        twitterViewData = (from entry in document.Descendants(xmlns + &quot;entry&quot;)<br />
-                                           select new Twitter<br />
-                                           {<br />
-                                               Content = entry.Element(xmlns + &quot;content&quot;).Value,<br />
-                                               Updated = Format_DateTime(entry.Element(xmlns + &quot;updated&quot;).Value),<br />
-                                               AuthorName = entry.Element(xmlns + &quot;author&quot;).Element(xmlns + &quot;name&quot;).Value,<br />
-                                               AuthorUri = entry.Element(xmlns + &quot;author&quot;).Element(xmlns + &quot;uri&quot;).Value,<br />
-                                               Link = (from o in entry.Descendants(xmlns + &quot;link&quot;)<br />
-                                                       where o.Attribute(&quot;rel&quot;).Value == &quot;image&quot;<br />
-                                                       select new { Val = o.Attribute(&quot;href&quot;).Value }).First().Val<br />
-                                           }).ToList();<br />
-                    }<br />
-                }<br />
-            }</p>
-<p>            return twitterViewData;<br />
-        }</p>
-<p>        public static string Format_DateTime(string value)<br />
-        {<br />
-            // Cria um CultureInfo para o Português.<br />
-            CultureInfo ci = new CultureInfo(&quot;pt-BR&quot;);</p>
-<p>            value = value.Replace(&quot;T&quot;, &quot; &quot;).Replace(&quot;Z&quot;, string.Empty);</p>
-<p>            DateTime _Date;<br />
-            if (!DateTime.TryParse(value, out _Date))<br />
-                throw new ArgumentException(&quot;Erro ao converter.&quot;);</p>
-<p>            // Formata a data para o formato de tempo brasileiro.<br />
-            return _Date.ToString(ci);<br />
-        }<br />
-[/sourcecode]</p>
-<p>O controller, na Action Result Index, solicita a lista de mensagens do Twitter pelo metodo GetTwitter da classe Twitter e passa esses valores para a propriedade dinâmica Twitter na ViewBag:</p>
-<p>[sourcecode language="csharp"]</p>
-<p>    public class TwitterController : Controller<br />
-    {<br />
-        //<br />
-        // GET: /Twitter/</p>
-<p>        public ActionResult Index()<br />
-        {<br />
-            //Passa como parametro o valor da pesquisa<br />
-            //Neste exemplo:<br />
-            //from -&gt; Filtra as mensagens por usuário<br />
-            //rpp  -&gt; Retorna apenas os últimos 15 resultados<br />
-            ViewBag.Twitter = Models.Twitter.GetTwitter(&quot;from=twitterapi&amp;rpp=15&quot;);<br />
-            return View();<br />
-        }</p>
-<p>    }<br />
-[/sourcecode]</p>
-<p>A View recebe a lista através da ViewBag e carrega seus valores de acordo com a formatação seguinte:</p>
-<p>[sourcecode language="csharp"]<br />
-@{<br />
-    ViewBag.Title = &quot;Lista de Mensagens do Twitter&quot;;<br />
-}</p>
-<p>&lt;h2&gt;<br />
-    Index&lt;/h2&gt;<br />
-&lt;div id=&quot;Twitter&quot;&gt;<br />
-    &lt;div class=&quot;titleTwitter&quot;&gt;<br />
-        @{<br />
-            var userTwitter = ((List&lt;MvcTwitter.Models.Twitter&gt;)ViewBag.Twitter).FirstOrDefault();<br />
-            &lt;a href=&quot;@userTwitter.AuthorUri&quot; target=&quot;_blank&quot; class=&quot;userTwiiter&quot;&gt;<br />
-                &lt;img src=&quot;@userTwitter.Link&quot; alt=&quot;Twitter Logo&quot; /&gt;@userTwitter.AuthorName&lt;/a&gt;<br />
-        }<br />
-    &lt;/div&gt;<br />
-    &lt;ul&gt;<br />
-        @foreach (var item in ViewBag.Twitter)<br />
-        {<br />
-            &lt;li&gt;<br />
-                @Html.Raw(item.Content)<br />
-                &lt;span&gt;@item.Updated&lt;/span&gt; &lt;/li&gt;<br />
-        }<br />
-    &lt;/ul&gt;<br />
-    &lt;div class=&quot;titleTwitter&quot;&gt;<br />
-        &lt;a href=&quot;&quot;&gt;<br />
-            &lt;img alt=&quot;Twitter&quot; alt=&quot;Twitter&quot; src=&quot;@Url.Content(&quot;~/Content/Image/link_twitter.png&quot;)&quot;&gt;Twitter&lt;/a&gt;<br />
-    &lt;/div&gt;<br />
-&lt;/div&gt;</p>
-<p>[/sourcecode]</p>
-<p>Estilo css, pra dar uma melhorada no visual:</p>
-<p>[sourcecode language="css"]</p>
-<p>/*<br />
--------Twitter*/<br />
-#Twitter<br />
-{<br />
-    border: 1px solid #8AA2AA;<br />
-    padding:1px;<br />
-}<br />
-.titleTwitter<br />
-{<br />
-    background: #8AA2AA;<br />
-    padding: 5px 10px;<br />
-}<br />
-.titleTwitter a<br />
-{<br />
-    font-size:8pt;<br />
-    color:#fff;<br />
-}<br />
-.titleTwitter img<br />
-{</p>
-<p>    margin-right: 5px;<br />
-    vertical-align:middle;<br />
-}<br />
-.userTwitter img<br />
-{<br />
-    width: 30px;<br />
-}<br />
-#Twitter ul<br />
-{<br />
-    list-style:none;<br />
-    margin:0;<br />
-    padding:0;<br />
-}<br />
-#Twitter ul li<br />
-{<br />
-    font-size: 8pt;<br />
-    border-bottom: 1px solid #ccc;<br />
-    padding:10px 5px;<br />
-    text-align:justify;<br />
-}<br />
-#Twitter ul li a<br />
-{<br />
-    font-weight:bold;<br />
-}<br />
-#Twitter ul li span<br />
-{<br />
-    display:block;<br />
-    text-align:left;<br />
-    font-size:7pt;<br />
-}<br />
-#Twitter ul li:hover<br />
-{<br />
-    background:#CCEEF9;<br />
-}<br />
-[/sourcecode]</p>
-<p>Fonte:<a href="http://www.dotnetcurry.com/ShowArticle.aspx?ID=536">Using ASP.NET MVC 2 to Query Twitter's Public API - FIFA 2010</a></p>
+O Twitter tornou-se uma forte ferramenta de comunicação na web. Cada vez mais empresas e usuários aderem ao Twitter. Pela sua enorme facilidade de disseminar informações.
+
+Sendo assim, se você trabalha com o desenvolvimento de websites, muito provavelmente vai passar por um projeto no qual o usuário vai solicitar que as suas últimas mensagens do twitter apareçam no site.
+
+Dito isso, vamos ao que interessa!
+
+A parte mais iportante desse código é representada pela classe Twitter.cs. Tratando cada mensagem como um objeto, esta classe possui as propriedades como **Autor da mensagem, Link, Foto do Autor, Conteúdo da Mensagem**. O que essa classe faz é uma requisição para a API do Twitter passando um filtro desejado, formado através de querys strings.
+
+Para entender mais sobre a API e seus filtros acesse [http://dev.twitter.com/](http://dev.twitter.com/).
+
+A classe Twitter:
+
+```cs
+public class Twitter {
+  public string AuthorName { get; set; }
+  public string AuthorUri { get; set; }
+  public string Content { get; set; }
+  public string Updated { get; set; }
+  public string Link { get; set; }
+
+  public static List GetTwitter(string search) {
+    // Faz a pesquisa no twitter de acordo com o filtro passado
+    var request = WebRequest.Create("http://search.twitter.com/search.atom?" +
+                                    search) as HttpWebRequest;
+    var twitterViewData = new List();
+
+    if (request != null) {
+      using (var response = request.GetResponse() as HttpWebResponse) {
+        // Lê o xml do resultado da pesquisa
+        using (var reader = new StreamReader(response.GetResponseStream())) {
+          var document = XDocument.Parse(reader.ReadToEnd());
+          XNamespace xmlns = "http://www.w3.org/2005/Atom";
+
+          // Cria uma lista do resultado
+            twitterViewData = (from entry in document.Descendants(xmlns + "entry")
+            select new Twitter
+            {
+                Content = entry.Element(xmlns + "content").Value,
+                Updated = Format_DateTime(entry.Element(xmlns + "updated").Value),
+                AuthorName = entry.Element(xmlns + "author").Element(xmlns + "name").Value,
+                AuthorUri = entry.Element(xmlns + "author").Element(xmlns + "uri").Value,
+                Link = (from o in entry.Descendants(xmlns + "link")
+                where o.Attribute("rel").Value == "image"
+                select new { Val = o.Attribute("href").Value }).First().Val
+            }).ToList();
+        }
+      }
+    }
+
+    return twitterViewData;
+  }
+
+  public static string Format_DateTime(string value) {
+    // Cria um CultureInfo para o Português.
+    CultureInfo ci = new CultureInfo("pt-BR");
+
+    value = value.Replace("T", " ").Replace("Z", string.Empty);
+
+    DateTime \_Date;
+    if (!DateTime.TryParse(value, out \_Date))
+      throw new ArgumentException("Erro ao converter.");
+
+    // Formata a data para o formato de tempo brasileiro.
+    return \_Date.ToString(ci);
+  }
+```
+
+O controller, na Action Result Index, solicita a lista de mensagens do Twitter pelo metodo GetTwitter da classe Twitter e passa esses valores para a propriedade dinâmica Twitter na ViewBag:
+
+```cs
+public class TwitterController : Controller {
+  //
+  // GET: /Twitter/
+
+  public ActionResult Index() {
+    // Passa como parametro o valor da pesquisa
+    // Neste exemplo:
+    // from -> Filtra as mensagens por usuário
+    // rpp -> Retorna apenas os últimos 15 resultados
+    ViewBag.Twitter = Models.Twitter.GetTwitter("from=twitterapi&rpp=15");
+    return View();
+  }
+}
+```
+
+A View recebe a lista através da ViewBag e carrega seus valores de acordo com a formatação seguinte:
+
+```cs
+@{ ViewBag.Title = "Lista de Mensagens do Twitter"; }
+
+## Index
+
+@{
+    var userTwitter = ((List)ViewBag.Twitter).FirstOrDefault();
+    [![Twitter Logo](@userTwitter.Link)@userTwitter.AuthorName](@userTwitter.AuthorUri)
+}
+
+@foreach (var item in ViewBag.Twitter)
+{
+    *@Html.Raw(item.Content)
+    @item.Updated
+}
+
+[![Twitter](@Url.Content\()Twitter]()
+```
+
+Estilo css, pra dar uma melhorada no visual:
+
+```css
+/*
+-------Twitter*/
+#Twitter {
+  border: 1px solid #8aa2aa;
+  padding: 1px;
+}
+.titleTwitter {
+  background: #8aa2aa;
+  padding: 5px 10px;
+}
+.titleTwitter a {
+  font-size: 8pt;
+  color: #fff;
+}
+.titleTwitter img {
+  margin-right: 5px;
+  vertical-align: middle;
+}
+.userTwitter img {
+  width: 30px;
+}
+#Twitter ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#Twitter ul li {
+  font-size: 8pt;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 5px;
+  text-align: justify;
+}
+#Twitter ul li a {
+  font-weight: bold;
+}
+#Twitter ul li span {
+  display: block;
+  text-align: left;
+  font-size: 7pt;
+}
+#Twitter ul li:hover {
+  background: #cceef9;
+}
+```
+
+Fonte:[Using ASP.NET MVC 2 to Query Twitter's Public API - FIFA 2010](http://www.dotnetcurry.com/ShowArticle.aspx?ID=536)
+

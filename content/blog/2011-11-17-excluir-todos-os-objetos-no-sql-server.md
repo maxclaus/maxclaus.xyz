@@ -2,126 +2,132 @@
 title = "Excluir todos os Objetos no SQL Server"
 +++
 
-<p>Este artigo é uma referência á um script que salvou tempo e serviço em um projeto atual. No qual precisávamos zerar o banco, mas com o detalhe que não poderíamos excluí-lo e criá-lo novamente.</p>
-<p>Sendo assim o que este script faz é excluir todos os objetos nesta ordem:</p>
-<div style="margin: 0 20px; padding: 0 20px;">
-<ol style="margin: 0 20px; padding: 0 20px; display: block;">
-<li>Stored Procedures</li>
-<li>Views</li>
-<li>Functions</li>
-<li>Foreign Keys</li>
-<li>Primary Keys</li>
-<li>Tables</li>
-<li>Indexes</li>
-</ol>
-</div>
-<div><!--more--></div>
-<p>[sourcecode language="sql"]</p>
-<p>-- Drop all non-system stored procs<br />
-DECLARE @name VARCHAR(128)<br />
-DECLARE @SQL VARCHAR(254)<br />
-SELECT @name = (SELECT TOP 1 [name] FROM sysobjects WHERE [type] = 'P' AND category = 0 ORDER BY [name])<br />
-WHILE @name is not null<br />
-BEGIN<br />
-    SELECT @SQL = 'DROP PROCEDURE [dbo].[' + RTRIM(@name) +']'<br />
-    EXEC (@SQL)<br />
-    PRINT 'Dropped Procedure: ' + @name<br />
-    SELECT @name = (SELECT TOP 1 [name] FROM sysobjects WHERE [type] = 'P' AND category = 0 AND [name] &gt; @name ORDER BY [name])<br />
-END<br />
-GO</p>
-<p>-- Drop all views<br />
-DECLARE @name VARCHAR(128)<br />
-DECLARE @SQL VARCHAR(254)<br />
-SELECT @name = (SELECT TOP 1 [name] FROM sysobjects WHERE [type] = 'V' AND category = 0 ORDER BY [name])<br />
-WHILE @name IS NOT NULL<br />
-BEGIN<br />
-    SELECT @SQL = 'DROP VIEW [dbo].[' + RTRIM(@name) +']'<br />
-    EXEC (@SQL)<br />
-    PRINT 'Dropped View: ' + @name<br />
-    SELECT @name = (SELECT TOP 1 [name] FROM sysobjects WHERE [type] = 'V' AND category = 0 AND [name] &gt; @name ORDER BY [name])<br />
-END<br />
-GO</p>
-<p>-- Drop all functions<br />
-DECLARE @name VARCHAR(128)<br />
-DECLARE @SQL VARCHAR(254)<br />
-SELECT @name = (SELECT TOP 1 [name] FROM sysobjects WHERE [type] IN (N'FN', N'IF', N'TF', N'FS', N'FT') AND category = 0 ORDER BY [name])<br />
-WHILE @name IS NOT NULL<br />
-BEGIN<br />
-    SELECT @SQL = 'DROP FUNCTION [dbo].[' + RTRIM(@name) +']'<br />
-    EXEC (@SQL)<br />
-    PRINT 'Dropped Function: ' + @name<br />
-    SELECT @name = (SELECT TOP 1 [name] FROM sysobjects WHERE [type] IN (N'FN', N'IF', N'TF', N'FS', N'FT') AND category = 0 AND [name] &gt; @name ORDER BY [name])<br />
-END<br />
-GO</p>
-<p>-- Drop all Foreign Key constraints<br />
-DECLARE @name VARCHAR(128)<br />
-DECLARE @constraint VARCHAR(254)<br />
-DECLARE @SQL VARCHAR(254)<br />
-SELECT @name = (SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE constraint_catalog=DB_NAME() AND CONSTRAINT_TYPE = 'FOREIGN KEY' ORDER BY TABLE_NAME)<br />
-WHILE @name is not null<br />
-BEGIN<br />
-    SELECT @constraint = (SELECT TOP 1 CONSTRAINT_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE constraint_catalog=DB_NAME() AND CONSTRAINT_TYPE = 'FOREIGN KEY' AND TABLE_NAME = @name ORDER BY CONSTRAINT_NAME)<br />
-    WHILE @constraint IS NOT NULL<br />
-    BEGIN<br />
-        SELECT @SQL = 'ALTER TABLE [dbo].[' + RTRIM(@name) +'] DROP CONSTRAINT ' + RTRIM(@constraint)<br />
-        EXEC (@SQL)<br />
-        PRINT 'Dropped FK Constraint: ' + @constraint + ' on ' + @name<br />
-        SELECT @constraint = (SELECT TOP 1 CONSTRAINT_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE constraint_catalog=DB_NAME() AND CONSTRAINT_TYPE = 'FOREIGN KEY' AND CONSTRAINT_NAME &lt;&gt; @constraint AND TABLE_NAME = @name ORDER BY CONSTRAINT_NAME)<br />
-    END<br />
-SELECT @name = (SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE constraint_catalog=DB_NAME() AND CONSTRAINT_TYPE = 'FOREIGN KEY' ORDER BY TABLE_NAME)<br />
-END<br />
-GO</p>
-<p>-- Drop all Primary Key constraints<br />
-DECLARE @name VARCHAR(128)<br />
-DECLARE @constraint VARCHAR(254)<br />
-DECLARE @SQL VARCHAR(254)<br />
-SELECT @name = (SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE constraint_catalog=DB_NAME() AND CONSTRAINT_TYPE = 'PRIMARY KEY' ORDER BY TABLE_NAME)<br />
-WHILE @name IS NOT NULL<br />
-BEGIN<br />
-    SELECT @constraint = (SELECT TOP 1 CONSTRAINT_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE constraint_catalog=DB_NAME() AND CONSTRAINT_TYPE = 'PRIMARY KEY' AND TABLE_NAME = @name ORDER BY CONSTRAINT_NAME)<br />
-    WHILE @constraint is not null<br />
-    BEGIN<br />
-        SELECT @SQL = 'ALTER TABLE [dbo].[' + RTRIM(@name) +'] DROP CONSTRAINT ' + RTRIM(@constraint)<br />
-        EXEC (@SQL)<br />
-        PRINT 'Dropped PK Constraint: ' + @constraint + ' on ' + @name<br />
-        SELECT @constraint = (SELECT TOP 1 CONSTRAINT_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE constraint_catalog=DB_NAME() AND CONSTRAINT_TYPE = 'PRIMARY KEY' AND CONSTRAINT_NAME &lt;&gt; @constraint AND TABLE_NAME = @name ORDER BY CONSTRAINT_NAME)<br />
-    END<br />
-SELECT @name = (SELECT TOP 1 TABLE_NAME FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS WHERE constraint_catalog=DB_NAME() AND CONSTRAINT_TYPE = 'PRIMARY KEY' ORDER BY TABLE_NAME)<br />
-END<br />
-GO</p>
-<p>-- Drop all tables<br />
-DECLARE @name VARCHAR(128)<br />
-DECLARE @SQL VARCHAR(254)<br />
-SELECT @name = (SELECT TOP 1 [name] FROM sysobjects WHERE [type] = 'U' AND category = 0 ORDER BY [name])<br />
-WHILE @name IS NOT NULL<br />
-BEGIN<br />
-    SELECT @SQL = 'DROP TABLE [dbo].[' + RTRIM(@name) +']'<br />
-    EXEC (@SQL)<br />
-    PRINT 'Dropped Table: ' + @name<br />
-SELECT @name = (SELECT TOP 1 [name] FROM sysobjects WHERE [type] = 'U' AND category = 0 AND [name] &gt; @name ORDER BY [name])<br />
-END<br />
-GO</p>
-<p>-- Drop all indexes<br />
-declare @RETURN_VALUE int<br />
-declare @command1 nvarchar(2000)<br />
-set @command1 = 'DECLARE @indexName NVARCHAR(128)'<br />
-set @command1 = @command1 + ' DECLARE @dropIndexSql NVARCHAR(4000)'<br />
-set @command1 = @command1 + ' DECLARE tableIndexes CURSOR FAST_FORWARD FOR'<br />
-set @command1 = @command1 + ' SELECT name FROM sys.indexes'<br />
-set @command1 = @command1 + ' WHERE object_id = OBJECT_ID(''?'') AND index_id &gt; 0 AND index_id &lt; 255 AND is_primary_key = 0'<br />
-set @command1 = @command1 + ' ORDER BY index_id DESC'<br />
-set @command1 = @command1 + ' OPEN tableIndexes FETCH NEXT FROM tableIndexes INTO @indexName'<br />
-set @command1 = @command1 + ' WHILE @@fetch_status = 0'<br />
-set @command1 = @command1 + ' BEGIN'<br />
-set @command1 = @command1 + ' SET @dropIndexSql = N''DROP INDEX ?.['' + @indexName + '']'''<br />
-set @command1 = @command1 + ' EXEC sp_executesql @dropIndexSql'<br />
-set @command1 = @command1 + ' print @dropIndexSql'<br />
-set @command1 = @command1 + ' FETCH NEXT FROM tableIndexes INTO @indexName'<br />
-set @command1 = @command1 + ' END'<br />
-set @command1 = @command1 + ' CLOSE tableIndexes'<br />
-set @command1 = @command1 + ' DEALLOCATE tableIndexes'<br />
-Print '-----------------------------------------'<br />
-exec @RETURN_VALUE = sp_MSforeachtable @command1=@command1<br />
-GO<br />
-[/sourcecode]</p>
-<p>Segue o link para o post, no qual encontrei este script: <a href="http://paigecsharp.blogspot.com/2008/03/drop-all-objects-in-sql-server-database.html">http://paigecsharp.blogspot.com/2008/03/drop-all-objects-in-sql-server-database.html</a></p>
+Este artigo é uma referência á um script que salvou tempo e serviço em um projeto atual. No qual precisávamos zerar o banco, mas com o detalhe que não poderíamos excluí-lo e criá-lo novamente.
+
+Sendo assim o que este script faz é excluir todos os objetos nesta ordem:
+
+1.  Stored Procedures
+2.  Views
+3.  Functions
+4.  Foreign Keys
+5.  Primary Keys
+6.  Tables
+7.  Indexes
+
+```sql
+-- Drop all non-system stored procs
+DECLARE @name VARCHAR(128)
+DECLARE @SQL VARCHAR(254)
+SELECT @name = (SELECT TOP 1 \[name\] FROM sysobjects WHERE \[type\] = 'P' AND category = 0 ORDER BY \[name\])
+WHILE @name is not null
+BEGIN
+SELECT @SQL = 'DROP PROCEDURE \[dbo\].\[' + RTRIM(@name) +'\]'
+EXEC (@SQL)
+PRINT 'Dropped Procedure: ' + @name
+SELECT @name = (SELECT TOP 1 \[name\] FROM sysobjects WHERE \[type\] = 'P' AND category = 0 AND \[name\] > @name ORDER BY \[name\])
+END
+GO
+
+-- Drop all views
+DECLARE @name VARCHAR(128)
+DECLARE @SQL VARCHAR(254)
+SELECT @name = (SELECT TOP 1 \[name\] FROM sysobjects WHERE \[type\] = 'V' AND category = 0 ORDER BY \[name\])
+WHILE @name IS NOT NULL
+BEGIN
+SELECT @SQL = 'DROP VIEW \[dbo\].\[' + RTRIM(@name) +'\]'
+EXEC (@SQL)
+PRINT 'Dropped View: ' + @name
+SELECT @name = (SELECT TOP 1 \[name\] FROM sysobjects WHERE \[type\] = 'V' AND category = 0 AND \[name\] > @name ORDER BY \[name\])
+END
+GO
+
+-- Drop all functions
+DECLARE @name VARCHAR(128)
+DECLARE @SQL VARCHAR(254)
+SELECT @name = (SELECT TOP 1 \[name\] FROM sysobjects WHERE \[type\] IN (N'FN', N'IF', N'TF', N'FS', N'FT') AND category = 0 ORDER BY \[name\])
+WHILE @name IS NOT NULL
+BEGIN
+SELECT @SQL = 'DROP FUNCTION \[dbo\].\[' + RTRIM(@name) +'\]'
+EXEC (@SQL)
+PRINT 'Dropped Function: ' + @name
+SELECT @name = (SELECT TOP 1 \[name\] FROM sysobjects WHERE \[type\] IN (N'FN', N'IF', N'TF', N'FS', N'FT') AND category = 0 AND \[name\] > @name ORDER BY \[name\])
+END
+GO
+
+-- Drop all Foreign Key constraints
+DECLARE @name VARCHAR(128)
+DECLARE @constraint VARCHAR(254)
+DECLARE @SQL VARCHAR(254)
+SELECT @name = (SELECT TOP 1 TABLE\_NAME FROM INFORMATION\_SCHEMA.TABLE\_CONSTRAINTS WHERE constraint\_catalog=DB\_NAME() AND CONSTRAINT\_TYPE = 'FOREIGN KEY' ORDER BY TABLE\_NAME)
+WHILE @name is not null
+BEGIN
+SELECT @constraint = (SELECT TOP 1 CONSTRAINT\_NAME FROM INFORMATION\_SCHEMA.TABLE\_CONSTRAINTS WHERE constraint\_catalog=DB\_NAME() AND CONSTRAINT\_TYPE = 'FOREIGN KEY' AND TABLE\_NAME = @name ORDER BY CONSTRAINT\_NAME)
+WHILE @constraint IS NOT NULL
+BEGIN
+SELECT @SQL = 'ALTER TABLE \[dbo\].\[' + RTRIM(@name) +'\] DROP CONSTRAINT ' + RTRIM(@constraint)
+EXEC (@SQL)
+PRINT 'Dropped FK Constraint: ' + @constraint + ' on ' + @name
+SELECT @constraint = (SELECT TOP 1 CONSTRAINT\_NAME FROM INFORMATION\_SCHEMA.TABLE\_CONSTRAINTS WHERE constraint\_catalog=DB\_NAME() AND CONSTRAINT\_TYPE = 'FOREIGN KEY' AND CONSTRAINT\_NAME <> @constraint AND TABLE\_NAME = @name ORDER BY CONSTRAINT\_NAME)
+END
+SELECT @name = (SELECT TOP 1 TABLE\_NAME FROM INFORMATION\_SCHEMA.TABLE\_CONSTRAINTS WHERE constraint\_catalog=DB\_NAME() AND CONSTRAINT\_TYPE = 'FOREIGN KEY' ORDER BY TABLE\_NAME)
+END
+GO
+
+-- Drop all Primary Key constraints
+DECLARE @name VARCHAR(128)
+DECLARE @constraint VARCHAR(254)
+DECLARE @SQL VARCHAR(254)
+SELECT @name = (SELECT TOP 1 TABLE\_NAME FROM INFORMATION\_SCHEMA.TABLE\_CONSTRAINTS WHERE constraint\_catalog=DB\_NAME() AND CONSTRAINT\_TYPE = 'PRIMARY KEY' ORDER BY TABLE\_NAME)
+WHILE @name IS NOT NULL
+BEGIN
+SELECT @constraint = (SELECT TOP 1 CONSTRAINT\_NAME FROM INFORMATION\_SCHEMA.TABLE\_CONSTRAINTS WHERE constraint\_catalog=DB\_NAME() AND CONSTRAINT\_TYPE = 'PRIMARY KEY' AND TABLE\_NAME = @name ORDER BY CONSTRAINT\_NAME)
+WHILE @constraint is not null
+BEGIN
+SELECT @SQL = 'ALTER TABLE \[dbo\].\[' + RTRIM(@name) +'\] DROP CONSTRAINT ' + RTRIM(@constraint)
+EXEC (@SQL)
+PRINT 'Dropped PK Constraint: ' + @constraint + ' on ' + @name
+SELECT @constraint = (SELECT TOP 1 CONSTRAINT\_NAME FROM INFORMATION\_SCHEMA.TABLE\_CONSTRAINTS WHERE constraint\_catalog=DB\_NAME() AND CONSTRAINT\_TYPE = 'PRIMARY KEY' AND CONSTRAINT\_NAME <> @constraint AND TABLE\_NAME = @name ORDER BY CONSTRAINT\_NAME)
+END
+SELECT @name = (SELECT TOP 1 TABLE\_NAME FROM INFORMATION\_SCHEMA.TABLE\_CONSTRAINTS WHERE constraint\_catalog=DB\_NAME() AND CONSTRAINT\_TYPE = 'PRIMARY KEY' ORDER BY TABLE\_NAME)
+END
+GO
+
+-- Drop all tables
+DECLARE @name VARCHAR(128)
+DECLARE @SQL VARCHAR(254)
+SELECT @name = (SELECT TOP 1 \[name\] FROM sysobjects WHERE \[type\] = 'U' AND category = 0 ORDER BY \[name\])
+WHILE @name IS NOT NULL
+BEGIN
+SELECT @SQL = 'DROP TABLE \[dbo\].\[' + RTRIM(@name) +'\]'
+EXEC (@SQL)
+PRINT 'Dropped Table: ' + @name
+SELECT @name = (SELECT TOP 1 \[name\] FROM sysobjects WHERE \[type\] = 'U' AND category = 0 AND \[name\] > @name ORDER BY \[name\])
+END
+GO
+
+-- Drop all indexes
+declare @RETURN\_VALUE int
+declare @command1 nvarchar(2000)
+set @command1 = 'DECLARE @indexName NVARCHAR(128)'
+set @command1 = @command1 + ' DECLARE @dropIndexSql NVARCHAR(4000)'
+set @command1 = @command1 + ' DECLARE tableIndexes CURSOR FAST\_FORWARD FOR'
+set @command1 = @command1 + ' SELECT name FROM sys.indexes'
+set @command1 = @command1 + ' WHERE object\_id = OBJECT\_ID(''?'') AND index\_id > 0 AND index\_id < 255 AND is\_primary\_key = 0'
+set @command1 = @command1 + ' ORDER BY index\_id DESC'
+set @command1 = @command1 + ' OPEN tableIndexes FETCH NEXT FROM tableIndexes INTO @indexName'
+set @command1 = @command1 + ' WHILE @@fetch\_status = 0'
+set @command1 = @command1 + ' BEGIN'
+set @command1 = @command1 + ' SET @dropIndexSql = N''DROP INDEX ?.\['' + @indexName + ''\]'''
+set @command1 = @command1 + ' EXEC sp\_executesql @dropIndexSql'
+set @command1 = @command1 + ' print @dropIndexSql'
+set @command1 = @command1 + ' FETCH NEXT FROM tableIndexes INTO @indexName'
+set @command1 = @command1 + ' END'
+set @command1 = @command1 + ' CLOSE tableIndexes'
+set @command1 = @command1 + ' DEALLOCATE tableIndexes'
+Print '-----------------------------------------'
+exec @RETURN\_VALUE = sp\_MSforeachtable @command1=@command1
+GO
+```
+
+Segue o link para o post, no qual encontrei este script: [http://paigecsharp.blogspot.com/2008/03/drop-all-objects-in-sql-server-database.html](http://paigecsharp.blogspot.com/2008/03/drop-all-objects-in-sql-server-database.html)
+
