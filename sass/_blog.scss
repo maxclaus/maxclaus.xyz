@@ -13,8 +13,6 @@
   }
 }
 
-$post-mea-color: #9AA6B2;
-
 .blog_post {
   > header {
     margin-bottom: 4rem;
@@ -28,12 +26,12 @@ $post-mea-color: #9AA6B2;
 
     hr {
       width: 180px;
-      border: 1px solid $post-mea-color;
+      border: 1px solid var(--meta-color);
     }
   }
 
   &__meta {
-    color: $post-mea-color;
+    color: var(--meta-color);
     margin-top: 1rem;
     margin-bottom: 1rem;
     font-size: smaller;
@@ -129,8 +127,8 @@ $post-mea-color: #9AA6B2;
     font-size: smaller;
 
     > a {
-      color: $post-mea-color;
-      border-color: $post-mea-color;
+      color: var(--meta-color);
+      border-color: var(--meta-color);
     }
   }
 }

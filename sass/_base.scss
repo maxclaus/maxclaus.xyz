@@ -8,46 +8,34 @@
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap");
-/* @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"); */
 
 $code-font: Consolas,Monaco,'Ubuntu Mono',monospace;
-
 $container-width: 700px;
-
-/* @font-face { */
-/*   font-family: "Inter"; */
-/*   font-style: normal; */
-/*   font-weight: 700; */
-/*   font-display: swap; */
-/*   src: url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"); */
-/* } */
-
 
 body {
   line-height: 1.5;
   padding: 0;
   margin: 0;
+  background: var(--bg);
+  color: var(--text);
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Lora', sans-serif;
 }
 
-$link-color: #2f76d0;
-
 a {
-  color: black;
+  color: var(--text);
   text-decoration: none;
-  /* border-bottom: 1px solid lighten($link-color, 20); */
-  border-bottom: 2px solid $link-color;
+  border-bottom: 2px solid var(--link-color);
   padding: 0;
 
   &:visited {
-    color: black;
+    color: var(--text);
   }
 
   &:active, &:hover {
-    color: $link-color;
+    color: var(--link-color);
   }
 }
 
@@ -62,7 +50,7 @@ code {
   font-family: $code-font;
   padding: 5px;
   overflow: auto;
-  background-color: #f5f5f5;
+  background-color: var(--code-bg);
   border-radius: 5px;
   font-size: 85%;
 }

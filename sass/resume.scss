@@ -30,29 +30,11 @@ body:has(#resume) {
     margin-bottom: 1rem;
   }
 
-  $link-color: #2f76d0;
-
-  a {
-    color: black;
-    text-decoration: none;
-    /* border-bottom: 1px solid lighten($link-color, 20); */
-    border-bottom: 2px solid $link-color;
-    padding: 0;
-
-    &:visited {
-      color: black;
-    }
-
-    &:active, &:hover {
-      color: $link-color;
-    }
-  }
 
   .contact {
     display: flex;
     flex-direction: row;
     align-items: center;
-    /* justify-content: space-between; */
     gap: 1em;
     padding: 0;
 
@@ -64,7 +46,7 @@ body:has(#resume) {
       }
 
       &[aria-hidden='true'] {
-        background: black;
+        background: var(--text);
         width: 1px;
         height: 10px;
       }
@@ -119,20 +101,6 @@ body:has(#resume) {
         font-size: smaller;
         font-weight: normal;
         font-family: 'Lora', sans-serif;
-
-        /* a { */
-        /*   border-bottom: 2px solid aliceblue; */
-        /*   color: black; */
-        /*   text-decoration: none; */
-        /**/
-        /*   &:visited { */
-        /*     color: black; */
-        /*   } */
-        /**/
-        /*   &:active, &:hover { */
-        /*     color: darkblue; */
-        /*   } */
-        /* } */
       }
 
       .work__date {
