@@ -1,6 +1,12 @@
 +++
 title = "New Horizons"
 description = "A few things worth sharing"
+
+# [extra]
+# [extra.shared]
+#   Bluesky = ""
+#   HackerNews = ""
+#   LinkedIn = ""
 +++
 
 I am starting 2025 with a new website and a new employment status.

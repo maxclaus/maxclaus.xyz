@@ -9,3 +9,4 @@ npm-debug.log
 site/static/app.css
 public/
 .DS_STORE
+static/processed_images/

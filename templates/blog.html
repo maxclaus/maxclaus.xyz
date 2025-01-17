@@ -4,7 +4,7 @@
 {% block breadcrumb %}<li><span aria-current="page">Blog</span></li>{% endblock breadcrumb %}
 
 {% block content %}
-    <div class="post-list">
+    <section class="post-list">
         <h1>All posts</h1>
 
         {% for year, posts in section.pages | group_by(attribute="year") %}
@@ -16,5 +16,5 @@
             {% endfor %}
             </ul>
         {% endfor %}
-    </div>
+    </section>
 {% endblock content %}

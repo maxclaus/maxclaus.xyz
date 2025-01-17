@@ -1,22 +1,59 @@
 {% extends "index.html" %}
 
 {% block description %}
-    {{ page.description }}
+{{ page.description }}
 {% endblock description %}
 
 {% block content %}
-    <div class="post">
-        <div class="post__title">
-            <h1>{{ page.title | safe }}</h1>
-            <div class="post__meta">
-                {% if page.date %}{{ page.date | date(format="%Y-%m-%d") }}{% endif %}
-                {% if page.extra.updated %}(last updated: {{ page.extra.updated | date(format="%Y-%m-%d") }}){% endif %}
-            </div>
-            <hr />
-        </div>
+<article itemscope itemtype="http://schema.org/BlogPosting" class="blog_post">
+  <header>
+    <h1 itemprop="name headline">{{ page.title | safe }}</h1>
+    <div class="blog_post__meta">
+      <span hidden
+            itemprop="author"
+            itemscope
+            itemtype="http://schema.org/Person">
+        <span itemprop="name">Max Claus</span>
+      </span>
 
-        <div class="post__body">
-            {{ page.content | safe }}
-        </div>
+      {% if page.date %}
+        <span>
+          Posted on <span itemprop="datePublished">{{ page.date | date(format="%b %-d, %Y") }}</span>
+        </span>
+      {% endif %}
+
+      {% if page.extra.updated %}
+        <span class="blog_post__meta__sep" aria-hidden="true">·</span>
+        <span>
+          &mdash; Last updated on <span itemprop="dateModified">{{ page.extra.updated | date(format="%b %-d, %Y") }}</span>
+        </span>
+      {% endif %}
+
+      {% if page.reading_time >= 1 %}
+        <span class="blog_post__meta__sep" aria-hidden="true">·</span>
+        <span>
+          {{ page.reading_time }} min. read
+        </span>
+      {% endif %}
+
+      {% if page.extra.shared %}
+        <span class="blog_post__meta__sep" aria-hidden="true">·</span>
+        <span class="blog_post__meta__shared">
+          Shared on
+          {% for share_name, share_url in page.extra.shared %}
+            <a href="{{ share_url }}">{{ share_name }}</a>
+          {% endfor %}
+        </span>
+      {% endif %}
     </div>
+  </header>
+
+  <div class="blog_post__body">
+    {{ page.content | safe }}
+  </div>
+
+  <footer>
+    <a class="blog_post__revision" href="https://github.com/maxclaus/maxclaus.xyz/commits/main/content/{{page.relative_path}}">revision history</a>
+  </footer>
+</article>
 {% endblock content %}
