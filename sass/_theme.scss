@@ -45,6 +45,8 @@ body:has(#dark-mode:checked) {
 }
 
 #theme-toggle {
+  display: block !important;
+
   svg {
     width: 1.3rem;
     height: 1.3rem;
