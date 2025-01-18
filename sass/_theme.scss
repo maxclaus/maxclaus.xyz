@@ -58,6 +58,14 @@ body:has(#dark-mode:checked) {
     background-color: transparent;
     cursor: pointer;
   }
+
+  svg#dark-mode-icon:hover {
+    color: #2f76d0;
+  }
+
+  svg#light-mode-icon:hover {
+    color: gold;
+  }
 }
 
 /* Label switching support */
