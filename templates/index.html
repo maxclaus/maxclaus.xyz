@@ -66,7 +66,7 @@
       <div id="content">
         {% block content %}
         <div id="home-intro">
-          {% set avatar = resize_image(path="/avatar.jpeg", width=125, op="fit_width", quality=100) %}
+          {% set avatar = resize_image(path="/avatar.jpeg", width=125, op="fit_width", quality=100, format="webp") %}
           <img class="avatar" src="{{ avatar.url }}" alt="Max's profile picture">
           <p>
           Hello! I'm <b>Max</b>, a developer from Brazil.
