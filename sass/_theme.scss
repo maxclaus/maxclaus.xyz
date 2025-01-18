@@ -22,20 +22,20 @@
 }
 
 body:has(#dark-mode:checked) {
-    --bg: #242424;
-    --text: white;
-    --link-color: gold;
-    --code-bg: darkgray;
-    --meta-color: lightgrey;
+  --bg: #242424;
+  --text: white;
+  --link-color: gold;
+  --code-bg: darkgray;
+  --meta-color: lightgrey;
 }
 
 @media (prefers-color-scheme: dark) {
-body:has(#dark-mode:checked) {
-  --bg: white;
-  --text: black;
-  --link-color: #2f76d0;
-  --code-bg: #f5f5f5;
-  --meta-color: #9AA6B2;
+  body:has(#dark-mode:checked) {
+    --bg: white;
+    --text: black;
+    --link-color: #2f76d0;
+    --code-bg: #f5f5f5;
+    --meta-color: #9AA6B2;
   }
 }
 
