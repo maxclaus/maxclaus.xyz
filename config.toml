@@ -1,6 +1,6 @@
-title = "Max Claus"
+title = "Max Claus' website"
 base_url = "https://maxclaus.xyz"
-description = "Max blog"
+description = "Max Claus' personal website - About, Blog, Resume"
 
 generate_feeds = true
 feed_filenames = ["rss.xml"]
@@ -17,4 +17,4 @@ skip_anchor_prefixes = [
 ]
 
 [extra]
-author = "Max"
+author = "Max Claus"

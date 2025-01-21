@@ -1,8 +1,8 @@
 {% extends "index.html" %}
 
-{% block description %}
-{{ page.description }}
-{% endblock description %}
+{% block description %}{{ page.description }}{% endblock description %}
+{% block pagetype %}article{% endblock pagetype %}
+{% block breadcrumb %}<li><a href="/blog">Blog</a></li>{% endblock breadcrumb %}
 
 {% block content %}
 <article itemscope itemtype="http://schema.org/BlogPosting" class="blog_post">
