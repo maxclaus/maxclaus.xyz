@@ -2,11 +2,11 @@
 title = "New Horizons"
 description = "A few things worth sharing"
 
-# [extra]
-# [extra.shared]
-#   Bluesky = ""
-#   HackerNews = ""
-#   LinkedIn = ""
+[extra]
+[extra.shared]
+  # Bluesky = ""
+  # HackerNews = ""
+  LinkedIn = "https://www.linkedin.com/posts/maxclaus_max-claus-website-activity-7287548307525017601-48FZ"
 +++
 
 I am starting 2025 with a new website and a new employment status.
