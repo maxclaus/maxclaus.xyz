@@ -2,11 +2,9 @@
 title = "Web Real Time Apps"
 description = "Implementing simple web real time apps"
 
-# [extra]
-# [extra.shared]
-#   Bluesky = ""
-#   HackerNews = ""
-#   LinkedIn = ""
+[extra]
+[extra.shared]
+  LinkedIn = "https://www.linkedin.com/posts/maxclaus_web-real-time-apps-activity-7289387792852250626-o3Cu"
 +++
 
 At the end of last year I was looking up for something to implement in Rust and came up with the idea of building web real time applications.
