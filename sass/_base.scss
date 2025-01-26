@@ -47,6 +47,7 @@ code {
   font-family: $code-font;
   padding: 5px;
   overflow: auto;
+  color: var(--code-text);
   background-color: var(--code-bg);
   border-radius: 5px;
   font-size: 85%;

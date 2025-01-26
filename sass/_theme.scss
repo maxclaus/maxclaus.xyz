@@ -4,6 +4,7 @@
   --text: black;
   --link-color: #2f76d0;
   --code-bg: #f5f5f5;
+  --code-text: black;
   --meta-color: #9AA6B2;
 }
 
@@ -13,6 +14,7 @@
     --text: white;
     --link-color: gold;
     --code-bg: darkgray;
+    --code-text: #242424;
     --meta-color: lightgrey;
   }
 }
@@ -26,6 +28,7 @@ body:has(#dark-mode:checked) {
   --text: white;
   --link-color: gold;
   --code-bg: darkgray;
+  --code-text: #242424;
   --meta-color: lightgrey;
 }
 
@@ -35,6 +38,7 @@ body:has(#dark-mode:checked) {
     --text: black;
     --link-color: #2f76d0;
     --code-bg: #f5f5f5;
+    --code-text: black;
     --meta-color: #9AA6B2;
   }
 }
