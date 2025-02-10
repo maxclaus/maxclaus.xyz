@@ -1,0 +1,147 @@
+.z-code {
+  color: var(--code-color-01);
+  background-color: var(--code-color-02);
+}
+
+.z-comment {
+  color: var(--code-color-03);
+}
+.z-variable.z-parameter.z-function {
+  color: var(--code-color-01);
+}
+.z-keyword {
+  color: var(--code-color-04);
+}
+.z-variable {
+  color: var(--code-color-05);
+}
+.z-entity.z-name.z-function, .z-meta.z-require, .z-support.z-function.z-any-method {
+  color: var(--code-color-06);
+}
+.z-support.z-class, .z-entity.z-name.z-class, .z-entity.z-name.z-type.z-class {
+  color: var(--code-color-07);
+}
+.z-meta.z-class {
+  color: var(--code-color-07);
+}
+.z-keyword.z-other.z-special-method {
+  color: var(--code-color-06);
+}
+.z-storage {
+  color: var(--code-color-04);
+}
+.z-support.z-function {
+  color: var(--code-color-06);
+}
+.z-string {
+  color: var(--code-color-08);
+}
+.z-constant.z-numeric {
+  color: var(--code-color-07);
+}
+.z-none {
+  color: var(--code-color-07);
+}
+.z-none {
+  color: var(--code-color-07);
+}
+.z-constant {
+  color: var(--code-color-07);
+}
+.z-entity.z-name.z-tag {
+  color: var(--code-color-05);
+}
+.z-entity.z-other.z-attribute-name {
+  color: var(--code-color-07);
+}
+.z-entity.z-other.z-attribute-name.z-id, .z-punctuation.z-definition.z-entity {
+  color: var(--code-color-07);
+}
+.z-meta.z-selector {
+  color: var(--code-color-04);
+}
+.z-markup.z-heading .z-punctuation.z-definition.z-heading, .z-entity.z-name.z-section {
+  color: var(--code-color-06);
+}
+.z-markup.z-bold, .z-punctuation.z-definition.z-bold {
+  color: var(--code-color-04);
+}
+.z-markup.z-italic, .z-punctuation.z-definition.z-italic {
+  color: var(--code-color-04);
+}
+.z-markup.z-raw.z-inline {
+  color: var(--code-color-08);
+}
+.z-meta.z-link {
+  color: var(--code-color-08);
+}
+.z-markup.z-quote {
+  color: var(--code-color-08);
+}
+.z-source.z-java .z-meta.z-class.z-java .z-meta.z-method.z-java {
+  color: var(--code-color-01);
+}
+.z-source.z-java .z-meta.z-class.z-java .z-meta.z-class.z-body.z-java {
+  color: var(--code-color-01);
+}
+.z-source.z-js .z-meta.z-function.z-js .z-variable.z-parameter.z-function.z-js {
+  color: var(--code-color-05);
+}
+.z-source.z-js .z-variable.z-other.z-readwrite.z-js {
+  color: var(--code-color-05);
+}
+.z-source.z-js .z-variable.z-other.z-object.z-js {
+  color: var(--code-color-01);
+}
+.z-source.z-js .z-meta.z-function-call.z-method.z-js .z-variable.z-other.z-readwrite.z-js {
+  color: var(--code-color-05);
+}
+.z-source.z-js .z-meta.z-block.z-js .z-variable.z-other.z-readwrite.z-js {
+  color: var(--code-color-05);
+}
+.z-source.z-js .z-meta.z-block.z-js .z-variable.z-other.z-object.z-js {
+  color: var(--code-color-01);
+}
+.z-source.z-js .z-meta.z-block.z-js .z-meta.z-function-call.z-method.z-js .z-variable.z-other.z-readwrite.z-js {
+  color: var(--code-color-01);
+}
+.z-source.z-js .z-meta.z-function-call.z-method.z-js .z-variable.z-function.z-js {
+  color: var(--code-color-01);
+}
+.z-source.z-js .z-meta.z-property.z-object.z-js .z-entity.z-name.z-function.z-js {
+  color: var(--code-color-06);
+}
+.z-source.z-js .z-support.z-constant.z-prototype.z-js {
+  color: var(--code-color-01);
+}
+.z-markup.z-inserted {
+  color: var(--code-color-09);
+}
+.z-markup.z-deleted {
+  color: var(--code-color-10);
+}
+.z-markup.z-changed {
+  color: var(--code-color-11);
+}
+.z-string.z-regexp {
+  color: var(--code-color-08);
+}
+.z-constant.z-character.z-escape {
+  color: var(--code-color-12);
+}
+.z-invalid.z-illegal {
+  color: var(--code-color-02);
+  background-color: var(--code-color-10);
+}
+.z-invalid.z-broken {
+  color: var(--code-color-02);
+  background-color: var(--code-color-11);
+}
+.z-invalid.z-deprecated {
+  color: var(--code-color-02);
+  background-color: var(--code-color-11);
+}
+.z-invalid.z-unimplemented {
+  color: var(--code-color-02);
+  background-color: var(--code-color-13);
+}

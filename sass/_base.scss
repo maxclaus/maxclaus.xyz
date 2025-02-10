@@ -40,17 +40,19 @@ pre {
   padding: 1rem;
   font-family: $code-font;
   overflow: auto;
-  font-size: 85%;
+  font-size: smaller;
 }
 
-code {
+:not(pre) > code {
   font-family: $code-font;
-  padding: 5px;
+  font-size: smaller;
+  padding: 0.15em 0.4em;
+  border: 0.1px solid var(--code-color-03);
+  border-radius: 3px;
   overflow: auto;
-  color: var(--code-text);
-  background-color: var(--code-bg);
-  border-radius: 5px;
-  font-size: 85%;
+
+  color: var(--code-color-01);
+  background-color: var(--code-color-02);
 }
 
 blockquote {

@@ -9,7 +9,7 @@ compile_sass = true
 
 [markdown]
 highlight_code = true
-highlight_theme = "cheerfully-light"
+highlight_theme = "css"
 
 [link_checker]
 skip_anchor_prefixes = [

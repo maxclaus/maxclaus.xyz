@@ -1,21 +1,57 @@
 /* Theme colors scheme */
-:root {
+/* Syntax colors are based on https://github.com/sonph/onehalf pallet */
+
+// Light colors
+@mixin theme-light-variables {
   --bg: white;
   --text: black;
   --link-color: #2f76d0;
-  --code-bg: #f5f5f5;
-  --code-text: black;
   --meta-color: #9AA6B2;
+
+  --code-color-01: #383a42;
+  --code-color-02: #fafafa;
+  --code-color-03: #a0a1a7;
+  --code-color-04: #a626a4;
+  --code-color-05: #e45649;
+  --code-color-06: #0184bc;
+  --code-color-07: #c18401;
+  --code-color-08: #50a14f;
+  --code-color-09: #98c379;
+  --code-color-10: #e06c75;
+  --code-color-11: #e5c07b;
+  --code-color-12: #0997b3;
+  --code-color-13: #c678dd;
+}
+
+// Dark colors
+@mixin theme-dark-variables {
+  --bg: #242424;
+  --text: white;
+  --link-color: gold;
+  --meta-color: lightgrey;
+
+  --code-color-01: #dcdfe4;
+  --code-color-02: #282c34;
+  --code-color-03: #5c6370;
+  --code-color-04: #c678dd;
+  --code-color-05: #e06c75;
+  --code-color-06: #61afef;
+  --code-color-07: #e5c07b;
+  --code-color-08: #98c379;
+  --code-color-09: #98c379;
+  --code-color-10: #e06c75;
+  --code-color-11: #e5c07b;
+  --code-color-12: #56b6c2;
+  --code-color-13: #c678dd;
+}
+
+:root {
+  @include theme-light-variables();
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #242424;
-    --text: white;
-    --link-color: gold;
-    --code-bg: darkgray;
-    --code-text: #242424;
-    --meta-color: lightgrey;
+    @include theme-dark-variables();
   }
 }
 
@@ -24,22 +60,12 @@
 }
 
 body:has(#dark-mode:checked) {
-  --bg: #242424;
-  --text: white;
-  --link-color: gold;
-  --code-bg: darkgray;
-  --code-text: #242424;
-  --meta-color: lightgrey;
+  @include theme-dark-variables();
 }
 
 @media (prefers-color-scheme: dark) {
   body:has(#dark-mode:checked) {
-    --bg: white;
-    --text: black;
-    --link-color: #2f76d0;
-    --code-bg: #f5f5f5;
-    --code-text: black;
-    --meta-color: #9AA6B2;
+    @include theme-light-variables();
   }
 }
 
@@ -91,3 +117,8 @@ body:has(#dark-mode:checked) {
 #theme-toggle #dark-mode-icon {
   display: var(--display-dark);
 }
+
+/* Syntax theme colors scheme */
+/* @import url("syntax-theme-dark.css") (prefers-color-scheme: dark); */
+/* @import url("syntax-theme-light.css") (prefers-color-scheme: light); */
+@import "syntax-theme.scss";

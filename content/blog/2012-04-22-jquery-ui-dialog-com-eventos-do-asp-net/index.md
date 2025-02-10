@@ -84,7 +84,7 @@ Segue o código de uma tela completa, lembrando que ao utilizar um evento do ASP
 
 E por último o evento do botão em c#:
 
-```csharp
+```cs
 protected void but_OK_Click(object sender, EventArgs e)
 {
     lbl_result.Text = "Response: " + tb_send.Text;
