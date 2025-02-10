@@ -1,6 +1,11 @@
 +++
 title = "Introduction to Assembly for macOS ARM64"
 description = "Basic introduction to Assembly programming for macOS ARM64 (M1)"
+
+[extra]
+[extra.shared]
+  LinkedIn = "https://www.linkedin.com/posts/maxclaus_introduction-to-assembly-for-macos-arm64-activity-7294805079616847874-E8Ws?utm_source=share&utm_medium=member_desktop"
+  Reddit = "https://www.reddit.com/r/Assembly_language/comments/1imfhdg/introduction_to_assembly_for_macos_arm64/"
 +++
 
 It is incredible how we can write programs on any programming language, and the CPU is able to process those
