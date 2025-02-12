@@ -174,7 +174,7 @@ instruction individually. For more details, check out how to do it [here][debug]
 
 There were times when I couldn't solve certain issues with the resources I had available, either because I didn't know how to implement something or because I couldn't understand why something wasn't working as expected. In those cases, I asked for help on [Stack Overflow][stack_overflow] and got a great support from other developers.
 
-Reddit also seems to have a good community, although I have not personally used it for those issues. I also tried using AI for help, but my experience Assembly related topics wasn't great. AI often mixed approaches from different CPU architectures, which don’t always work the same way. Because of this, I’d recommend being extra cautious when using AI for Assembly questions.
+Reddit also has a good community at [r/Assembly_language][reddit_assembly], although I have not personally used it for those issues. I also tried using AI for help, but my experience Assembly related topics wasn't great. AI often mixed approaches from different CPU architectures, which don’t always work the same way. Because of this, I’d recommend being extra cautious when using AI for Assembly questions.
 
 ## References
 
@@ -195,4 +195,5 @@ topics, so stay tuned.
 [write_syscall]: https://github.com/apple-oss-distributions/xnu/blob/8d741a5de7ff4191bf97d57b9f54c2f6d4a15585/bsd/kern/syscalls.master#L49
 [exit_syscall]: https://github.com/apple-oss-distributions/xnu/blob/8d741a5de7ff4191bf97d57b9f54c2f6d4a15585/bsd/kern/syscalls.master#L46
 [stack_overflow]: https://stackoverflow.com/
+[reddit_assembly]: https://www.reddit.com/r/Assembly_language/
 [learning_assembly_arm64_apple]: https://github.com/maxclaus/learning-assembly-arm64-apple/
