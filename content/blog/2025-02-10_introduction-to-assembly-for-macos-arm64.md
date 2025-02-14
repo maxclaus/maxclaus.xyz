@@ -31,11 +31,12 @@ then break down how it works:
 ```asm
 ; Based on example from https://www.youtube.com/watch?v=9-rgo57Ew2g
 .global _main
+.align 4
 
 _main:
     mov X0, #1          ; arg[0] = 1 (STDOUT)
     adr X1, helloworld  ; arg[1] = string to print
-    mov X2, #15         ; arg[2] = length of our string
+    mov X2, #14         ; arg[2] = length of our string
     mov X16, #4         ; Unix write system call
     svc 0               ; call kernel for the above syscall
 
@@ -55,6 +56,8 @@ as hello.s -o hello.o
 
 # Build a binary for our object file
 ld hello.o -o hello -l System -syslibroot `xcrun -sdk macosx --show-sdk-path` -e _main -arch arm64
+
+# Run program
 ./hello
 ```
 
@@ -71,8 +74,10 @@ by the assembler on assembling a program to take some action or change a setting
 - `.global <name>`: Makes a label visible outside of the program for the linker. Therefore, using `.global _main` in our
   program, and `-e _main` in later in the linker (`ld` command), will make `_main` the entry point for our program.
   Without the `.global` directive that wouldn't be accessible externally.
+- `.align <length>`: Aligns to 4-byte boundaries (best practice for ARM64). Without it, it means no alignment and might cause `adr` miscalculations, leading to a crash, since our hello world message length is not multiple of 4.
 - `.ascii <string>`: It assembles each string character into a consecutive address, as we would expect for a string data
-  stored in memory.
+  stored in memory. Pay attention that `\n` is a single byte in ASCII and it counts as a single character in the total
+  string length.
 
 ## Labels
 
