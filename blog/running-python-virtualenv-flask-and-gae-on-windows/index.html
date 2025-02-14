@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Max Claus">
+    <title>Max Claus&#x27; website</title>
+    <meta name="description" content="">
+    <meta property="og:type" content="article" >
+    <meta name="image" property="og:image" content="https://maxclaus.xyz/og-image.webp">
+    <link rel="stylesheet" href="https://maxclaus.xyz/site.css?h=9652046a01e4d4c12120" >
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="https://maxclaus.xyz/favicon.png"/>
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://maxclaus.xyz/rss.xml">
+    <!-- <script src="https://kit.fontawesome.com/f91b95dbd1.js" crossorigin="anonymous"></script> -->
+  </head>
+
+  <body>
+    <div id="root">
+      <header id="header">
+        <ul class="breadcrumb">
+          <li><a href="/">Max Claus</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+        <ul class="menu">
+          <li><a href="/">About</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/resume/">Resume</a></li>
+          <li>
+            <input id="dark-mode" type="checkbox" name="dark-mode" aria-label="Toggle theme">
+            <label id="theme-toggle" for="dark-mode">
+              <svg id="light-mode-icon" viewBox="0 0 32 32" width="20" height="20" preserveAspectRatio="xMidYMid meet">
+                <circle cx="15" cy="15" r="6" fill="currentColor" />
+
+                <line
+                    id="ray"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    x1="15"
+                    y1="1"
+                    x2="15"
+                    y2="4"
+                    ></line>
+
+                <use href="#ray" transform="rotate(45 15 15)" />
+                <use href="#ray" transform="rotate(90 15 15)" />
+                <use href="#ray" transform="rotate(135 15 15)" />
+                <use href="#ray" transform="rotate(180 15 15)" />
+                <use href="#ray" transform="rotate(225 15 15)" />
+                <use href="#ray" transform="rotate(270 15 15)" />
+                <use href="#ray" transform="rotate(315 15 15)" />
+              </svg>
+              <svg id="dark-mode-icon" viewBox="0 0 32 32" width="20" height="20" preserveAspectRatio="xMidYMid meet">
+                <path
+                    fill="currentColor"
+                    d="
+                       M 23, 5
+                       A 12 12 0 1 0 23, 25
+                       A 12 12 0 0 1 23, 5"
+                    />
+              </svg>
+            </label>
+          </li>
+        </ul>
+      </header>
+
+      <div id="content">
+        
+<article itemscope itemtype="http://schema.org/BlogPosting" class="blog_post">
+  <header>
+    <h1 itemprop="name headline">Running Python, Virtualenv, Flask and GAE on Windows</h1>
+    <div class="blog_post__meta">
+      <span hidden
+            itemprop="author"
+            itemscope
+            itemtype="http://schema.org/Person">
+        <span itemprop="name">Max Claus</span>
+      </span>
+
+      
+        <span>
+          Posted on <span itemprop="datePublished">Jan 12, 2013</span>
+        </span>
+      
+
+      
+
+      
+        <span class="blog_post__meta__sep" aria-hidden="true">·</span>
+        <span>
+          3 min. read
+        </span>
+      
+
+      
+    </div>
+  </header>
+
+  <div class="blog_post__body">
+    <p>This is a short tutorial explaining how to configure a environment on windows to create an application with python, flask and google app engine.</p>
+<p>Before start the article I would say the best operation system to work with python is not the Windows. Should be really easier if you work with the Linux or IOS, that are more supported for this kind of development. But anyway is possible do the same on the Windows, so lets begin...</p>
+<p><strong>Install Python</strong></p>
+<ol>
+<li>Install Python <a href="http://www.python.org/ftp/python/2.7.2/python-2.7.2.msi">python-2.7.2.msi</a></li>
+<li>Click in Windows Start button and search by "Edit the system environment" and open</li>
+<li>Go to the tab Advanced and click on button "Environment Variables…"</li>
+<li>When the Environment Variables window opens, choose Path from the System variables list and click Edit…</li>
+<li>Add this <code>;C:Python27;C:Python27Scripts</code> at the end of the value and save</li>
+</ol>
+<blockquote>
+<p>Now you are able to execute python from Command Prompt of the windows</p>
+</blockquote>
+<p><strong>Install setuptools MS Windows installer</strong> (Necessary to install PIP on Windows)</p>
+<ol>
+<li>Choose the correct installer for you in this page <a href="http://pypi.python.org/pypi/setuptools#files">PYPI</a> ( I used this one:<a href="http://pypi.python.org/packages/2.7/s/setuptools/setuptools-0.6c11.win32-py2.7.exe#md5=57e1e64f6b7c7f1d2eddfc9746bbaf20">setuptools-0.6c11.win32-py2.7.exe</a>)</li>
+<li>Download the installer and Install that</li>
+</ol>
+<p><strong>Install PIP</strong></p>
+<ol>
+<li>Download <a href="http://pypi.python.org/pypi/pip#downloads">PIP</a></li>
+<li>Extract it to any folder</li>
+<li>From that directory, type python setup.py install</li>
+</ol>
+<p><strong>Install Virtualenv</strong></p>
+<ol>
+<li>Execute pip install virtualenv</li>
+<li>Execute this mkdir c:virtualenvs to create a folder to the Virtual Envs</li>
+<li>Execute this cd virtualenvs to access the virtualenvs directory</li>
+<li>Execute virtualenv flaskdemo to create a virtualenv for you project</li>
+<li>Active the virtualenv c:virtualenvsflaskdemoscriptsactivate</li>
+</ol>
+<p><strong>Install Google App Engine SDK</strong></p>
+<ol>
+<li>Install the <a href="https://developers.google.com/appengine/downloads">GAE SDK</a></li>
+</ol>
+<p><strong>Create the project</strong></p>
+<ol>
+<li>Create a directory for your project</li>
+<li>Create the main of your application <a href="https://github.com/maxclaus/flaskgaedemo/blob/master/main.py">main.py</a></li>
+<li>Create the configuration of your application for Google App Engine<a href="https://github.com/maxclaus/flaskgaedemo/blob/master/app.yaml">app.yaml</a></li>
+<li>Create a file to let GAE initialize your application <a href="https://github.com/maxclaus/flaskgaedemo/blob/master/initialize_gae.py">initialize_gae.py</a></li>
+</ol>
+<blockquote>
+<p>Look a example of the code here: <a href="https://github.com/maxclaus/flaskgaedemo">https://github.com/maxclaus/flaskgaedemo</a></p>
+</blockquote>
+<p><strong>Install Flask to run Locally</strong></p>
+<ol>
+<li>Execute pip install flask</li>
+</ol>
+<p><strong>Install Flask to run on the GAE</strong></p>
+<ol>
+<li>Download Flask <a href="https://github.com/mitsuhiko/flask/archive/0.9.zip">0.9.zip</a> or <a href="https://github.com/mitsuhiko/flask/tags">the last version</a> and extract the folder flask inside your project</li>
+<li>Download Werkzeug <a href="https://github.com/mitsuhiko/werkzeug/archive/0.8.3.zip">0.8.3.zip</a> or <a href="https://github.com/mitsuhiko/werkzeug/tags">the last version</a> and extract the folder werkzeug inside your project</li>
+<li>Download Jinja2 <a href="https://github.com/mitsuhiko/jinja2/archive/2.6.zip">2.6.zip</a> or <a href="https://github.com/mitsuhiko/jinja2/tags">the last version</a> and extract the folder jinja2 inside your project</li>
+<li>Download Simple Json <a href="https://github.com/simplejson/simplejson/archive/v3.0.5.zip">v3.0.5.zip</a> or <a href="https://github.com/simplejson/simplejson/archive/v3.0.5.zip">the last version</a> and extract the folder simplejson inside your project</li>
+</ol>
+<p><strong>Running the application with GAE SDK</strong></p>
+<ol>
+<li>Open Google App Engine Launcher</li>
+<li>Add a new application</li>
+<li>Run the application</li>
+<li>Click in Browse button to open your application on browser</li>
+<li>Finally click on Deploy button to deploy your application</li>
+</ol>
+<p> </p>
+<blockquote>
+<p>Acabei deixando o artigo todo em inglês porque na verdade ele surgiu a partir de uma resposta que eu estava contribuindo no stackoverflow.</p>
+</blockquote>
+
+  </div>
+
+  <footer>
+    <a class="blog_post__revision" href="https://github.com/maxclaus/maxclaus.xyz/commits/main/content/blog&#x2F;2013-01-12-running-python-virtualenv-flask-and-gae-on-windows.md">revision history</a>
+  </footer>
+</article>
+
+      </div>
+      <footer id="footer">
+        <p> Copyright © 2025 Max Claus. All rights reserved. </p>
+      </footer>
+      <div hidden itemscope itemtype="http://schema.org/Person">
+        <span itemprop="gender">Male</span>
+        <span itemprop="email">maxclaus@posteo.com</span>
+        <span itemprop="givenName">Max</span>
+        <span itemprop="familyName">Claus</span>
+        <span itemprop="name">Max Claus Nunes</span>
+        <span itemprop="birthDate">1989-09-12</span>
+        <span itemprop="jobTitle">Software Engineer</span>
+        <span itemprop="nationality">BR</span>
+        <a href="https://maxclaus.xyz" itemprop="url">Portfolio</a>
+        <a href="https://maxclaus.xyz/blog" itemprop="url">Blog</a>
+        <a href="https://maxclaus.xyz/resume" itemprop="url">Resume</a>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Max Claus">
+    <title>Max Claus&#x27; website</title>
+    <meta name="description" content="">
+    <meta property="og:type" content="article" >
+    <meta name="image" property="og:image" content="https://maxclaus.xyz/og-image.webp">
+    <link rel="stylesheet" href="https://maxclaus.xyz/site.css?h=9652046a01e4d4c12120" >
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="https://maxclaus.xyz/favicon.png"/>
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://maxclaus.xyz/rss.xml">
+    <!-- <script src="https://kit.fontawesome.com/f91b95dbd1.js" crossorigin="anonymous"></script> -->
+  </head>
+
+  <body>
+    <div id="root">
+      <header id="header">
+        <ul class="breadcrumb">
+          <li><a href="/">Max Claus</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+        <ul class="menu">
+          <li><a href="/">About</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/resume/">Resume</a></li>
+          <li>
+            <input id="dark-mode" type="checkbox" name="dark-mode" aria-label="Toggle theme">
+            <label id="theme-toggle" for="dark-mode">
+              <svg id="light-mode-icon" viewBox="0 0 32 32" width="20" height="20" preserveAspectRatio="xMidYMid meet">
+                <circle cx="15" cy="15" r="6" fill="currentColor" />
+
+                <line
+                    id="ray"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    x1="15"
+                    y1="1"
+                    x2="15"
+                    y2="4"
+                    ></line>
+
+                <use href="#ray" transform="rotate(45 15 15)" />
+                <use href="#ray" transform="rotate(90 15 15)" />
+                <use href="#ray" transform="rotate(135 15 15)" />
+                <use href="#ray" transform="rotate(180 15 15)" />
+                <use href="#ray" transform="rotate(225 15 15)" />
+                <use href="#ray" transform="rotate(270 15 15)" />
+                <use href="#ray" transform="rotate(315 15 15)" />
+              </svg>
+              <svg id="dark-mode-icon" viewBox="0 0 32 32" width="20" height="20" preserveAspectRatio="xMidYMid meet">
+                <path
+                    fill="currentColor"
+                    d="
+                       M 23, 5
+                       A 12 12 0 1 0 23, 25
+                       A 12 12 0 0 1 23, 5"
+                    />
+              </svg>
+            </label>
+          </li>
+        </ul>
+      </header>
+
+      <div id="content">
+        
+<article itemscope itemtype="http://schema.org/BlogPosting" class="blog_post">
+  <header>
+    <h1 itemprop="name headline">Gerar banco a partir do diagrama de classes (Rational)</h1>
+    <div class="blog_post__meta">
+      <span hidden
+            itemprop="author"
+            itemscope
+            itemtype="http://schema.org/Person">
+        <span itemprop="name">Max Claus</span>
+      </span>
+
+      
+        <span>
+          Posted on <span itemprop="datePublished">Sep 26, 2010</span>
+        </span>
+      
+
+      
+
+      
+        <span class="blog_post__meta__sep" aria-hidden="true">·</span>
+        <span>
+          4 min. read
+        </span>
+      
+
+      
+    </div>
+  </header>
+
+  <div class="blog_post__body">
+    <p>Após finalizar toda an lise sobre a estrutura e funcionalidade do sistema a se densenvolver o próximo passo, basicamente, seria partir para o desenvolvimento.</p>
+<p>Sendo assim, por que não aproveitarmos o que j desenvolvido no diagrama de classes?</p>
+<p>Por isso, o Rational Rose disponibliza gerar o banco a partir do mapeamento das tabelas de acordo com o nosso diagrama de classes.</p>
+<p>Como exemplo, desenvolvi um diagrama de classes simples, referente a pedidos de compras de um cliente.</p>
+<ul>
+<li>Abrir Rational Rose</li>
+<li>Adicionar a pasta Logica View, do novo projeto, um package para conter nosso diagrama de classes.</li>
+<li>Montar o nosso diagrama de classes dentro desse package.</li>
+</ul>
+<p><img src="https://maxclaus.xyz/blog/gerar-banco-a-partir-do-diagrama-de-classes-rational/./CriarPackageDiagrama.png" alt="" title="Criar Package Diagrama" />
+<em>Criar Package Diagrama</em></p>
+<p><img src="https://maxclaus.xyz/blog/gerar-banco-a-partir-do-diagrama-de-classes-rational/./diagramaDeClassesPedido-300x259.png" alt="" title="Diagrama De Classes Pedido" />
+<em>Diagrama De Classes Pedido</em></p>
+<p>E interessante que você já defina o tipo(string, bollean...) de cada atributo de suas classes para ficar mais consistente o diagrama de classes com o banco gerado. (Se não definir agora, ele ir gerar tudo com small int)</p>
+<p>Após finalizado seu diagrama de classes, devemos definir quais classes se tornarão tabelas no nosso banco. Para isso fação seguinte em todas as tabelas.</p>
+<ul>
+<li>Botão direito na classe, Open Specification..</li>
+<li>Aba Detail..</li>
+<li>Marque a opção Persistent</li>
+</ul>
+<p><img src="https://maxclaus.xyz/blog/gerar-banco-a-partir-do-diagrama-de-classes-rational/./ClassesPersistentes.png" alt="" title="Classes Persistentes" /></p>
+<p><em>Classes Persistentes (Futuras tabelas no banco)</em></p>
+<p><em>Caso você possua atributo de identificação em suas classes ("id_cliente", "codigo_cliente"...) você deve defini-los como parte do objeto de identificação, se não o Rational ir criar identificadores automaticamente ao gerar as tabelas.</em></p>
+<p><em>Para isso faça o seguinte:</em></p>
+<ul>
+<li><em>Pelo menu em rvore abra a pasta do package que contem seu diagrama de classes.</em></li>
+<li><em>Abra classe por classe e clique com o botão direito no atributo de identificação.</em></li>
+<li><em>Em Data Modeler defina como Part of Object Identity</em></li>
+</ul>
+<p><strong>Obs: Essa parte Ã  cima não é muito aconcelhavel pois, na realidade no diagrama de classes não deve conter os diagramas identificadores. Porém, pra quem gosta de trabalhar desta forma, ficou a dica.</strong></p>
+<ul>
+<li>Agora vamos criar nosso banco, para manter nossas tabelas, que serão geradas posteriormente.</li>
+</ul>
+<p><img src="https://maxclaus.xyz/blog/gerar-banco-a-partir-do-diagrama-de-classes-rational/./CriarBanco1-e1285526718680.png" alt="" title="Criar Banco" /><em>Criar Banco - Para manter nossas tabelas (Deixe o nome como BancoDados )</em></p>
+<ul>
+<li>Transformar nosso modelo de objetos em modelo de dados.</li>
+</ul>
+<p><img src="https://maxclaus.xyz/blog/gerar-banco-a-partir-do-diagrama-de-classes-rational/./TransformaModeloDados.png" alt="" title="Transforma Modelo Dados" /><em>Transforma Modelo Dados</em></p>
+<ul>
+<li>Na janela que abrir , selecione em Target Database o banco que criamos.</li>
+<li>Caso você não deseje que ele criei prefixos no nome de suas tabelas, deixe o Prefix vazio ( Eu sempre deixo vazio).</li>
+<li>Clique em ok.</li>
+</ul>
+<p>Agora v em em Schemas, dentro da pasta Logical View e abra o nosso schema criado. Dentro dele estar todas as nossas tabelas geradas ( se estiver faltando alguma é porque você não a marcou como persistente anteriormente.)</p>
+<p>Próximo passo, criar o diagrma do modelo de dados:</p>
+<p><img src="https://maxclaus.xyz/blog/gerar-banco-a-partir-do-diagrama-de-classes-rational/./DataModelDiagram-e1285531220880.png" alt="" title="DataModelDiagram" /><em>Diagrama do modelo de dados (Renomeie o arquivo para ModelodeDados )</em></p>
+<p>Para adicionar nossas tabelas ao diagrama é muito simples. Basta você arrastar as tabelas do nosso Schema para dentro do nosso Modelo de Dados.</p>
+<p><img src="https://maxclaus.xyz/blog/gerar-banco-a-partir-do-diagrama-de-classes-rational/./ModelodeDados-e1285532759266.png" alt="" title="Diagrama Modelo de Dados" /><em>Diagrama Modelo de Dados</em></p>
+<p>Após terminar de adicionar todas as tabelas ao modelo você notar que surgiram automaticamente o relacionamento entre as tabelas. Perceba também,-  que se surgiram automaticamente nossas colunas identificadoras, com o sufixo _ID do nome de cada tabela.</p>
+<ul>
+<li>Agora passe de coluna em coluna em todas as tabelas definindo o tipo e tamanho de cada coluna. <em>(Se você ja havia definido corretamente o tipo de cada atributo no diagrama de classes, basta você definir o tamanho correto para cada coluna)</em></li>
+</ul>
+<p>Finalmente, vamos gerar nosso script sql do banco:</p>
+<p><img src="https://maxclaus.xyz/blog/gerar-banco-a-partir-do-diagrama-de-classes-rational/./ForwardEngineer-e1285533769679.png" alt="" title="ForwardEngineer" /><em>Forward Engineer</em></p>
+<ul>
+<li>Na janela que abriu de NEXT/ NEXT/ selecione o nome e local do arquivo sql/NEXT/FINISH.</li>
+</ul>
+<p>Pronto, você acabou de gerar o script sql do banco a partir do seu diagrama de classes!!</p>
+
+  </div>
+
+  <footer>
+    <a class="blog_post__revision" href="https://github.com/maxclaus/maxclaus.xyz/commits/main/content/blog&#x2F;2010-09-26-gerar-banco-a-partir-do-diagrama-de-classes-rational&#x2F;index.md">revision history</a>
+  </footer>
+</article>
+
+      </div>
+      <footer id="footer">
+        <p> Copyright © 2025 Max Claus. All rights reserved. </p>
+      </footer>
+      <div hidden itemscope itemtype="http://schema.org/Person">
+        <span itemprop="gender">Male</span>
+        <span itemprop="email">maxclaus@posteo.com</span>
+        <span itemprop="givenName">Max</span>
+        <span itemprop="familyName">Claus</span>
+        <span itemprop="name">Max Claus Nunes</span>
+        <span itemprop="birthDate">1989-09-12</span>
+        <span itemprop="jobTitle">Software Engineer</span>
+        <span itemprop="nationality">BR</span>
+        <a href="https://maxclaus.xyz" itemprop="url">Portfolio</a>
+        <a href="https://maxclaus.xyz/blog" itemprop="url">Blog</a>
+        <a href="https://maxclaus.xyz/resume" itemprop="url">Resume</a>
+      </div>
+    </div>
+  </body>
+</html>

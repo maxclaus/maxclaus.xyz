@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Max Claus">
+    <title>Max Claus&#x27; website</title>
+    <meta name="description" content="Basic introduction to Assembly programming for macOS ARM64 (M1)">
+    <meta property="og:type" content="article" >
+    <meta name="image" property="og:image" content="https://maxclaus.xyz/og-image.webp">
+    <link rel="stylesheet" href="https://maxclaus.xyz/site.css?h=9652046a01e4d4c12120" >
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="https://maxclaus.xyz/favicon.png"/>
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://maxclaus.xyz/rss.xml">
+    <!-- <script src="https://kit.fontawesome.com/f91b95dbd1.js" crossorigin="anonymous"></script> -->
+  </head>
+
+  <body>
+    <div id="root">
+      <header id="header">
+        <ul class="breadcrumb">
+          <li><a href="/">Max Claus</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+        <ul class="menu">
+          <li><a href="/">About</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/resume/">Resume</a></li>
+          <li>
+            <input id="dark-mode" type="checkbox" name="dark-mode" aria-label="Toggle theme">
+            <label id="theme-toggle" for="dark-mode">
+              <svg id="light-mode-icon" viewBox="0 0 32 32" width="20" height="20" preserveAspectRatio="xMidYMid meet">
+                <circle cx="15" cy="15" r="6" fill="currentColor" />
+
+                <line
+                    id="ray"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    x1="15"
+                    y1="1"
+                    x2="15"
+                    y2="4"
+                    ></line>
+
+                <use href="#ray" transform="rotate(45 15 15)" />
+                <use href="#ray" transform="rotate(90 15 15)" />
+                <use href="#ray" transform="rotate(135 15 15)" />
+                <use href="#ray" transform="rotate(180 15 15)" />
+                <use href="#ray" transform="rotate(225 15 15)" />
+                <use href="#ray" transform="rotate(270 15 15)" />
+                <use href="#ray" transform="rotate(315 15 15)" />
+              </svg>
+              <svg id="dark-mode-icon" viewBox="0 0 32 32" width="20" height="20" preserveAspectRatio="xMidYMid meet">
+                <path
+                    fill="currentColor"
+                    d="
+                       M 23, 5
+                       A 12 12 0 1 0 23, 25
+                       A 12 12 0 0 1 23, 5"
+                    />
+              </svg>
+            </label>
+          </li>
+        </ul>
+      </header>
+
+      <div id="content">
+        
+<article itemscope itemtype="http://schema.org/BlogPosting" class="blog_post">
+  <header>
+    <h1 itemprop="name headline">Introduction to Assembly for macOS ARM64</h1>
+    <div class="blog_post__meta">
+      <span hidden
+            itemprop="author"
+            itemscope
+            itemtype="http://schema.org/Person">
+        <span itemprop="name">Max Claus</span>
+      </span>
+
+      
+        <span>
+          Posted on <span itemprop="datePublished">Feb 10, 2025</span>
+        </span>
+      
+
+      
+
+      
+        <span class="blog_post__meta__sep" aria-hidden="true">·</span>
+        <span>
+          8 min. read
+        </span>
+      
+
+      
+        <span class="blog_post__meta__sep" aria-hidden="true">·</span>
+        <span class="blog_post__meta__shared">
+          Shared on
+          
+            <a href="https:&#x2F;&#x2F;www.linkedin.com&#x2F;posts&#x2F;maxclaus_introduction-to-assembly-for-macos-arm64-activity-7294805079616847874-E8Ws?utm_source=share&amp;utm_medium=member_desktop">LinkedIn</a>
+          
+            <a href="https:&#x2F;&#x2F;www.reddit.com&#x2F;r&#x2F;Assembly_language&#x2F;comments&#x2F;1imfhdg&#x2F;introduction_to_assembly_for_macos_arm64&#x2F;">Reddit</a>
+          
+        </span>
+      
+    </div>
+  </header>
+
+  <div class="blog_post__body">
+    <p>It is incredible how we can write programs on any programming language, and the CPU is able to process those
+instructions internally. Even if you don't work with low level programming, it is still fascinating to understand how
+the CPU executes instructions and how data is managed on memory.</p>
+<p>Learning <a href="https://en.wikipedia.org/wiki/C_(programming_language)">C</a> already covers many important concepts, such as direct memory management. However, it still
+abstracts some lower level details handled internally by the C compiler. That is where Assembly comes in, it is the next
+step toward lower level language where developers have no standard libraries or utility functions. Additionally,
+Assembly is so low level it differs for each CPU architecture the program is targeted to run on.</p>
+<p>Assembly can be very intimidating for beginners and may even seem completely unreasonable or impossible to understand at
+first. I certainly felt that way for a long time. While it is not as easy to learn as higher level languages, like any
+other language, with time, dedication, and practice, things start to make sense.</p>
+<p>To be honest, learning Assembly for ARM64 on MacOS wasn't as straightforward as it might be on other operating systems.
+Apple doesn't provide much documentation on assembly, and many existing resources are outdated. However, searching well
+across the internet and piecing together information from different sources, it is possible to find everything we need.</p>
+<p>As always, when learning a new language, we start with a "Hello, World!" example. Lets first take a look on the code and
+then break down how it works:</p>
+<pre data-lang="asm" class="language-asm z-code"><code class="language-asm" data-lang="asm"><span class="z-source z-assembly"><span class="z-comment z-assembly">; Based on example from https://www.youtube.com/watch?v=9-rgo57Ew2g</span>
+</span><span class="z-source z-assembly"><span class="z-entity z-name z-function z-assembly">.</span><span class="z-support z-function z-directive z-assembly">global</span> <span class="z-entity z-name z-function z-assembly">_main</span>
+</span><span class="z-source z-assembly"><span class="z-entity z-name z-function z-assembly">.</span><span class="z-support z-function z-directive z-assembly">align</span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-constant z-character z-decimal z-assembly">4</span>
+</span><span class="z-source z-assembly">
+</span><span class="z-source z-assembly"><span class="z-entity z-name z-function z-assembly">_</span><span class="z-entity z-name z-function z-assembly">m</span><span class="z-entity z-name z-function z-assembly">a</span><span class="z-entity z-name z-function z-assembly">i</span><span class="z-entity z-name z-function z-assembly">n</span><span class="z-entity z-name z-function z-assembly">:</span>
+</span><span class="z-source z-assembly"><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-keyword z-control z-assembly">mov</span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly">X</span><span class="z-entity z-name z-function z-assembly">0</span><span class="z-source z-assembly">,</span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly">#</span><span class="z-constant z-character z-decimal z-assembly">1</span><span class="z-comment z-assembly">          ; arg[0] = 1 (STDOUT)</span>
+</span><span class="z-source z-assembly"><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly">a</span><span class="z-entity z-name z-function z-assembly">d</span><span class="z-entity z-name z-function z-assembly">r</span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly">X</span><span class="z-entity z-name z-function z-assembly">1</span><span class="z-source z-assembly">,</span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly">h</span><span class="z-entity z-name z-function z-assembly">e</span><span class="z-entity z-name z-function z-assembly">l</span><span class="z-entity z-name z-function z-assembly">l</span><span class="z-entity z-name z-function z-assembly">o</span><span class="z-entity z-name z-function z-assembly">w</span><span class="z-entity z-name z-function z-assembly">o</span><span class="z-entity z-name z-function z-assembly">r</span><span class="z-entity z-name z-function z-assembly">l</span><span class="z-entity z-name z-function z-assembly">d</span><span class="z-comment z-assembly">  ; arg[1] = string to print</span>
+</span><span class="z-source z-assembly"><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-keyword z-control z-assembly">mov</span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly">X</span><span class="z-entity z-name z-function z-assembly">2</span><span class="z-source z-assembly">,</span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly">#</span><span class="z-constant z-character z-decimal z-assembly">14</span><span class="z-comment z-assembly">         ; arg[2] = length of our string</span>
+</span><span class="z-source z-assembly"><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-keyword z-control z-assembly">mov</span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly">X</span><span class="z-entity z-name z-function z-assembly">1</span><span class="z-entity z-name z-function z-assembly">6</span><span class="z-source z-assembly">,</span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly">#</span><span class="z-constant z-character z-decimal z-assembly">4</span><span class="z-comment z-assembly">         ; Unix write system call</span>
+</span><span class="z-source z-assembly"><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly">s</span><span class="z-entity z-name z-function z-assembly">v</span><span class="z-entity z-name z-function z-assembly">c</span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-constant z-character z-decimal z-assembly">0</span><span class="z-comment z-assembly">               ; call kernel for the above syscall</span>
+</span><span class="z-source z-assembly">
+</span><span class="z-source z-assembly"><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-keyword z-control z-assembly">mov</span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly">X</span><span class="z-entity z-name z-function z-assembly">0</span><span class="z-source z-assembly">,</span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly">#</span><span class="z-constant z-character z-decimal z-assembly">0</span><span class="z-comment z-assembly">          ; Use 0 return code</span>
+</span><span class="z-source z-assembly"><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-keyword z-control z-assembly">mov</span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly">X</span><span class="z-entity z-name z-function z-assembly">1</span><span class="z-entity z-name z-function z-assembly">6</span><span class="z-source z-assembly">,</span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly">#</span><span class="z-constant z-character z-decimal z-assembly">1</span><span class="z-comment z-assembly">         ; Unix exit system call</span>
+</span><span class="z-source z-assembly"><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly">s</span><span class="z-entity z-name z-function z-assembly">v</span><span class="z-entity z-name z-function z-assembly">c</span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-constant z-character z-decimal z-assembly">0</span><span class="z-comment z-assembly">               ; call kernel for the above syscall</span>
+</span><span class="z-source z-assembly">
+</span><span class="z-source z-assembly"><span class="z-entity z-name z-function z-assembly">h</span><span class="z-entity z-name z-function z-assembly">e</span><span class="z-entity z-name z-function z-assembly">l</span><span class="z-entity z-name z-function z-assembly">l</span><span class="z-entity z-name z-function z-assembly">o</span><span class="z-entity z-name z-function z-assembly">w</span><span class="z-entity z-name z-function z-assembly">o</span><span class="z-entity z-name z-function z-assembly">r</span><span class="z-entity z-name z-function z-assembly">l</span><span class="z-entity z-name z-function z-assembly">d</span><span class="z-entity z-name z-function z-assembly">:</span>
+</span><span class="z-source z-assembly"><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-entity z-name z-function z-assembly">.</span><span class="z-entity z-name z-function z-assembly">a</span><span class="z-entity z-name z-function z-assembly">s</span><span class="z-entity z-name z-function z-assembly">c</span><span class="z-entity z-name z-function z-assembly">i</span><span class="z-entity z-name z-function z-assembly">i</span><span class="z-entity z-name z-function z-assembly"> </span><span class="z-string z-assembly">&quot;Hello, World!\n&quot;</span>
+</span></code></pre>
+<p>Running it:</p>
+<pre data-lang="shell" class="language-shell z-code"><code class="language-shell" data-lang="shell"><span class="z-text z-plain"># Compile our assembly source code to a object file
+</span><span class="z-text z-plain">as hello.s -o hello.o
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain"># Build a binary for our object file
+</span><span class="z-text z-plain">ld hello.o -o hello -l System -syslibroot `xcrun -sdk macosx --show-sdk-path` -e _main -arch arm64
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain"># Run program
+</span><span class="z-text z-plain">./hello
+</span></code></pre>
+<p>Yay! If everything worked as expected, you should see a "Hello, World!" messaged printed in your terminal.</p>
+<p>Now, lets break down how it works. However, instead of going through it line by line, we will take a different approach by grouping the
+explanation based on identifier types:</p>
+<h3 id="directives">Directives<a class="zola-anchor" href="#directives" aria-label="Anchor link for: directives">🔗</a></h3>
+<p>Identifiers starting with point (<code>.</code>) represent directives. They are not translated into machine code and they are used
+by the assembler on assembling a program to take some action or change a setting.</p>
+<ul>
+<li><code>.global &lt;name&gt;</code>: Makes a label visible outside of the program for the linker. Therefore, using <code>.global _main</code> in our
+program, and <code>-e _main</code> in later in the linker (<code>ld</code> command), will make <code>_main</code> the entry point for our program.
+Without the <code>.global</code> directive that wouldn't be accessible externally.</li>
+<li><code>.align &lt;length&gt;</code>: Aligns to 4-byte boundaries (best practice for ARM64). Without it, it means no alignment and might cause <code>adr</code> miscalculations, leading to a crash, since our hello world message length is not multiple of 4.</li>
+<li><code>.ascii &lt;string&gt;</code>: It assembles each string character into a consecutive address, as we would expect for a string data
+stored in memory. Pay attention that <code>\n</code> is a single byte in ASCII and it counts as a single character in the total
+string length.</li>
+</ul>
+<h2 id="labels">Labels<a class="zola-anchor" href="#labels" aria-label="Anchor link for: labels">🔗</a></h2>
+<p>Identifiers ending with colon (<code>:</code>) represent labels. They are basically name for lines, and can be referenced by other
+parts of the program, such as to jump to a different location or to load data from a location.</p>
+<ul>
+<li><code>_main:</code>: is used in this example to mark where our program begins.</li>
+<li><code>helloworld:</code>: it points to the <code>ascii</code> data for the hello world message.</li>
+</ul>
+<h2 id="immediate-values">Immediate values<a class="zola-anchor" href="#immediate-values" aria-label="Anchor link for: immediate-values">🔗</a></h2>
+<p>Identifiers starting with <code>#</code> represent immediate values (unless it is used out of the program area, then it could be a
+comment). They are values <a href="https://en.wikipedia.org/wiki/Hard_coding">hard coded</a> into the assembly source code program, instead of loading the data
+from other sources such as from stack or heap address. Think on them just like is done in any other programming language
+when we set a variable with a hard code value.</p>
+<ul>
+<li><code>#1</code>: means we are passing number one as argument to something. Keep in mind in assembly numbers must be on
+hexadecimal format, so beyond 9, numbers start to include A-F letters. For instance, <code>8=8</code>, <code>9=9</code>, <code>10=A</code>, <code>11=B</code>, <code>15=F</code>,
+<code>16=10</code>, and so on.</li>
+</ul>
+<h2 id="registers">Registers<a class="zola-anchor" href="#registers" aria-label="Anchor link for: registers">🔗</a></h2>
+<p>Registers are quickly accessible locations for the CPU. They are normally at the top of the <a href="https://en.wikipedia.org/wiki/Memory_hierarchy">memory hierarchy</a>, and
+provide the fastest way for the processor to access data. Whenever something needs to be processed by the CPU, we use
+those registers as input/output parameters for CPU operations.</p>
+<p>On ARM64 there are 31 64-bit integer registers labeled <code>X0</code> to <code>X30</code> and the CPU has specific usage for each one of
+them. In our example we use general purpose registers <code>X0</code>, <code>X1</code>, <code>X2</code>, and <code>X16</code>. The reason we are using those
+specific registers is based on the system call we want the kernel to run for us, those details are covered in the next
+sections.</p>
+<p>It is worth mentioning that <code>X16</code> is a reserved register used by ARM64 processor, it tells which system call we are about to
+execute. It is usually specified right before we a <code>svc</code> call. More details about this on the System Calls section.</p>
+<h2 id="instructions">Instructions<a class="zola-anchor" href="#instructions" aria-label="Anchor link for: instructions">🔗</a></h2>
+<p>Instructions are used to control the CPU. They are basically commands the CPU will execute such as arithmetic operations
+(add, subtract, multiply, and etc.), move memory around, change the kernel mode privilege to run syscalls, and many
+other kinds of operations.</p>
+<p>In our example we have used only 3 type of instructions:</p>
+<ul>
+<li><code>mov</code>: copies the value in a source register to the destination register.</li>
+<li><code>adr</code>: loads data from a label address to a destination register.</li>
+<li><code>svc</code>: it deserves a longer explanation, check it out the next section.</li>
+</ul>
+<h2 id="system-calls">System Calls<a class="zola-anchor" href="#system-calls" aria-label="Anchor link for: system-calls">🔗</a></h2>
+<p>The <code>svc &lt;param&gt;</code> operation, makes the processor change from User mode to Supervisor mode which gives kernel level
+privileges. In our case, all supervisor calls pass <code>0</code> parameter which means it is supposed for the kernel to run a
+system call. Also, values in the registers are passed as parameters to the kernel, so it knows which system call to run,
+along with the required parameters for that syscall.</p>
+<p>We are writing a program for an Apple computer, more specifically, a XNU kernel which is part of the Darwin
+operating system used on macOS and iOS. All the XNU system calls can be found in the <a href="https://github.com/apple-oss-distributions/xnu/blob/main/bsd/kern/syscalls.master">XNU codebase</a>.</p>
+<p>For our program we need to call a syscall to write data to the terminal and another to exit the program.</p>
+<p>If we check the <a href="https://github.com/apple-oss-distributions/xnu/blob/8d741a5de7ff4191bf97d57b9f54c2f6d4a15585/bsd/kern/syscalls.master#L49">write syscall</a> documentation:</p>
+<pre class="z-code"><code><span class="z-text z-plain">4	AUE_NULL	ALL	{ user_ssize_t write(int fd, user_addr_t cbuf, user_size_t nbyte); }
+</span></code></pre>
+<p>The ID for the write syscall is <code>4</code> and it expects 3 arguments:</p>
+<ol>
+<li><code>fd</code>: which file descriptor it needs to write to. The file descriptors available are <code>STDIN=0</code>, <code>STDOUT=1</code>, and <code>STDERR=2</code> (<a href="https://pubs.opengroup.org/onlinepubs/9799919799/functions/stdin.html">file descriptors</a>).</li>
+<li><code>cbuf</code>: memory address to the buffer it needs to read from when writing to file descriptor.</li>
+<li><code>nbyte</code>: size of that buffer so it knows how much it is supposed to read from the buffer.</li>
+</ol>
+<p>Therefore, based on the first section:</p>
+<ul>
+<li><code>X16 = 4</code>: means it is calling the write syscall.</li>
+<li><code>X0  = 1</code>: means it should write to the <code>STDOUT</code>.</li>
+<li><code>X1  = helloworld</code>: means we are passing the memory address where the <code>helloworld</code> label data is at.</li>
+<li><code>X2  = 15</code>: is the length of the hello world message.</li>
+</ul>
+<p>For the second syscall, if we check the <a href="https://github.com/apple-oss-distributions/xnu/blob/8d741a5de7ff4191bf97d57b9f54c2f6d4a15585/bsd/kern/syscalls.master#L46">exit syscall</a> documentation:</p>
+<pre class="z-code"><code><span class="z-text z-plain">1	AUE_EXIT	ALL	{ void exit(int rval) NO_SYSCALL_STUB; }
+</span></code></pre>
+<p>The ID for the exit syscall is <code>1</code> and it expects 1 argument:</p>
+<ol>
+<li><code>rval</code>: the value the process to return at the end, for example 0 for success or 1 for failure.</li>
+</ol>
+<p>Therefore, based on the second section:</p>
+<ul>
+<li><code>X16 = 2</code>: means it is calling the exit syscall.</li>
+<li><code>X0  = 0</code>: means the process is ending successfully.</li>
+</ul>
+<h2 id="debugging">Debugging<a class="zola-anchor" href="#debugging" aria-label="Anchor link for: debugging">🔗</a></h2>
+<p>Learning how to debug an Assembly program makes development more enjoyable and simpler to understand by focusing on each
+instruction individually. For more details, check out how to do it <a href="https://github.com/maxclaus/learning-assembly-arm64-apple/blob/main/DEBUGGING.md">here</a>.</p>
+<h2 id="ask-for-help">Ask for help<a class="zola-anchor" href="#ask-for-help" aria-label="Anchor link for: ask-for-help">🔗</a></h2>
+<p>There were times when I couldn't solve certain issues with the resources I had available, either because I didn't know how to implement something or because I couldn't understand why something wasn't working as expected. In those cases, I asked for help on <a href="https://stackoverflow.com/">Stack Overflow</a> and got a great support from other developers.</p>
+<p>Reddit also has a good community at <a href="https://www.reddit.com/r/Assembly_language/">r/Assembly_language</a>, although I have not personally used it for those issues. I also tried using AI for help, but my experience Assembly related topics wasn't great. AI often mixed approaches from different CPU architectures, which don’t always work the same way. Because of this, I’d recommend being extra cautious when using AI for Assembly questions.</p>
+<h2 id="references">References<a class="zola-anchor" href="#references" aria-label="Anchor link for: references">🔗</a></h2>
+<p>As part of my journey learning Assembly I created <a href="https://github.com/maxclaus/learning-assembly-arm64-apple/">this repository</a> to keep important notes, references, and projects I wrote in that process. Check it out if you are interested in diving deeper into Assembly.</p>
+<h2 id="future-posts">Future Posts<a class="zola-anchor" href="#future-posts" aria-label="Anchor link for: future-posts">🔗</a></h2>
+<p>I am planing to cover more complex examples of Assembly programs and other low level programming topics in future
+topics, so stay tuned.</p>
+
+  </div>
+
+  <footer>
+    <a class="blog_post__revision" href="https://github.com/maxclaus/maxclaus.xyz/commits/main/content/blog&#x2F;2025-02-10_introduction-to-assembly-for-macos-arm64.md">revision history</a>
+  </footer>
+</article>
+
+      </div>
+      <footer id="footer">
+        <p> Copyright © 2025 Max Claus. All rights reserved. </p>
+      </footer>
+      <div hidden itemscope itemtype="http://schema.org/Person">
+        <span itemprop="gender">Male</span>
+        <span itemprop="email">maxclaus@posteo.com</span>
+        <span itemprop="givenName">Max</span>
+        <span itemprop="familyName">Claus</span>
+        <span itemprop="name">Max Claus Nunes</span>
+        <span itemprop="birthDate">1989-09-12</span>
+        <span itemprop="jobTitle">Software Engineer</span>
+        <span itemprop="nationality">BR</span>
+        <a href="https://maxclaus.xyz" itemprop="url">Portfolio</a>
+        <a href="https://maxclaus.xyz/blog" itemprop="url">Blog</a>
+        <a href="https://maxclaus.xyz/resume" itemprop="url">Resume</a>
+      </div>
+    </div>
+  </body>
+</html>

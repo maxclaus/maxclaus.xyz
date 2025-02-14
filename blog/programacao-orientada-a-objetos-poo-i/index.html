@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Max Claus">
+    <title>Max Claus&#x27; website</title>
+    <meta name="description" content="">
+    <meta property="og:type" content="article" >
+    <meta name="image" property="og:image" content="https://maxclaus.xyz/og-image.webp">
+    <link rel="stylesheet" href="https://maxclaus.xyz/site.css?h=9652046a01e4d4c12120" >
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="https://maxclaus.xyz/favicon.png"/>
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://maxclaus.xyz/rss.xml">
+    <!-- <script src="https://kit.fontawesome.com/f91b95dbd1.js" crossorigin="anonymous"></script> -->
+  </head>
+
+  <body>
+    <div id="root">
+      <header id="header">
+        <ul class="breadcrumb">
+          <li><a href="/">Max Claus</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+        <ul class="menu">
+          <li><a href="/">About</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/resume/">Resume</a></li>
+          <li>
+            <input id="dark-mode" type="checkbox" name="dark-mode" aria-label="Toggle theme">
+            <label id="theme-toggle" for="dark-mode">
+              <svg id="light-mode-icon" viewBox="0 0 32 32" width="20" height="20" preserveAspectRatio="xMidYMid meet">
+                <circle cx="15" cy="15" r="6" fill="currentColor" />
+
+                <line
+                    id="ray"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    x1="15"
+                    y1="1"
+                    x2="15"
+                    y2="4"
+                    ></line>
+
+                <use href="#ray" transform="rotate(45 15 15)" />
+                <use href="#ray" transform="rotate(90 15 15)" />
+                <use href="#ray" transform="rotate(135 15 15)" />
+                <use href="#ray" transform="rotate(180 15 15)" />
+                <use href="#ray" transform="rotate(225 15 15)" />
+                <use href="#ray" transform="rotate(270 15 15)" />
+                <use href="#ray" transform="rotate(315 15 15)" />
+              </svg>
+              <svg id="dark-mode-icon" viewBox="0 0 32 32" width="20" height="20" preserveAspectRatio="xMidYMid meet">
+                <path
+                    fill="currentColor"
+                    d="
+                       M 23, 5
+                       A 12 12 0 1 0 23, 25
+                       A 12 12 0 0 1 23, 5"
+                    />
+              </svg>
+            </label>
+          </li>
+        </ul>
+      </header>
+
+      <div id="content">
+        
+<article itemscope itemtype="http://schema.org/BlogPosting" class="blog_post">
+  <header>
+    <h1 itemprop="name headline">Programação Orientada a Objetos (POO) - I</h1>
+    <div class="blog_post__meta">
+      <span hidden
+            itemprop="author"
+            itemscope
+            itemtype="http://schema.org/Person">
+        <span itemprop="name">Max Claus</span>
+      </span>
+
+      
+        <span>
+          Posted on <span itemprop="datePublished">Dec 1, 2011</span>
+        </span>
+      
+
+      
+
+      
+        <span class="blog_post__meta__sep" aria-hidden="true">·</span>
+        <span>
+          4 min. read
+        </span>
+      
+
+      
+    </div>
+  </header>
+
+  <div class="blog_post__body">
+    <h1 id="programacao-orientada-a-objetos-poo">Programação Orientada a Objetos (POO)<a class="zola-anchor" href="#programacao-orientada-a-objetos-poo" aria-label="Anchor link for: programacao-orientada-a-objetos-poo">🔗</a></h1>
+<p>Orientação a objetos é um paradigma de programação organizado através de objetos. Isto é, quando utilizamos POO, estamos facilitando a forma de compreensão e implementação de um projeto. Porque, simplesmente estamos se preocupando na forma em que as informações são definidas, como característica e comportamentos, e como elas se relacionam entre si.</p>
+<p>Para ficar mais fácil, precisamos analisar o contexto de um  projeto. Como exemplo utilizarei um time de futebol.</p>
+<h2 id="classes">Classes<a class="zola-anchor" href="#classes" aria-label="Anchor link for: classes">🔗</a></h2>
+<p>Classes organizam características e comportamentos comuns a um grupo de informações.</p>
+<p>Sendo assim podemos definir que todas as pessoas em um time de futebol, fazem parte da classe <strong>Pessoa</strong>.  Pois, todas elas possuem características e comportamentos comuns.</p>
+<p><strong>Classe Pessoa</strong></p>
+<p> <a href="http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-jogadores.jpg"><img src="https://maxclaus.xyz/blog/programacao-orientada-a-objetos-poo-i/./POO-jogadores.jpg" alt="POO-jogadores" title="POO-jogadores" /></a></p>
+<p><strong>Características</strong></p>
+<ul>
+<li>Nome</li>
+<li>Idade</li>
+<li>Salário</li>
+</ul>
+<p><strong>Comportamentos</strong></p>
+<ul>
+<li>Participa dos jogos</li>
+<li>Participa dos treinos</li>
+</ul>
+<p> <a href="http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-DC-Pessoa.png"><img src="https://maxclaus.xyz/blog/programacao-orientada-a-objetos-poo-i/./POO-DC-Pessoa.png" alt="" title="POO-DC-Pessoa" /></a></p>
+<pre data-lang="cs" class="language-cs z-code"><code class="language-cs" data-lang="cs"><span class="z-source z-cs"><span class="z-storage z-modifier z-access z-cs">public</span> <span class="z-meta z-class z-cs"><span class="z-storage z-type z-class z-cs">class</span> <span class="z-entity z-name z-class z-cs">Pessoa</span>
+</span></span><span class="z-source z-cs"><span class="z-meta z-class z-cs"></span><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-begin z-cs">{</span>
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs">    <span class="z-storage z-modifier z-access z-cs">public</span> <span class="z-storage z-type z-cs">string</span> <span class="z-variable z-other z-member z-cs">nome</span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs">    <span class="z-storage z-modifier z-access z-cs">public</span> <span class="z-storage z-type z-cs">int</span> <span class="z-variable z-other z-member z-cs">idade</span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs">    <span class="z-storage z-modifier z-access z-cs">public</span> <span class="z-storage z-type z-cs">decimal</span> <span class="z-variable z-other z-member z-cs">salario</span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs">
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs">    <span class="z-storage z-modifier z-access z-cs">public</span> <span class="z-storage z-type z-cs">void</span> <span class="z-meta z-method z-cs"><span class="z-entity z-name z-function z-cs">participarJogo</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-begin z-cs">(</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-end z-cs">)</span></span><span class="z-meta z-method z-cs"> </span><span class="z-meta z-method z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-begin z-cs">{</span> <span class="z-punctuation z-section z-block z-end z-cs">}</span></span></span>
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs">
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs">    <span class="z-storage z-modifier z-access z-cs">public</span> <span class="z-storage z-type z-cs">void</span> <span class="z-meta z-method z-cs"><span class="z-entity z-name z-function z-cs">participarTreino</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-begin z-cs">(</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-end z-cs">)</span></span><span class="z-meta z-method z-cs"> </span><span class="z-meta z-method z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-begin z-cs">{</span> <span class="z-punctuation z-section z-block z-end z-cs">}</span></span></span>
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-end z-cs">}</span></span></span>
+</span></code></pre>
+<h2 id="atributos">Atributos<a class="zola-anchor" href="#atributos" aria-label="Anchor link for: atributos">🔗</a></h2>
+<p>São as características de cada objeto. Como: <strong><em>Nome, Idade, Situação e Salário</em></strong>.</p>
+<pre data-lang="cs" class="language-cs z-code"><code class="language-cs" data-lang="cs"><span class="z-source z-cs"><span class="z-storage z-modifier z-access z-cs">public</span> <span class="z-storage z-type z-cs">string</span> <span class="z-variable z-other z-cs">nome</span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+</span><span class="z-source z-cs"><span class="z-storage z-modifier z-access z-cs">public</span> <span class="z-storage z-type z-cs">int</span> <span class="z-variable z-other z-cs">idade</span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+</span><span class="z-source z-cs"><span class="z-storage z-modifier z-access z-cs">public</span> <span class="z-storage z-type z-cs">decimal</span> <span class="z-variable z-other z-cs">salario</span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+</span></code></pre>
+<h2 id="metodos">Métodos<a class="zola-anchor" href="#metodos" aria-label="Anchor link for: metodos">🔗</a></h2>
+<p>São comportamentos de cada objeto. Como: <strong><em>Participar do jogo e Participar do treino</em></strong>.</p>
+<pre data-lang="cs" class="language-cs z-code"><code class="language-cs" data-lang="cs"><span class="z-source z-cs"><span class="z-storage z-modifier z-access z-cs">public</span> <span class="z-storage z-type z-cs">void</span> <span class="z-meta z-method z-cs"><span class="z-entity z-name z-function z-cs">participarJogo</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-begin z-cs">(</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-end z-cs">)</span></span><span class="z-meta z-method z-cs"> </span><span class="z-meta z-method z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-begin z-cs">{</span> <span class="z-punctuation z-section z-block z-end z-cs">}</span></span></span>
+</span><span class="z-source z-cs">
+</span><span class="z-source z-cs"><span class="z-storage z-modifier z-access z-cs">public</span> <span class="z-storage z-type z-cs">void</span> <span class="z-meta z-method z-cs"><span class="z-entity z-name z-function z-cs">participarTreino</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-begin z-cs">(</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-end z-cs">)</span></span><span class="z-meta z-method z-cs"> </span><span class="z-meta z-method z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-begin z-cs">{</span> <span class="z-punctuation z-section z-block z-end z-cs">}</span></span></span>
+</span></code></pre>
+<h2 id="objetos">Objetos<a class="zola-anchor" href="#objetos" aria-label="Anchor link for: objetos">🔗</a></h2>
+<p>São instancias de uma classe. Ou seja, sendo que definimos uma Classe Pessoa possui características como: <strong><em>Nome, Idade, Situação e Salário</em></strong> e comportamentos como: <strong><em>Participar do jogo e Participar do treino</em></strong>. Ao instanciar um objeto desta classe, devemos cria-lo segundo as definições da classe que ele está sendo gerado.</p>
+<p>Por exemplo:</p>
+<p><strong>Pessoas - Time Futebol</strong></p>
+<p> <a href="http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-neymar.jpg"><img src="https://maxclaus.xyz/blog/programacao-orientada-a-objetos-poo-i/./POO-neymar.jpg" alt="" title="POO-neymar" /></a></p>
+<p><strong>Tipo do objeto:<strong>Pessoa</strong>Características</strong></p>
+<ul>
+<li>Nome: Neymar</li>
+<li>Idade: 19 anos</li>
+<li>Salário: 800.000,00</li>
+</ul>
+<p><strong>Comportamentos</strong></p>
+<ul>
+<li>Participa dos jogos</li>
+<li>Participa dos treinos</li>
+</ul>
+<pre data-lang="cs" class="language-cs z-code"><code class="language-cs" data-lang="cs"><span class="z-source z-cs"><span class="z-comment z-line z-double-slash z-cs"><span class="z-punctuation z-definition z-comment z-cs">//</span>Istanciação do objeto
+</span></span><span class="z-source z-cs"><span class="z-support z-type z-cs">Pessoa</span> <span class="z-variable z-other z-cs">pes_Neymar</span> <span class="z-keyword z-operator z-assignment z-variable z-cs">=</span> <span class="z-meta z-instance z-cs"><span class="z-keyword z-operator z-new z-cs">new</span></span><span class="z-meta z-instance z-cs"> </span><span class="z-meta z-instance z-cs"><span class="z-support z-type z-cs">Pessoa</span><span class="z-meta z-group z-cs"><span class="z-punctuation z-section z-group z-begin z-cs">(</span></span></span><span class="z-meta z-instance z-cs"><span class="z-meta z-group z-cs"><span class="z-punctuation z-section z-group z-end z-cs">)</span></span></span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+</span><span class="z-source z-cs">
+</span><span class="z-source z-cs"><span class="z-comment z-line z-double-slash z-cs"><span class="z-punctuation z-definition z-comment z-cs">//</span>Atribuição de valores aos atributos
+</span></span><span class="z-source z-cs"><span class="z-variable z-other z-cs">pes_Neymar</span><span class="z-punctuation z-accessor z-dot z-cs">.</span><span class="z-variable z-other z-cs">nome</span> <span class="z-keyword z-operator z-assignment z-cs">=</span> <span class="z-string z-quoted z-double z-cs"><span class="z-punctuation z-definition z-string z-begin z-cs">&quot;</span>Neymar<span class="z-punctuation z-definition z-string z-end z-cs">&quot;</span></span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+</span><span class="z-source z-cs"><span class="z-variable z-other z-cs">pes_Neymar</span><span class="z-punctuation z-accessor z-dot z-cs">.</span><span class="z-variable z-other z-cs">idade</span> <span class="z-keyword z-operator z-assignment z-cs">=</span> <span class="z-constant z-numeric z-integer z-decimal z-cs">19</span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+</span><span class="z-source z-cs"><span class="z-variable z-other z-cs">pes_Neymar</span><span class="z-punctuation z-accessor z-dot z-cs">.</span><span class="z-variable z-other z-cs">salario</span> <span class="z-keyword z-operator z-assignment z-cs">=</span> <span class="z-constant z-numeric z-integer z-decimal z-cs">8000000</span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+</span><span class="z-source z-cs">
+</span><span class="z-source z-cs"><span class="z-comment z-line z-double-slash z-cs"><span class="z-punctuation z-definition z-comment z-cs">//</span>Execução dos métodos
+</span></span><span class="z-source z-cs"><span class="z-variable z-other z-cs">pes_Neymar</span><span class="z-punctuation z-accessor z-dot z-cs">.</span><span class="z-meta z-function-call z-cs"><span class="z-variable z-function z-cs">participarJogo</span><span class="z-meta z-group z-cs"><span class="z-punctuation z-section z-group z-begin z-cs">(</span></span></span><span class="z-meta z-function-call z-cs"><span class="z-meta z-group z-cs"><span class="z-punctuation z-section z-group z-end z-cs">)</span></span></span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+</span><span class="z-source z-cs"><span class="z-variable z-other z-cs">pes_Neymar</span><span class="z-punctuation z-accessor z-dot z-cs">.</span><span class="z-meta z-function-call z-cs"><span class="z-variable z-function z-cs">participarTreino</span><span class="z-meta z-group z-cs"><span class="z-punctuation z-section z-group z-begin z-cs">(</span></span></span><span class="z-meta z-function-call z-cs"><span class="z-meta z-group z-cs"><span class="z-punctuation z-section z-group z-end z-cs">)</span></span></span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+</span></code></pre>
+<h2 id="metodo-construtor">Método Construtor<a class="zola-anchor" href="#metodo-construtor" aria-label="Anchor link for: metodo-construtor">🔗</a></h2>
+<p>Para estanciar um objeto, utilizamos o método construtor da classe. Método construtor deve ter exatamente o mesmo nome da classe e não devem possuir um tipo de retorno na sua definição. Porque, ele já é responsável por retornar um objeto do tipo da classe que pertence.</p>
+<pre data-lang="cs" class="language-cs z-code"><code class="language-cs" data-lang="cs"><span class="z-source z-cs"><span class="z-storage z-modifier z-access z-cs">public</span> <span class="z-meta z-class z-cs"><span class="z-storage z-type z-class z-cs">class</span> <span class="z-entity z-name z-class z-cs">Pessoa</span>
+</span></span><span class="z-source z-cs"><span class="z-meta z-class z-cs"></span><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-begin z-cs">{</span>
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs">    <span class="z-storage z-modifier z-access z-cs">public</span> <span class="z-storage z-type z-cs">int</span> <span class="z-variable z-other z-member z-cs">idade</span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs">    <span class="z-storage z-modifier z-access z-cs">protected</span> <span class="z-storage z-type z-cs">string</span> <span class="z-variable z-other z-member z-cs">nome</span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs">    <span class="z-storage z-modifier z-access z-cs">private</span> <span class="z-storage z-type z-cs">decimal</span> <span class="z-variable z-other z-member z-cs">salario</span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs">
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs">    <span class="z-comment z-line z-double-slash z-cs"><span class="z-punctuation z-definition z-comment z-cs">//</span>Método construtor
+</span></span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs">    <span class="z-storage z-modifier z-access z-cs">public</span> <span class="z-meta z-method z-constructor z-cs"><span class="z-entity z-name z-function z-constructor z-cs">Pessoa</span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-begin z-cs">(</span></span></span><span class="z-meta z-method z-constructor z-cs"><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-end z-cs">)</span></span>
+</span></span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-meta z-method z-constructor z-cs">    </span><span class="z-meta z-method z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-begin z-cs">{</span>
+</span></span></span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-meta z-method z-body z-cs"><span class="z-meta z-block z-cs">        <span class="z-comment z-line z-double-slash z-cs"><span class="z-punctuation z-definition z-comment z-cs">//</span>Possui o mesmo nome da classe
+</span></span></span></span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-meta z-method z-body z-cs"><span class="z-meta z-block z-cs">        <span class="z-comment z-line z-double-slash z-cs"><span class="z-punctuation z-definition z-comment z-cs">//</span>Não possui um tipo de retorno
+</span></span></span></span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-meta z-method z-body z-cs"><span class="z-meta z-block z-cs">    <span class="z-punctuation z-section z-block z-end z-cs">}</span></span></span>
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs">
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs">    <span class="z-storage z-modifier z-access z-cs">public</span> <span class="z-storage z-type z-cs">void</span> <span class="z-meta z-method z-cs"><span class="z-entity z-name z-function z-cs">participarJogo</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-begin z-cs">(</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-end z-cs">)</span></span><span class="z-meta z-method z-cs"> </span><span class="z-meta z-method z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-begin z-cs">{</span> <span class="z-punctuation z-section z-block z-end z-cs">}</span></span></span>
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs">
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs">    <span class="z-storage z-modifier z-access z-cs">public</span> <span class="z-storage z-type z-cs">void</span> <span class="z-meta z-method z-cs"><span class="z-entity z-name z-function z-cs">participarTreino</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-begin z-cs">(</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-end z-cs">)</span></span><span class="z-meta z-method z-cs"> </span><span class="z-meta z-method z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-begin z-cs">{</span> <span class="z-punctuation z-section z-block z-end z-cs">}</span></span></span>
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-end z-cs">}</span></span></span>
+</span></code></pre>
+<h2 id="heranca">Herança<a class="zola-anchor" href="#heranca" aria-label="Anchor link for: heranca">🔗</a></h2>
+<p>É a generalização das informações. Ou seja, dentro de um time de futebol temos dois tipos de pessoas: jogadores e o técnico. E cada um desses tipos, possui algumas características e comportamentos, comuns e outras diferentes.</p>
+<p>Um jogador, além de possuir as outras características de pessoas, possui também <strong><em>quantidade de gols marcados, peso, velocidade</em></strong> e o comportamento de <strong><em>marcar gol</em></strong>.</p>
+<p>Um técnico, além de possuir as outras características de pessoas, possui também <strong><em>técnicas de treino</em></strong> e o comportamento de <strong><em>marcar treino</em></strong>.</p>
+<p>Para atender a este tipo de situação, podemos criar duas classes diferentes, mas herdando características e comportamentos comuns, definidos na classe Pessoa.</p>
+<p><strong>Pessoas - Time Futebol</strong></p>
+<p><strong>Jogadores</strong></p>
+<p><strong>Técnico</strong></p>
+<p> <a href="http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-PessoaJogdores.jpg"><img src="https://maxclaus.xyz/blog/programacao-orientada-a-objetos-poo-i/./POO-PessoaJogdores.jpg" alt="" title="POO-PessoaJogdores" /></a></p>
+<p> <a href="http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-PessoaTecnico.jpg"><img src="https://maxclaus.xyz/blog/programacao-orientada-a-objetos-poo-i/./POO-PessoaTecnico.jpg" alt="" title="POO-PessoaTecnico" /></a></p>
+<p> <a href="http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-DC-Heranca.png"><img src="https://maxclaus.xyz/blog/programacao-orientada-a-objetos-poo-i/./POO-DC-Heranca.png" alt="" title="POO-DC-Heranca" /></a></p>
+<pre class="z-code"><code><span class="z-text z-plain">public class Jogador : Pessoa
+</span><span class="z-text z-plain">{
+</span><span class="z-text z-plain">    public int qtdeGolMarcado;
+</span><span class="z-text z-plain">    public decimal peso;
+</span><span class="z-text z-plain">    public int velocidade;
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">    public void marcarGol() { }
+</span><span class="z-text z-plain">}
+</span></code></pre>
+<pre data-lang="cs" class="language-cs z-code"><code class="language-cs" data-lang="cs"><span class="z-source z-cs"><span class="z-storage z-modifier z-access z-cs">public</span> <span class="z-meta z-class z-cs"><span class="z-storage z-type z-class z-cs">class</span> <span class="z-entity z-name z-class z-cs">Tecnico</span> <span class="z-punctuation z-separator z-type z-cs">:</span> <span class="z-entity z-other z-inherited-class z-cs">Pessoa</span>
+</span></span><span class="z-source z-cs"><span class="z-meta z-class z-cs"></span><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-begin z-cs">{</span>
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs">    <span class="z-storage z-modifier z-access z-cs">public</span> <span class="z-storage z-type z-cs">string</span> <span class="z-variable z-other z-member z-cs">tecnicasTreino</span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs">
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs">    <span class="z-storage z-modifier z-access z-cs">public</span> <span class="z-storage z-type z-cs">void</span> <span class="z-meta z-method z-cs"><span class="z-entity z-name z-function z-cs">marcarTreino</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-begin z-cs">(</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-end z-cs">)</span></span><span class="z-meta z-method z-cs"> </span><span class="z-meta z-method z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-begin z-cs">{</span> <span class="z-punctuation z-section z-block z-end z-cs">}</span></span></span>
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-class z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-end z-cs">}</span></span></span>
+</span></code></pre>
+<h2 id="sobrecarga">Sobrecarga<a class="zola-anchor" href="#sobrecarga" aria-label="Anchor link for: sobrecarga">🔗</a></h2>
+<p>São como comportamentos comuns, na vida real. Mas com algumas particularidades, que os diferem.</p>
+<p>Na POO, são métodos com o mesmo nome, mas com a assinatura dos parâmetros diferentes.</p>
+<pre data-lang="cs" class="language-cs z-code"><code class="language-cs" data-lang="cs"><span class="z-source z-cs"><span class="z-storage z-modifier z-access z-cs">public</span> <span class="z-storage z-type z-cs">void</span> <span class="z-meta z-method z-cs"><span class="z-entity z-name z-function z-cs">marcarTreino</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-begin z-cs">(</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-storage z-type z-cs">string</span> <span class="z-variable z-parameter z-cs">local</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-end z-cs">)</span></span><span class="z-meta z-method z-cs">
+</span></span><span class="z-source z-cs"><span class="z-meta z-method z-cs"></span><span class="z-meta z-method z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-begin z-cs">{</span>
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-method z-body z-cs"><span class="z-meta z-block z-cs">    <span class="z-comment z-line z-double-slash z-cs"><span class="z-punctuation z-definition z-comment z-cs">//</span>Marca o treino definindo apenas o local
+</span></span></span></span><span class="z-source z-cs"><span class="z-meta z-method z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-end z-cs">}</span></span></span>
+</span><span class="z-source z-cs">
+</span><span class="z-source z-cs"><span class="z-storage z-modifier z-access z-cs">public</span> <span class="z-storage z-type z-cs">void</span> <span class="z-meta z-method z-cs"><span class="z-entity z-name z-function z-cs">marcarTreino</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-begin z-cs">(</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-storage z-type z-cs">string</span> <span class="z-variable z-parameter z-cs">local</span><span class="z-punctuation z-separator z-parameter z-function z-cs">,</span> <span class="z-storage z-type z-cs">int</span> <span class="z-variable z-parameter z-cs">horario</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-end z-cs">)</span></span><span class="z-meta z-method z-cs">
+</span></span><span class="z-source z-cs"><span class="z-meta z-method z-cs"></span><span class="z-meta z-method z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-begin z-cs">{</span>
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-method z-body z-cs"><span class="z-meta z-block z-cs">    <span class="z-comment z-line z-double-slash z-cs"><span class="z-punctuation z-definition z-comment z-cs">//</span>Marca o treino definindo o local e o horário
+</span></span></span></span><span class="z-source z-cs"><span class="z-meta z-method z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-end z-cs">}</span></span></span>
+</span><span class="z-source z-cs">
+</span><span class="z-source z-cs"><span class="z-storage z-modifier z-access z-cs">public</span> <span class="z-storage z-type z-cs">void</span> <span class="z-meta z-method z-cs"><span class="z-entity z-name z-function z-cs">marcarTreino</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-begin z-cs">(</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-storage z-type z-cs">string</span> <span class="z-variable z-parameter z-cs">local</span><span class="z-punctuation z-separator z-parameter z-function z-cs">,</span><span class="z-storage z-type z-cs">int</span> <span class="z-variable z-parameter z-cs">horario</span><span class="z-punctuation z-separator z-parameter z-function z-cs">,</span> <span class="z-storage z-type z-cs">int</span> <span class="z-variable z-parameter z-cs">qtdJogadores</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-end z-cs">)</span></span><span class="z-meta z-method z-cs">
+</span></span><span class="z-source z-cs"><span class="z-meta z-method z-cs"></span><span class="z-meta z-method z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-begin z-cs">{</span>
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-method z-body z-cs"><span class="z-meta z-block z-cs">    <span class="z-comment z-line z-double-slash z-cs"><span class="z-punctuation z-definition z-comment z-cs">//</span>Marca o treino definindo o local, horário e quantidade de jogadores
+</span></span></span></span><span class="z-source z-cs"><span class="z-meta z-method z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-end z-cs">}</span></span></span>
+</span></code></pre>
+<h2 id="referencia-this">Referência this<a class="zola-anchor" href="#referencia-this" aria-label="Anchor link for: referencia-this">🔗</a></h2>
+<p>Especifica que estamos referenciando apenas as características e métodos da própria classe.</p>
+<p>Por exemplo, se eu passo por parâmetro a quantidade de gols marcado em uma partida, com o mesmo nome, da propriedade <strong><em>qtdeGolMarcado</em></strong>, existente na classe. Para especificar qual é variável, que representa minha propriedade existente na classe, devo utilizar o prefixo <strong><em>this.</em></strong></p>
+<pre data-lang="cs" class="language-cs z-code"><code class="language-cs" data-lang="cs"><span class="z-source z-cs"><span class="z-storage z-modifier z-access z-cs">public</span> <span class="z-storage z-type z-cs">void</span> <span class="z-meta z-method z-cs"><span class="z-entity z-name z-function z-cs">marcarGol</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-begin z-cs">(</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-storage z-type z-cs">int</span> <span class="z-variable z-parameter z-cs">qtdeGolMarcado</span></span><span class="z-meta z-method z-parameters z-cs"><span class="z-punctuation z-section z-parameters z-end z-cs">)</span></span><span class="z-meta z-method z-cs">
+</span></span><span class="z-source z-cs"><span class="z-meta z-method z-cs"></span><span class="z-meta z-method z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-begin z-cs">{</span>
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-method z-body z-cs"><span class="z-meta z-block z-cs">    <span class="z-variable z-language z-cs">this</span><span class="z-punctuation z-accessor z-dot z-cs">.</span><span class="z-variable z-other z-cs">qtdeGolMarcado</span> <span class="z-keyword z-operator z-assignment z-cs">=</span> <span class="z-variable z-other z-cs">qtdeGolMarcado</span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+</span></span></span><span class="z-source z-cs"><span class="z-meta z-method z-body z-cs"><span class="z-meta z-block z-cs"><span class="z-punctuation z-section z-block z-end z-cs">}</span></span></span>
+</span></code></pre>
+<h2 id="modificadores-de-acesso">Modificadores de Acesso<a class="zola-anchor" href="#modificadores-de-acesso" aria-label="Anchor link for: modificadores-de-acesso">🔗</a></h2>
+<p>Um modificador de acesso determina até onde o atributo ou método pode ser visualizado, ou seja,  determinam quais os locais ele pode ser usado. Eles são o utilizados no encapsulamento. Temos pelo menos 3 tipos de modificadores de acesso padrões, na maioria das linguagens POO:</p>
+<p><a href="http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-pulica.png"><img src="https://maxclaus.xyz/blog/programacao-orientada-a-objetos-poo-i/./POO-pulica.png" alt="" title="POO-pulica" /></a></p>
+<p><strong>public</strong> Acesso não é restrito. Membro é acessado de qualquer lugar.</p>
+<p><a href="http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-protected.png"><img src="https://maxclaus.xyz/blog/programacao-orientada-a-objetos-poo-i/./POO-protected.png" alt="" title="POO-protected" /></a></p>
+<p><strong>protected</strong> Pode ser acessado dentro da classe que o define e pelas classes que a herdam.</p>
+<p><a href="http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-private.png"><img src="https://maxclaus.xyz/blog/programacao-orientada-a-objetos-poo-i/./POO-private.png" alt="" title="POO-private" /></a></p>
+<p><strong>private</strong> Membro pode ser a cessado somente dentro da classe que o define.</p>
+<p> <a href="http://blog2.maxcnunes.com/wp-content/uploads/2011/11/POO-DC-ModificadorAcesso.png"><img src="https://maxclaus.xyz/blog/programacao-orientada-a-objetos-poo-i/./POO-DC-ModificadorAcesso.png" alt="" title="POO-DC-ModificadorAcesso" /></a></p>
+<pre data-lang="cs" class="language-cs z-code"><code class="language-cs" data-lang="cs"><span class="z-source z-cs"><span class="z-storage z-modifier z-access z-cs">public</span> <span class="z-storage z-type z-cs">int</span> <span class="z-variable z-other z-cs">idade</span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+</span><span class="z-source z-cs"><span class="z-storage z-modifier z-access z-cs">protected</span> <span class="z-storage z-type z-cs">string</span> <span class="z-variable z-other z-cs">nome</span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+</span><span class="z-source z-cs"><span class="z-storage z-modifier z-access z-cs">private</span> <span class="z-storage z-type z-cs">decimal</span> <span class="z-variable z-other z-cs">salario</span><span class="z-punctuation z-terminator z-statement z-cs">;</span>
+</span></code></pre>
+<p>Por enquanto é isto. No próximo artigo continuarei com outros conceitos de POO.</p>
+
+  </div>
+
+  <footer>
+    <a class="blog_post__revision" href="https://github.com/maxclaus/maxclaus.xyz/commits/main/content/blog&#x2F;2011-12-01-programacao-orientada-a-objetos-poo-i&#x2F;index.md">revision history</a>
+  </footer>
+</article>
+
+      </div>
+      <footer id="footer">
+        <p> Copyright © 2025 Max Claus. All rights reserved. </p>
+      </footer>
+      <div hidden itemscope itemtype="http://schema.org/Person">
+        <span itemprop="gender">Male</span>
+        <span itemprop="email">maxclaus@posteo.com</span>
+        <span itemprop="givenName">Max</span>
+        <span itemprop="familyName">Claus</span>
+        <span itemprop="name">Max Claus Nunes</span>
+        <span itemprop="birthDate">1989-09-12</span>
+        <span itemprop="jobTitle">Software Engineer</span>
+        <span itemprop="nationality">BR</span>
+        <a href="https://maxclaus.xyz" itemprop="url">Portfolio</a>
+        <a href="https://maxclaus.xyz/blog" itemprop="url">Blog</a>
+        <a href="https://maxclaus.xyz/resume" itemprop="url">Resume</a>
+      </div>
+    </div>
+  </body>
+</html>

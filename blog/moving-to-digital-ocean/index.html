@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Max Claus">
+    <title>Max Claus&#x27; website</title>
+    <meta name="description" content="">
+    <meta property="og:type" content="article" >
+    <meta name="image" property="og:image" content="https://maxclaus.xyz/og-image.webp">
+    <link rel="stylesheet" href="https://maxclaus.xyz/site.css?h=9652046a01e4d4c12120" >
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="https://maxclaus.xyz/favicon.png"/>
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://maxclaus.xyz/rss.xml">
+    <!-- <script src="https://kit.fontawesome.com/f91b95dbd1.js" crossorigin="anonymous"></script> -->
+  </head>
+
+  <body>
+    <div id="root">
+      <header id="header">
+        <ul class="breadcrumb">
+          <li><a href="/">Max Claus</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+        <ul class="menu">
+          <li><a href="/">About</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/resume/">Resume</a></li>
+          <li>
+            <input id="dark-mode" type="checkbox" name="dark-mode" aria-label="Toggle theme">
+            <label id="theme-toggle" for="dark-mode">
+              <svg id="light-mode-icon" viewBox="0 0 32 32" width="20" height="20" preserveAspectRatio="xMidYMid meet">
+                <circle cx="15" cy="15" r="6" fill="currentColor" />
+
+                <line
+                    id="ray"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    x1="15"
+                    y1="1"
+                    x2="15"
+                    y2="4"
+                    ></line>
+
+                <use href="#ray" transform="rotate(45 15 15)" />
+                <use href="#ray" transform="rotate(90 15 15)" />
+                <use href="#ray" transform="rotate(135 15 15)" />
+                <use href="#ray" transform="rotate(180 15 15)" />
+                <use href="#ray" transform="rotate(225 15 15)" />
+                <use href="#ray" transform="rotate(270 15 15)" />
+                <use href="#ray" transform="rotate(315 15 15)" />
+              </svg>
+              <svg id="dark-mode-icon" viewBox="0 0 32 32" width="20" height="20" preserveAspectRatio="xMidYMid meet">
+                <path
+                    fill="currentColor"
+                    d="
+                       M 23, 5
+                       A 12 12 0 1 0 23, 25
+                       A 12 12 0 0 1 23, 5"
+                    />
+              </svg>
+            </label>
+          </li>
+        </ul>
+      </header>
+
+      <div id="content">
+        
+<article itemscope itemtype="http://schema.org/BlogPosting" class="blog_post">
+  <header>
+    <h1 itemprop="name headline">Moving to Digital Ocean</h1>
+    <div class="blog_post__meta">
+      <span hidden
+            itemprop="author"
+            itemscope
+            itemtype="http://schema.org/Person">
+        <span itemprop="name">Max Claus</span>
+      </span>
+
+      
+        <span>
+          Posted on <span itemprop="datePublished">Jun 23, 2013</span>
+        </span>
+      
+
+      
+
+      
+        <span class="blog_post__meta__sep" aria-hidden="true">·</span>
+        <span>
+          3 min. read
+        </span>
+      
+
+      
+    </div>
+  </header>
+
+  <div class="blog_post__body">
+    <p>Novo server, novo tema, novo idioma. Como a maioria dos assuntos em tecnologia é publicado em inglês e eu preciso praticar mais, vou estar tentando escrever alguns posts em inglês. Se vocês notarem qualquer erro, por favor me avisem :).</p>
+<h3 id="why-change">Why change?<a class="zola-anchor" href="#why-change" aria-label="Anchor link for: why-change">🔗</a></h3>
+<p>I was using a common host on TeHospedo, but sometimes I needed some configurations or process that was not in my hands, I had to ask to support do that for me. Some tasks were not solve fast as I would like and it is so frustrating that I decided move to a new server on <a href="https://www.digitalocean.com/">Digital Ocean</a> that provide virtual machines with many Linux distributions options. Take a look on their advertising video:</p>
+<iframe src="http://www.youtube.com/embed/vHZLCahai4Q" height="315" width="560" allowfullscreen="" frameborder="0"></iframe>
+<h3 id="my-droplet-virtual-machine">My Droplet (Virtual Machine)<a class="zola-anchor" href="#my-droplet-virtual-machine" aria-label="Anchor link for: my-droplet-virtual-machine">🔗</a></h3>
+<p>My VM is a Linux CentOS 6.4 x64 with 512 MB RAM and 20GB SSD. This is amazing for my needs and I will can install, configure and run anything there as I prefer.</p>
+<h3 id="configuring-the-server">Configuring the Server<a class="zola-anchor" href="#configuring-the-server" aria-label="Anchor link for: configuring-the-server">🔗</a></h3>
+<p>My main reason for have this server nowadays is to host my wordpress blog and also my brother’s blog2. So for run the wordpress I had to configure the LAMP (Linux, Apache, MySQL and PHP). As unfortunately I have little experience with that configurations on Linux, I followed some good tutorials provided by Digital Ocean:</p>
+<ol>
+<li><a href="https://www.digitalocean.com/community/articles/how-to-install-linux-apache-mysql-php-lamp-stack-on-centos-6">How to Install Linux, Apache, MySQL, PHP (LAMP) stack on CentOS 6</a></li>
+<li><a href="https://www.digitalocean.com/community/articles/how-to-install-wordpress-on-centos-6--2">How to Install Wordpress on Centos 6</a></li>
+<li><a href="https://www.digitalocean.com/community/articles/how-to-set-up-apache-virtual-hosts-on-centos-6">How to Set Up Apache Virtual Hosts on CentOS 6</a> and <a href="http://www.rackspace.com/knowledge_center/article/how-to-serve-multiple-domains-using-virtual-hosts">How to Serve Multiple Domains Using Virtual Hosts</a>(by rackspace)</li>
+<li><a href="https://www.digitalocean.com/community/articles/how-to-set-up-a-host-name-with-digitalocean">How to Set Up a Host Name with DigitalOcean</a></li>
+</ol>
+<h3 id="extra-configurations">Extra Configurations<a class="zola-anchor" href="#extra-configurations" aria-label="Anchor link for: extra-configurations">🔗</a></h3>
+<ol>
+<li><a href="http://ingolfzp.com/2009/03/getting-permalinks-working-with-apache2/">Getting permalinks working with apache2</a></li>
+<li><a href="http://www.linux-faqs.info/apache/optimize-website-speed-with-mod-expire-and-mod-deflate">Optimize website speed with mod_expire and mod_deflate</a></li>
+</ol>
+<p>Many configurations right? But I configured exactly as I want and I don't depend wait for any staff support to install or configure a new feature in my host.</p>
+
+  </div>
+
+  <footer>
+    <a class="blog_post__revision" href="https://github.com/maxclaus/maxclaus.xyz/commits/main/content/blog&#x2F;2013-06-23-moving-to-digital-ocean.md">revision history</a>
+  </footer>
+</article>
+
+      </div>
+      <footer id="footer">
+        <p> Copyright © 2025 Max Claus. All rights reserved. </p>
+      </footer>
+      <div hidden itemscope itemtype="http://schema.org/Person">
+        <span itemprop="gender">Male</span>
+        <span itemprop="email">maxclaus@posteo.com</span>
+        <span itemprop="givenName">Max</span>
+        <span itemprop="familyName">Claus</span>
+        <span itemprop="name">Max Claus Nunes</span>
+        <span itemprop="birthDate">1989-09-12</span>
+        <span itemprop="jobTitle">Software Engineer</span>
+        <span itemprop="nationality">BR</span>
+        <a href="https://maxclaus.xyz" itemprop="url">Portfolio</a>
+        <a href="https://maxclaus.xyz/blog" itemprop="url">Blog</a>
+        <a href="https://maxclaus.xyz/resume" itemprop="url">Resume</a>
+      </div>
+    </div>
+  </body>
+</html>

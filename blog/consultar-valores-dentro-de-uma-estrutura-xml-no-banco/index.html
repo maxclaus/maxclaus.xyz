@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Max Claus">
+    <title>Max Claus&#x27; website</title>
+    <meta name="description" content="">
+    <meta property="og:type" content="article" >
+    <meta name="image" property="og:image" content="https://maxclaus.xyz/og-image.webp">
+    <link rel="stylesheet" href="https://maxclaus.xyz/site.css?h=9652046a01e4d4c12120" >
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="https://maxclaus.xyz/favicon.png"/>
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://maxclaus.xyz/rss.xml">
+    <!-- <script src="https://kit.fontawesome.com/f91b95dbd1.js" crossorigin="anonymous"></script> -->
+  </head>
+
+  <body>
+    <div id="root">
+      <header id="header">
+        <ul class="breadcrumb">
+          <li><a href="/">Max Claus</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+        <ul class="menu">
+          <li><a href="/">About</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/resume/">Resume</a></li>
+          <li>
+            <input id="dark-mode" type="checkbox" name="dark-mode" aria-label="Toggle theme">
+            <label id="theme-toggle" for="dark-mode">
+              <svg id="light-mode-icon" viewBox="0 0 32 32" width="20" height="20" preserveAspectRatio="xMidYMid meet">
+                <circle cx="15" cy="15" r="6" fill="currentColor" />
+
+                <line
+                    id="ray"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    x1="15"
+                    y1="1"
+                    x2="15"
+                    y2="4"
+                    ></line>
+
+                <use href="#ray" transform="rotate(45 15 15)" />
+                <use href="#ray" transform="rotate(90 15 15)" />
+                <use href="#ray" transform="rotate(135 15 15)" />
+                <use href="#ray" transform="rotate(180 15 15)" />
+                <use href="#ray" transform="rotate(225 15 15)" />
+                <use href="#ray" transform="rotate(270 15 15)" />
+                <use href="#ray" transform="rotate(315 15 15)" />
+              </svg>
+              <svg id="dark-mode-icon" viewBox="0 0 32 32" width="20" height="20" preserveAspectRatio="xMidYMid meet">
+                <path
+                    fill="currentColor"
+                    d="
+                       M 23, 5
+                       A 12 12 0 1 0 23, 25
+                       A 12 12 0 0 1 23, 5"
+                    />
+              </svg>
+            </label>
+          </li>
+        </ul>
+      </header>
+
+      <div id="content">
+        
+<article itemscope itemtype="http://schema.org/BlogPosting" class="blog_post">
+  <header>
+    <h1 itemprop="name headline">Consultar valores dentro de uma estrutura XML no banco</h1>
+    <div class="blog_post__meta">
+      <span hidden
+            itemprop="author"
+            itemscope
+            itemtype="http://schema.org/Person">
+        <span itemprop="name">Max Claus</span>
+      </span>
+
+      
+        <span>
+          Posted on <span itemprop="datePublished">May 12, 2012</span>
+        </span>
+      
+
+      
+
+      
+        <span class="blog_post__meta__sep" aria-hidden="true">·</span>
+        <span>
+          3 min. read
+        </span>
+      
+
+      
+    </div>
+  </header>
+
+  <div class="blog_post__body">
+    <p>Acredito que hoje em dia a maioria dos bancos de dados possui suporte para estruturas XML, sendo um formato de fácil manipulação, leitura e bem organizado por possuir uma estrutura formada por nós e elementos.</p>
+<p>Já participei de um projeto no qual ao invés de criarem uma tabela específica para relacionar uma lista de ações de um usuário em um sistema, foi utilizado uma coluna do tipo XML para manter esta lista de ações, o que já atendia perfeitamente a este requisito e eliminando assim a necessidade de possuir mais uma tabela física dentro do schema no banco.</p>
+<p>Participei também de outro projeto no qual utilizavam a estrutura XML para enviar uma lista de informações como parâmetro de uma procedure ao banco. O que vejo como uma prática muito melhor, do que enviar a mesma lista separando valores por algum tipo de carácter (,;#$%…). Passando os valores em uma estrutura XML, mantêm as informações mais claras e organizadas, facilitando em muito tratá-las no banco e posterior manutenção do código.</p>
+<p>Uma vez que você esteja trabalhando com estruturas XMLs, provavelmente em alguma situação será necessário realiza alguma consulta nas informações contidas na mesma.</p>
+<h3 id="sql-variable">sql:variable<a class="zola-anchor" href="#sql-variable" aria-label="Anchor link for: sql-variable">🔗</a></h3>
+<p>Expõe uma variável que contém um valor SQL dentro de uma expressão XQuery.</p>
+<h3 id="exists">exists<a class="zola-anchor" href="#exists" aria-label="Anchor link for: exists">🔗</a></h3>
+<p>Verifica a existência de uma cláusula específica e retorna um bit que representa uma das seguintes condições:</p>
+<ul>
+<li>1 – representando Verdadeiro, se a expressão XQuery em uma consulta retornar um resultado nonempty. Quer dizer, retorna no mínimo um nó XML.</li>
+<li>0 – representando Falso, se retornar um resultado vazio.</li>
+<li>NULL se a instância de tipo de dado xml na qual a consulta foi executada contiver NULL.</li>
+</ul>
+<p>Como forma de demonstrar essas funções, vamos supor que um sistema de venda é mantido um histórico de todas as vendas na seguinte tabela:</p>
+<table><thead><tr><th><strong>Nome Coluna</strong></th><th><strong>Tipo Dado</strong></th></tr></thead><tbody>
+<tr><td>HistoricoId</td><td>int</td></tr>
+<tr><td>VendedorId </td><td>int</td></tr>
+<tr><td>DataVenda </td><td>datetime</td></tr>
+<tr><td>VendaId </td><td>int</td></tr>
+<tr><td>ProdutosVendidos </td><td>xml</td></tr>
+</tbody></table>
+<p>Como pode ser visto a cima, será mantido os produtos vendidos em cada venda na seguinte estrutura XML:</p>
+<p><code>1    3    88</code></p>
+<p>Agora, digamos que um dos diretores da empresa solicitou que fosse levantado um relatório de todas as vendas realizadas por certo vendedor, no qual continha o produto com o código 88. Como fazer isso, sendo que os códigos dos produtos estão contidos dentro da estrutura XML?</p>
+<p>Dessa forma:</p>
+<pre data-lang="sql" class="language-sql z-code"><code class="language-sql" data-lang="sql"><span class="z-source z-sql">DECLARE @VendedorId <span class="z-storage z-type z-sql">INT</span> <span class="z-keyword z-operator z-comparison z-sql">=</span> <span class="z-constant z-numeric z-sql">10</span>
+</span><span class="z-source z-sql">DECLARE @Consulta_XML <span class="z-storage z-type z-sql">VARCHAR</span> <span class="z-keyword z-operator z-comparison z-sql">=</span> CAST(@Codigo_Produto <span class="z-keyword z-operator z-assignment z-alias z-sql">AS</span> <span class="z-storage z-type z-sql">VARCHAR</span>)<span class="z-string z-quoted z-other z-backtick z-sql"><span class="z-punctuation z-definition z-string z-begin z-sql">`</span>
+</span></span></code></pre>
+<pre data-lang="sql" class="language-sql z-code"><code class="language-sql" data-lang="sql"><span class="z-source z-sql"><span class="z-keyword z-other z-DML z-sql">SELECT</span> VendaId
+</span><span class="z-source z-sql"><span class="z-keyword z-other z-DML z-sql">FROM</span> HistoricoVenda 
+</span><span class="z-source z-sql"><span class="z-keyword z-other z-DML z-sql">WHERE</span>        
+</span><span class="z-source z-sql">     VendedorId <span class="z-keyword z-operator z-comparison z-sql">=</span>  @VendedorId
+</span><span class="z-source z-sql">     <span class="z-keyword z-operator z-logical z-sql">AND</span>
+</span><span class="z-source z-sql">     <span class="z-constant z-other z-database-name z-sql">ProdutosVendidos</span>.<span class="z-constant z-other z-table-name z-sql">exist</span>(<span class="z-string z-quoted z-single z-sql"><span class="z-punctuation z-definition z-string z-begin z-sql">&#39;</span>(//Venda/Produto)[. = sql:variable(&quot;@Consulta_XML&quot;)]<span class="z-punctuation z-definition z-string z-end z-sql">&#39;</span></span>) <span class="z-keyword z-operator z-comparison z-sql">=</span> <span class="z-constant z-numeric z-sql">1</span><span class="z-string z-quoted z-other z-backtick z-sql"><span class="z-punctuation z-definition z-string z-begin z-sql">`</span>
+</span></span></code></pre>
+<p>Para que fosse possível realizar a busca dentro do XML foi necessário declarar uma variável, na qual a mesma foi exposta dentro XML através da função sql:variable. Também foi utilizada a função exists para verificar a existência de uma informação, definindo a caminho da mestra na estrutura XML.  Note também que foi utilizado // antes da Venda, para especificá-la que está na raiz do XML.</p>
+
+  </div>
+
+  <footer>
+    <a class="blog_post__revision" href="https://github.com/maxclaus/maxclaus.xyz/commits/main/content/blog&#x2F;2012-05-12-consultar-valores-dentro-de-uma-estrutura-xml-no-banco.md">revision history</a>
+  </footer>
+</article>
+
+      </div>
+      <footer id="footer">
+        <p> Copyright © 2025 Max Claus. All rights reserved. </p>
+      </footer>
+      <div hidden itemscope itemtype="http://schema.org/Person">
+        <span itemprop="gender">Male</span>
+        <span itemprop="email">maxclaus@posteo.com</span>
+        <span itemprop="givenName">Max</span>
+        <span itemprop="familyName">Claus</span>
+        <span itemprop="name">Max Claus Nunes</span>
+        <span itemprop="birthDate">1989-09-12</span>
+        <span itemprop="jobTitle">Software Engineer</span>
+        <span itemprop="nationality">BR</span>
+        <a href="https://maxclaus.xyz" itemprop="url">Portfolio</a>
+        <a href="https://maxclaus.xyz/blog" itemprop="url">Blog</a>
+        <a href="https://maxclaus.xyz/resume" itemprop="url">Resume</a>
+      </div>
+    </div>
+  </body>
+</html>

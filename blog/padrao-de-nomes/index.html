@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Max Claus">
+    <title>Max Claus&#x27; website</title>
+    <meta name="description" content="">
+    <meta property="og:type" content="article" >
+    <meta name="image" property="og:image" content="https://maxclaus.xyz/og-image.webp">
+    <link rel="stylesheet" href="https://maxclaus.xyz/site.css?h=9652046a01e4d4c12120" >
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="https://maxclaus.xyz/favicon.png"/>
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://maxclaus.xyz/rss.xml">
+    <!-- <script src="https://kit.fontawesome.com/f91b95dbd1.js" crossorigin="anonymous"></script> -->
+  </head>
+
+  <body>
+    <div id="root">
+      <header id="header">
+        <ul class="breadcrumb">
+          <li><a href="/">Max Claus</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+        <ul class="menu">
+          <li><a href="/">About</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/resume/">Resume</a></li>
+          <li>
+            <input id="dark-mode" type="checkbox" name="dark-mode" aria-label="Toggle theme">
+            <label id="theme-toggle" for="dark-mode">
+              <svg id="light-mode-icon" viewBox="0 0 32 32" width="20" height="20" preserveAspectRatio="xMidYMid meet">
+                <circle cx="15" cy="15" r="6" fill="currentColor" />
+
+                <line
+                    id="ray"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    x1="15"
+                    y1="1"
+                    x2="15"
+                    y2="4"
+                    ></line>
+
+                <use href="#ray" transform="rotate(45 15 15)" />
+                <use href="#ray" transform="rotate(90 15 15)" />
+                <use href="#ray" transform="rotate(135 15 15)" />
+                <use href="#ray" transform="rotate(180 15 15)" />
+                <use href="#ray" transform="rotate(225 15 15)" />
+                <use href="#ray" transform="rotate(270 15 15)" />
+                <use href="#ray" transform="rotate(315 15 15)" />
+              </svg>
+              <svg id="dark-mode-icon" viewBox="0 0 32 32" width="20" height="20" preserveAspectRatio="xMidYMid meet">
+                <path
+                    fill="currentColor"
+                    d="
+                       M 23, 5
+                       A 12 12 0 1 0 23, 25
+                       A 12 12 0 0 1 23, 5"
+                    />
+              </svg>
+            </label>
+          </li>
+        </ul>
+      </header>
+
+      <div id="content">
+        
+<article itemscope itemtype="http://schema.org/BlogPosting" class="blog_post">
+  <header>
+    <h1 itemprop="name headline">Padrão de nomes</h1>
+    <div class="blog_post__meta">
+      <span hidden
+            itemprop="author"
+            itemscope
+            itemtype="http://schema.org/Person">
+        <span itemprop="name">Max Claus</span>
+      </span>
+
+      
+        <span>
+          Posted on <span itemprop="datePublished">Sep 25, 2012</span>
+        </span>
+      
+
+      
+
+      
+        <span class="blog_post__meta__sep" aria-hidden="true">·</span>
+        <span>
+          6 min. read
+        </span>
+      
+
+      
+    </div>
+  </header>
+
+  <div class="blog_post__body">
+    <p>Em projetos que existem um time de desenvolvimento e um desenvolvedor depende de outros para construir um sistema, uma padronização no código deve ser tomada como regra para o bem comum do projeto.</p>
+<p>Não estou dizendo que os desenvolvedores devem ficar moldados a regras e não podem experimentar novas possibilidades. Mas que se necessário e possível, seja feito com o consentimento de todos.</p>
+<h2 id="caso-do-problema">Caso do Problema<a class="zola-anchor" href="#caso-do-problema" aria-label="Anchor link for: caso-do-problema">🔗</a></h2>
+<p>Vamos usar um exemplo, que com certeza ocorre em muitas empresas. Um desenvolvedor, que cumpria todas as tarefas muito bem, dentro do prazo e funcionalidades exigidas. O qual, nunca passou pela sua cabeça sair da empresa, em um momento inesperado precisa sair da mesma. Até ai tudo bem, mas logo após deste fato, ocorre algum problema em umas das tarefas desenvolvidas por ele e você como desenvolvedor foi encarregado de corrigir esse pequeno bug.</p>
+<p>Ao abrir o código para manutenção, você nota que aquilo que estava funcionando muito bem, na verdade estava uma completa bagunça.</p>
+<ul>
+<li>Métodos com letras todas em maiúscula e outros em minúscula.</li>
+<li>Algumas variáveis em inglês e outras em português.</li>
+<li>Algumas variáveis e métodos abreviados.</li>
+<li>Nenhum comentário e summary sobre as funcionalidades. (É desconsiderável se estiver bem estruturado, refatorado e com nomes corretos)</li>
+<li>Métodos repetidos que realizavam exatamente a mesma funcionalidade.</li>
+</ul>
+<p>Imaginem como uma simples correção pode se tornar tão complicado, que é possível pensar que seja mais fácil refazer esta tarefa, do que entender toda essa bagunça para conseguir corrigir o bug.</p>
+<h2 id="solucao">Solução<a class="zola-anchor" href="#solucao" aria-label="Anchor link for: solucao">🔗</a></h2>
+<p>Desde o .NET Framework 1.1 a Microsoft disponibiliza no MSDN um Guia de Nomenclaturas, que indica uma série de padrões para nomes.</p>
+<p><a href="http://msdn.microsoft.com/en-us/library/xzf533w0(v=vs.71).aspx#feedback">http://msdn.microsoft.com/en-us/library/xzf533w0(v=vs.71).aspx#feedback</a></p>
+<h3 id="estilos-de-capitalizacao">Estilos de Capitalização<a class="zola-anchor" href="#estilos-de-capitalizacao" aria-label="Anchor link for: estilos-de-capitalizacao">🔗</a></h3>
+<p>Utilize o seguinte 3 estilos de convenções para as capitalizações.</p>
+<table><thead><tr><th></th><th></th></tr></thead><tbody>
+<tr><td>Pascal case</td><td>A primeira letra do identificador e a primeira letra de cada palavra concatenada subsequente forem capitalizados. Você pode usar caso Pascal para identificadores de três ou mais caracteres. Por exemplo: BackColor</td></tr>
+<tr><td>Camel case</td><td>A primeira letra de um identificador é minúscula ea primeira letra de cada palavra concatenada subsequente é maiúscula. Por exemplo: backColor</td></tr>
+<tr><td>Uppercase</td><td>Todas as letras no identificador são capitalizados. Use esta convenção apenas para identificadores que consistem em duas ou menos letras. Por exemplo: System.IO System.Web.UI</td></tr>
+</tbody></table>
+<p>A seguinte tabela resume as regras de capitalização e disponibiliza exemplos de diferentes tipos de capitalização.</p>
+<table><thead><tr><th> </th><th> </th><th> </th></tr></thead><tbody>
+<tr><td><strong>Identificador</strong></td><td><strong>Case</strong></td><td><strong>Exemplo</strong></td></tr>
+<tr><td> Classes</td><td> Pascal</td><td> OrdemDeServico</td></tr>
+<tr><td> Enum</td><td> Pascal</td><td> Situacao</td></tr>
+<tr><td> Eventos</td><td> Pascal</td><td> AlteracaoDoValor</td></tr>
+<tr><td> Read-only, Estático</td><td> Pascal</td><td> ValorVermelho</td></tr>
+<tr><td> Interfaces</td><td> Pascal</td><td> IRepositorio (Sempre com prefixo 'I')</td></tr>
+<tr><td> Métodos</td><td> Pascal</td><td> BuscarPeloNome</td></tr>
+<tr><td> Namespace</td><td> Pascal</td><td> Projeto.Dados.Repositorio</td></tr>
+<tr><td> Parâmetro</td><td> Camel</td><td> dataNascimento</td></tr>
+<tr><td> Propriedade</td><td> Pascal</td><td> DataNascimento</td></tr>
+<tr><td> Atributo</td><td> Camel</td><td> dataCadastro</td></tr>
+</tbody></table>
+<h3 id="abreviacoes">Abreviações<a class="zola-anchor" href="#abreviacoes" aria-label="Anchor link for: abreviacoes">🔗</a></h3>
+<p>Para evitar confusão, siga estas regras relativa a utilização de abreviaturas:</p>
+<ul>
+<li>Não use abreviações ou contrações de partes de nomes identificadores. Por exemplo, use ObterAltura ao invés de ObterAlt.</li>
+<li>Não utilize siglas que não são geralmente aceitados no campo da computação.</li>
+<li>Quando apropriado, use o bom conhecimento de siglas para substituir frases e nomes compridos. Pro exemplo, use UI ao invés de User Interface.</li>
+<li>Quando utilizar siglas, use Pascal case ou Camel case para siglas com mais de 2 caracteres. E quando for apenas 2 caracteres, mantena tudo em maiúsculo.</li>
+</ul>
+<h3 id="evitando-a-confusao-com-nomes-e-tipos">Evitando a Confusão com Nomes e Tipos<a class="zola-anchor" href="#evitando-a-confusao-com-nomes-e-tipos" aria-label="Anchor link for: evitando-a-confusao-com-nomes-e-tipos">🔗</a></h3>
+<p>Use nomes que descrevem o significado de um tipo ao invés de nomes que descrevem o tipo. No caso raro que um parâmetro não tem significado semântico para além do seu tipo, usar um nome genérico. Por exemplo:</p>
+<table><thead><tr><th>Errado</th><th>Certo</th></tr></thead><tbody>
+<tr><td> public Pessoa BuscarPessoa(string stringNome);</td><td> public Pessoa BuscarPessoa(string nome);</td></tr>
+<tr><td> public int CalcularImc(int intPeso, double doubleAltura);</td><td> public int CalcularImc(int peso, double altura);</td></tr>
+</tbody></table>
+<h3 id="namespace">Namespace<a class="zola-anchor" href="#namespace" aria-label="Anchor link for: namespace">🔗</a></h3>
+<p>Uma regra comum para a nomenclatura de namespaces é utilizar o nome da empresa seguido pelo nome da tecnologia ou camada de um projeto e opcionalmente pela funcionalidade e design.</p>
+<table><thead><tr><th>NomeEmpresa.NomeTecnologia[.Funcionalidade][.Design]</th></tr></thead><tbody>
+</tbody></table>
+<p>Por exemplo:</p>
+<table><thead><tr><th>Tam.Dados</th></tr></thead><tbody>
+<tr><td>Tam.Dados.Repositorios</td></tr>
+</tbody></table>
+<p>Não utilize o mesmo nome para um namespace e uma classe. Um namespace chamado Tam.Dados e uma classe chamada Dados.</p>
+<h3 id="nome-de-classes">Nome de Classes<a class="zola-anchor" href="#nome-de-classes" aria-label="Anchor link for: nome-de-classes">🔗</a></h3>
+<ul>
+<li>Utilize um substantivo como nome de classes.</li>
+<li>Utilize Pascal case.</li>
+<li>Utilize abreviações com moderação.</li>
+<li>Não utilize prefixos como c para classes. Por exemplo, utilize Pessoa ao invés de cPessoa.</li>
+<li>Não utilize '_' para separar nomes.</li>
+<li>Quando apropriado, utilize uma palavra composta para nomear uma classe derivada. A segunda parte do nome da classe derivada deve ter o nome da classe base. Por exemplo, ArgumentException.</li>
+</ul>
+<table><thead><tr><th>public class Pessoa</th></tr></thead><tbody>
+</tbody></table>
+<h3 id="nome-de-interfaces">Nome de Interfaces<a class="zola-anchor" href="#nome-de-interfaces" aria-label="Anchor link for: nome-de-interfaces">🔗</a></h3>
+<ul>
+<li>Nome de interfaces com substantivos ou adjetivos que descrevam um comportamento. Por exemplo, a interface com o nome IRepositorio descrevendo um substantivo. E a interface IValidador com uma adjetivo.</li>
+<li>Utilize Pascal case.</li>
+<li>Utilize abreviações com moderação.</li>
+<li>Não utilize '_' para separar nomes.</li>
+<li>Utilize o prefixo 'I' em maiúsculo para indicar que é uma interface.</li>
+<li>Utilize similaridade de nomes quando você definiu uma classe/interface par onde a classe é um padrão da implementação da interface. O nomes devem serem diferenciados somente pela letra I como prefixo no nome da interface.</li>
+</ul>
+<table><thead><tr><th>public interface IValidador</th></tr></thead><tbody>
+</tbody></table>
+<h3 id="nome-de-enums">Nome de Enums<a class="zola-anchor" href="#nome-de-enums" aria-label="Anchor link for: nome-de-enums">🔗</a></h3>
+<ul>
+<li>Use Pascal case para Enums e seus valores</li>
+<li>Utilize abreviações com moderação.</li>
+<li>Não utilize Enum como sufixo ou prefixo.</li>
+</ul>
+<h3 id="nome-de-campos-estaticos">Nome de Campos Estáticos<a class="zola-anchor" href="#nome-de-campos-estaticos" aria-label="Anchor link for: nome-de-campos-estaticos">🔗</a></h3>
+<ul>
+<li>Utilize substantivos ou abreviações de substantivos para campos estáticos.</li>
+<li>Utilize Pascal case.</li>
+<li>Não utilize a notação Hungara para nomes de campos estáticos.</li>
+<li>É recomendado que utilize propriedades estáticas ao invés de campos estáticos.</li>
+</ul>
+<p>Referências:</p>
+<ul>
+<li><a href="http://msdn.microsoft.com/en-us/library/ab6a8y1b(v=vs.71).aspx">http://msdn.microsoft.com/en-us/library/ab6a8y1b(v=vs.71).aspx</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/4df752aw(v=vs.71).aspx">http://msdn.microsoft.com/en-us/library/4df752aw(v=vs.71).aspx</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/fzcth91k(v=vs.71).aspx">http://msdn.microsoft.com/en-us/library/fzcth91k(v=vs.71).aspx</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/h0eyck3s(v=vs.71).aspx">http://msdn.microsoft.com/en-us/library/h0eyck3s(v=vs.71).aspx</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/04xykw57(v=vs.71).aspx">http://msdn.microsoft.com/en-us/library/04xykw57(v=vs.71).aspx</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/426s83c3(v=vs.71).aspx">http://msdn.microsoft.com/en-us/library/426s83c3(v=vs.71).aspx</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/9cws5bzd(v=vs.71).aspx">http://msdn.microsoft.com/en-us/library/9cws5bzd(v=vs.71).aspx</a></li>
+<li><a href="http://msdn.microsoft.com/en-us/library/czefa0ke(v=vs.71).aspx">http://msdn.microsoft.com/en-us/library/czefa0ke(v=vs.71).aspx</a></li>
+</ul>
+
+  </div>
+
+  <footer>
+    <a class="blog_post__revision" href="https://github.com/maxclaus/maxclaus.xyz/commits/main/content/blog&#x2F;2012-09-25-padrao-de-nomes.md">revision history</a>
+  </footer>
+</article>
+
+      </div>
+      <footer id="footer">
+        <p> Copyright © 2025 Max Claus. All rights reserved. </p>
+      </footer>
+      <div hidden itemscope itemtype="http://schema.org/Person">
+        <span itemprop="gender">Male</span>
+        <span itemprop="email">maxclaus@posteo.com</span>
+        <span itemprop="givenName">Max</span>
+        <span itemprop="familyName">Claus</span>
+        <span itemprop="name">Max Claus Nunes</span>
+        <span itemprop="birthDate">1989-09-12</span>
+        <span itemprop="jobTitle">Software Engineer</span>
+        <span itemprop="nationality">BR</span>
+        <a href="https://maxclaus.xyz" itemprop="url">Portfolio</a>
+        <a href="https://maxclaus.xyz/blog" itemprop="url">Blog</a>
+        <a href="https://maxclaus.xyz/resume" itemprop="url">Resume</a>
+      </div>
+    </div>
+  </body>
+</html>

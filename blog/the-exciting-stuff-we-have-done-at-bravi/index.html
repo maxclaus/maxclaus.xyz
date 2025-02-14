@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Max Claus">
+    <title>Max Claus&#x27; website</title>
+    <meta name="description" content="">
+    <meta property="og:type" content="article" >
+    <meta name="image" property="og:image" content="https://maxclaus.xyz/og-image.webp">
+    <link rel="stylesheet" href="https://maxclaus.xyz/site.css?h=9652046a01e4d4c12120" >
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="https://maxclaus.xyz/favicon.png"/>
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://maxclaus.xyz/rss.xml">
+    <!-- <script src="https://kit.fontawesome.com/f91b95dbd1.js" crossorigin="anonymous"></script> -->
+  </head>
+
+  <body>
+    <div id="root">
+      <header id="header">
+        <ul class="breadcrumb">
+          <li><a href="/">Max Claus</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+        <ul class="menu">
+          <li><a href="/">About</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/resume/">Resume</a></li>
+          <li>
+            <input id="dark-mode" type="checkbox" name="dark-mode" aria-label="Toggle theme">
+            <label id="theme-toggle" for="dark-mode">
+              <svg id="light-mode-icon" viewBox="0 0 32 32" width="20" height="20" preserveAspectRatio="xMidYMid meet">
+                <circle cx="15" cy="15" r="6" fill="currentColor" />
+
+                <line
+                    id="ray"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    x1="15"
+                    y1="1"
+                    x2="15"
+                    y2="4"
+                    ></line>
+
+                <use href="#ray" transform="rotate(45 15 15)" />
+                <use href="#ray" transform="rotate(90 15 15)" />
+                <use href="#ray" transform="rotate(135 15 15)" />
+                <use href="#ray" transform="rotate(180 15 15)" />
+                <use href="#ray" transform="rotate(225 15 15)" />
+                <use href="#ray" transform="rotate(270 15 15)" />
+                <use href="#ray" transform="rotate(315 15 15)" />
+              </svg>
+              <svg id="dark-mode-icon" viewBox="0 0 32 32" width="20" height="20" preserveAspectRatio="xMidYMid meet">
+                <path
+                    fill="currentColor"
+                    d="
+                       M 23, 5
+                       A 12 12 0 1 0 23, 25
+                       A 12 12 0 0 1 23, 5"
+                    />
+              </svg>
+            </label>
+          </li>
+        </ul>
+      </header>
+
+      <div id="content">
+        
+<article itemscope itemtype="http://schema.org/BlogPosting" class="blog_post">
+  <header>
+    <h1 itemprop="name headline">The exciting stuff we have done at Bravi</h1>
+    <div class="blog_post__meta">
+      <span hidden
+            itemprop="author"
+            itemscope
+            itemtype="http://schema.org/Person">
+        <span itemprop="name">Max Claus</span>
+      </span>
+
+      
+        <span>
+          Posted on <span itemprop="datePublished">Aug 31, 2014</span>
+        </span>
+      
+
+      
+
+      
+        <span class="blog_post__meta__sep" aria-hidden="true">·</span>
+        <span>
+          4 min. read
+        </span>
+      
+
+      
+    </div>
+  </header>
+
+  <div class="blog_post__body">
+    <p>Bravi has many projects and each one of them uses a proper language and technology for that specific scenario. The team I am currently working has done some pretty exciting stuff and now that the project has calm down (for few days) I think is the right time to share these things we have worked on.</p>
+<p>The idea right now is not getting deep in each subject, just share the tools, patterns, ideas and other stuff we have used. Maybe in a next post we could explaining better each one.</p>
+<h3 id="microservices">Microservices<a class="zola-anchor" href="#microservices" aria-label="Anchor link for: microservices">🔗</a></h3>
+<blockquote>
+<p><a href="http://martinfowler.com/articles/microservices.html"><strong>Microservices</strong></a> are a style of software architecture that involves delivering systems as a set of very small, granular, independent collaborating services.</p>
+</blockquote>
+<p>This approach came with a lot of questions and forced us to think deeply over many decisions (architectural and infrastructural).</p>
+<p>However for this project was a pretty good decision use Microservices and we do not regret about that. Nowadays we have around 15 services and using Microservices in a scenario like this gives a lot of advantages isolating the services by responsibilities.</p>
+<h3 id="containers">Containers<a class="zola-anchor" href="#containers" aria-label="Anchor link for: containers">🔗</a></h3>
+<p>As we are working with microservices some times a service can use a different language, technology and environment configuration from others. For this reason we needed to isolate each service in a physical level instead of only an project level. We could do that using a virtual machine, as we were used to do in previous projects. But this approach has high cost of memory and process usage. Then we thought was time to try something more efficient as the Linux Containers with Docker.</p>
+<p><a href="https://www.docker.com/"><strong>Docker</strong></a> is an open-source application container engine and has been used for many big companies.</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">docker</span></span><span class="z-meta z-function-call z-arguments z-shell"> run<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>i</span><span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>t</span> ubuntu /bin/bash</span>
+</span></code></pre>
+<h3 id="bravo-tool">Bravo tool<a class="zola-anchor" href="#bravo-tool" aria-label="Anchor link for: bravo-tool">🔗</a></h3>
+<p>Microservices brings up some concerns to an architectural level. For example how to run related projects, connect them allowing communicate with each other. Is possible to settup it using only docker (for simple scenarios). But to make this process easier we have built a tool to help us doing it.</p>
+<p><strong>Bravo</strong> is written in nodejs and basically reads an yaml configuration of the current project, where is specified how to run the service. For this it uses docker, nginx and dnsmasq (only in development environment).</p>
+<pre data-lang="bash" class="language-bash z-code"><code class="language-bash" data-lang="bash"><span class="z-source z-shell z-bash"><span class="z-meta z-function-call z-shell"><span class="z-variable z-function z-shell">bravo</span></span><span class="z-meta z-function-call z-arguments z-shell"> run<span class="z-variable z-parameter z-option z-shell"><span class="z-punctuation z-definition z-parameter z-shell"> -</span>e</span> development</span>
+</span></code></pre>
+<h3 id="git-deploy">Git Deploy<a class="zola-anchor" href="#git-deploy" aria-label="Anchor link for: git-deploy">🔗</a></h3>
+<p>To allow an push button deployment using the Bravo tool we also have built another tool <strong>Git Deploy</strong>.</p>
+<p><img src="https://maxclaus.xyz/blog/the-exciting-stuff-we-have-done-at-bravi/./gitdeployer-01.png" alt="" />
+<img src="https://maxclaus.xyz/blog/the-exciting-stuff-we-have-done-at-bravi/./gitdeployer-02.png" alt="" /></p>
+<h3 id="logs-everywhere">Logs everywhere<a class="zola-anchor" href="#logs-everywhere" aria-label="Anchor link for: logs-everywhere">🔗</a></h3>
+<p>We used <a href="https://github.com/flatiron/winston">winston</a> library to easily save logging in many ways (console, text and slack). Receive logs in channels on <a href="https://slack.com/">slack</a> is pretty helpful. We are notified if something is going wrong right when this is happening and if you are not in the slack at the moment we are notified also in our email.</p>
+<p><img src="https://maxclaus.xyz/blog/the-exciting-stuff-we-have-done-at-bravi/./slack-logging.png" alt="" /></p>
+<h3 id="fancy-prompt">Fancy prompt<a class="zola-anchor" href="#fancy-prompt" aria-label="Anchor link for: fancy-prompt">🔗</a></h3>
+<p>You can get lost using bashes everywhere over many containers. Therefore we have styled our prompts to show some important informations:</p>
+<ol>
+<li><code>host</code> - the container's host name</li>
+<li><code>env</code> - in which environment the container is running (development, staging, production)</li>
+<li><code>git</code> - the current git branch</li>
+<li>path of the current directory</li>
+<li>a big <code>PRODUCTION</code> warning if the current environment is production to make you think twice before do anything</li>
+</ol>
+<p><img src="https://maxclaus.xyz/blog/the-exciting-stuff-we-have-done-at-bravi/./fancy-prompt.png" alt="" /></p>
+<h3 id="performance-tuning">Performance tuning<a class="zola-anchor" href="#performance-tuning" aria-label="Anchor link for: performance-tuning">🔗</a></h3>
+<p>One of ours main concern in this application was to support at least 100 concurrent requests per second. To measure it we used the <a href="http://httpd.apache.org/docs/2.2/programs/ab.html">Apache AB tool</a>. In our first test I think the application was supporting less than 20 requests per second. Basically we did:</p>
+<ol>
+<li>Optimized linux networking</li>
+<li>Optimized nodejs</li>
+<li>Optimized nginx</li>
+</ol>
+<p>At some point we thought we were having a low performance due we were using docker. But we were wrong and we didn't have to change anything related to docker configuration.</p>
+<h3 id="indexed-search">Indexed search<a class="zola-anchor" href="#indexed-search" aria-label="Anchor link for: indexed-search">🔗</a></h3>
+<p>This application has many content texts. So we needed a good way to search words an sentences in long texts. This approach should be fast and works ignoring case sensitive and accents. To solve these requirements we used the <a href="http://lucene.apache.org/solr/">Apache Solr</a>.</p>
+<h3 id="react">React<a class="zola-anchor" href="#react" aria-label="Anchor link for: react">🔗</a></h3>
+<p>For some front-end components were used the <a href="http://facebook.github.io/react/"><strong>React</strong></a>.</p>
+<blockquote>
+<p>React is, in my opinion, the premier way to build big, fast Web apps with JavaScript. It's scaled very well for us at Facebook and Instagram.
+One of the many great parts of React is how it makes you think about apps as you build them.</p>
+</blockquote>
+<h3 id="webpack">Webpack<a class="zola-anchor" href="#webpack" aria-label="Anchor link for: webpack">🔗</a></h3>
+<blockquote>
+<p><a href="https://github.com/webpack/webpack"><strong>webpack</strong></a> is a bundler for modules. The main purpose is to bundle javascript files for usage in a browser.</p>
+</blockquote>
+<p>This allowed use move some front-end code to isolated components and use them as widgets on demand over different projects.</p>
+
+  </div>
+
+  <footer>
+    <a class="blog_post__revision" href="https://github.com/maxclaus/maxclaus.xyz/commits/main/content/blog&#x2F;2014-08-31-the-exciting-stuff-we-have-done-at-bravi&#x2F;index.md">revision history</a>
+  </footer>
+</article>
+
+      </div>
+      <footer id="footer">
+        <p> Copyright © 2025 Max Claus. All rights reserved. </p>
+      </footer>
+      <div hidden itemscope itemtype="http://schema.org/Person">
+        <span itemprop="gender">Male</span>
+        <span itemprop="email">maxclaus@posteo.com</span>
+        <span itemprop="givenName">Max</span>
+        <span itemprop="familyName">Claus</span>
+        <span itemprop="name">Max Claus Nunes</span>
+        <span itemprop="birthDate">1989-09-12</span>
+        <span itemprop="jobTitle">Software Engineer</span>
+        <span itemprop="nationality">BR</span>
+        <a href="https://maxclaus.xyz" itemprop="url">Portfolio</a>
+        <a href="https://maxclaus.xyz/blog" itemprop="url">Blog</a>
+        <a href="https://maxclaus.xyz/resume" itemprop="url">Resume</a>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Max Claus">
+    <title>Max Claus&#x27; website</title>
+    <meta name="description" content="">
+    <meta property="og:type" content="article" >
+    <meta name="image" property="og:image" content="https://maxclaus.xyz/og-image.webp">
+    <link rel="stylesheet" href="https://maxclaus.xyz/site.css?h=9652046a01e4d4c12120" >
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="https://maxclaus.xyz/favicon.png"/>
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://maxclaus.xyz/rss.xml">
+    <!-- <script src="https://kit.fontawesome.com/f91b95dbd1.js" crossorigin="anonymous"></script> -->
+  </head>
+
+  <body>
+    <div id="root">
+      <header id="header">
+        <ul class="breadcrumb">
+          <li><a href="/">Max Claus</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+        <ul class="menu">
+          <li><a href="/">About</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/resume/">Resume</a></li>
+          <li>
+            <input id="dark-mode" type="checkbox" name="dark-mode" aria-label="Toggle theme">
+            <label id="theme-toggle" for="dark-mode">
+              <svg id="light-mode-icon" viewBox="0 0 32 32" width="20" height="20" preserveAspectRatio="xMidYMid meet">
+                <circle cx="15" cy="15" r="6" fill="currentColor" />
+
+                <line
+                    id="ray"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    x1="15"
+                    y1="1"
+                    x2="15"
+                    y2="4"
+                    ></line>
+
+                <use href="#ray" transform="rotate(45 15 15)" />
+                <use href="#ray" transform="rotate(90 15 15)" />
+                <use href="#ray" transform="rotate(135 15 15)" />
+                <use href="#ray" transform="rotate(180 15 15)" />
+                <use href="#ray" transform="rotate(225 15 15)" />
+                <use href="#ray" transform="rotate(270 15 15)" />
+                <use href="#ray" transform="rotate(315 15 15)" />
+              </svg>
+              <svg id="dark-mode-icon" viewBox="0 0 32 32" width="20" height="20" preserveAspectRatio="xMidYMid meet">
+                <path
+                    fill="currentColor"
+                    d="
+                       M 23, 5
+                       A 12 12 0 1 0 23, 25
+                       A 12 12 0 0 1 23, 5"
+                    />
+              </svg>
+            </label>
+          </li>
+        </ul>
+      </header>
+
+      <div id="content">
+        
+<article itemscope itemtype="http://schema.org/BlogPosting" class="blog_post">
+  <header>
+    <h1 itemprop="name headline">Debug nodejs v0.10 with 100% cpu usage</h1>
+    <div class="blog_post__meta">
+      <span hidden
+            itemprop="author"
+            itemscope
+            itemtype="http://schema.org/Person">
+        <span itemprop="name">Max Claus</span>
+      </span>
+
+      
+        <span>
+          Posted on <span itemprop="datePublished">Oct 19, 2016</span>
+        </span>
+      
+
+      
+
+      
+        <span class="blog_post__meta__sep" aria-hidden="true">·</span>
+        <span>
+          3 min. read
+        </span>
+      
+
+      
+    </div>
+  </header>
+
+  <div class="blog_post__body">
+    <p>Last week a worker at my job written in Nodejs v0.10 started to fail. At some point the worker would consume 100% of CPU and gradually would increase the memory usage as well. That job was been forced to stop once all the memory available was consumed.</p>
+<p>Basically I had two approaches available to find out what was causing the problem.</p>
+<ol>
+<li>Put <code>console.log</code> every place and find where in my code was the last time executed before getting stuck with 100% of CPU usage.</li>
+<li>Do it right and profile the application to find out properly based in statistics about the running process how much CPU each part was consuming.</li>
+</ol>
+<p>Even <code>console.log</code> been a common approach for many simple cases. The profile is the best option for this kind of problem.</p>
+<p>So this is the flow I followed to find out the problem:</p>
+<ol>
+<li>Start the app with enabled profile <code>node --prof index.js</code>.</li>
+<li>In other shell window run <code>top</code> to monitor when the process get 100% CPU usage.</li>
+<li>Once the process get in high CPU usage stop it.</li>
+<li>The profile will have created <code>v8.log</code> file.</li>
+<li>In node v0.10 has not a built in tool to process this file. Because of that install one with <code>npm -g install tick</code>.</li>
+<li>Execute <code>node-tick-processor</code> and it will print the explained results about the profile log <a href="https://gist.github.com/maxclaus/66bb591c1f62f922254597353cd757b3">v8-profile-cpu-100-usage.txt</a>.</li>
+</ol>
+<p>Looking the <strong>[Bottom up (heavy) profile]</strong> section I could find out the module causing the 100% CPU usage.</p>
+<pre class="z-code"><code><span class="z-text z-plain">[Bottom up (heavy) profile]:
+</span><span class="z-text z-plain">Note: percentage shows a share of a particular caller in the total
+</span><span class="z-text z-plain">amount of its parent calls.
+</span><span class="z-text z-plain">Callers occupying less than 2.0% are not shown.
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">ticks parent  name
+</span><span class="z-text z-plain">15924   71.2%  /opt/node-v0.10.31-linux-x64/bin/node
+</span><span class="z-text z-plain">7742   48.6%    Function: ~derez /src/node_modules/cycle/cycle.js:46
+</span><span class="z-text z-plain">7739  100.0%      Function: ~derez /src/node_modules/cycle/cycle.js:46
+</span><span class="z-text z-plain">7739  100.0%        Function: ~derez /src/node_modules/cycle/cycle.js:46
+</span><span class="z-text z-plain">7739  100.0%          Function: ~derez /src/node_modules/cycle/cycle.js:46
+</span><span class="z-text z-plain">7739  100.0%            Function: ~derez /src/node_modules/cycle/cycle.js:46
+</span></code></pre>
+<p>As we can see the <a href="https://github.com/dscape/cycle">cycle</a> is the guilty one. Cycle is a module used to encode and decode JSON data to Javascript. So we know already probably is a JS object been parsed to JSON string. And I would guess this JS object has circular reference and that is why is getting 100% CPU usage without stop until consume all the memory available.</p>
+<p>But that was part of the problem. We know who is the responsible. But who is calling that function?</p>
+<p>Looking into the <strong>[Top down (heavy) profile]</strong> I find out that <a href="https://github.com/winstonjs/winston">winston</a> module is the one using the cycle. Winston is a library for logging. So are suspicion was right. Probably is a JS object been saved to the log.</p>
+<pre class="z-code"><code><span class="z-text z-plain">[Top down (heavy) profile]:
+</span><span class="z-text z-plain">Note: callees occupying less than 0.1% are not shown.
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">inclusive      self           name
+</span><span class="z-text z-plain">ticks   total  ticks   total
+</span><span class="z-text z-plain">18799   84.0%      0    0.0%  LazyCompile: ~processImmediate timers.js:335
+</span><span class="z-text z-plain">18767   83.9%      0    0.0%    LazyCompile: ~lib$rsvp$asap$$flush /src/node_modules/rsvp/dist/rsvp.js:1193
+</span><span class="z-text z-plain">18747   83.8%      0    0.0%      LazyCompile: ~lib$rsvp$$internal$$publishRejection /src/node_modules/rsvp/dist/rsvp.js:957
+</span><span class="z-text z-plain">18747   83.8%      0    0.0%        LazyCompile: ~lib$rsvp$$internal$$publish /src/node_modules/rsvp/dist/rsvp.js:1002
+</span><span class="z-text z-plain">18747   83.8%      0    0.0%          LazyCompile: ~lib$rsvp$$internal$$invokeCallback /src/node_modules/rsvp/dist/rsvp.js:1043
+</span><span class="z-text z-plain">18747   83.8%      0    0.0%            LazyCompile: lib$rsvp$$internal$$tryCatch /src/node_modules/rsvp/dist/rsvp.js:1034
+</span><span class="z-text z-plain">18746   83.8%      0    0.0%              LazyCompile: ~&lt;anonymous&gt; /src/lib/promised-queue.js:29
+</span><span class="z-text z-plain">18736   83.8%      0    0.0%                LazyCompile: ~logError /src/lib/promised-queue.js:80
+</span><span class="z-text z-plain">18736   83.8%      0    0.0%                  LazyCompile: ~target.(anonymous function) /src/node_modules/winston/lib/winston/common.js:41
+</span><span class="z-text z-plain">18736   83.8%      0    0.0%                    LazyCompile: ~Logger.log /src/node_modules/winston/lib/winston/logger.js:123
+</span><span class="z-text z-plain">18736   83.8%      0    0.0%                      LazyCompile: ~async.each /src/node_modules/winston/node_modules/async/lib/async.js:104
+</span><span class="z-text z-plain">18736   83.8%      0    0.0%                        LazyCompile: ~_each /src/node_modules/winston/node_modules/async/lib/async.js:30
+</span><span class="z-text z-plain">18736   83.8%      0    0.0%                          LazyCompile: *forEach native array.js:1087
+</span><span class="z-text z-plain">18736   83.8%      0    0.0%                            LazyCompile: ~&lt;anonymous&gt; /src/node_modules/winston/node_modules/async/lib/async.js:110
+</span><span class="z-text z-plain">18736   83.8%      0    0.0%                              LazyCompile: ~emit /src/node_modules/winston/lib/winston/logger.js:175
+</span><span class="z-text z-plain">18736   83.8%      0    0.0%                                LazyCompile: ~Console.log /src/node_modules/winston/lib/winston/transports/console.js:56
+</span><span class="z-text z-plain">18736   83.8%      0    0.0%                                  LazyCompile: ~exports.log /src/node_modules/winston/lib/winston/common.js:112
+</span><span class="z-text z-plain">18736   83.8%      0    0.0%                                    LazyCompile: ~decycle /src/node_modules/cycle/cycle.js:24
+</span><span class="z-text z-plain">18736   83.8%      0    0.0%                                      Function: ~derez /src/node_modules/cycle/cycle.js:46
+</span><span class="z-text z-plain">18736   83.8%      0    0.0%                                        Function: ~derez /src/node_modules/cycle/cycle.js:46
+</span><span class="z-text z-plain">18736   83.8%      0    0.0%                                          Function: ~derez /src/node_modules/cycle/cycle.js:46
+</span><span class="z-text z-plain">18736   83.8%      0    0.0%                                            Function: ~derez /src/node_modules/cycle/cycle.js:46
+</span><span class="z-text z-plain">18736   83.8%      0    0.0%                                              Function: ~derez /src/node_modules/cycle/cycle.js:46
+</span><span class="z-text z-plain">18736   83.8%      0    0.0%                                                Function: ~derez /src/node_modules/cycle/cycle.js:46
+</span><span class="z-text z-plain">18736   83.8%      0    0.0%                                                  Function: ~derez /src/node_modules/cycle/cycle.js:46
+</span><span class="z-text z-plain">18551   82.9%    998    4.5%                                                    Function: ~derez /src/node_modules/cycle/cycle.js:46
+</span><span class="z-text z-plain">4754   21.3%   4754   21.3%                                                      /opt/node-v0.10.31-linux-x64/bin/node
+</span><span class="z-text z-plain">3805   17.0%    296    1.3%                                                      Function: ~derez /src/node_modules/cycle/cycle.js:46
+</span></code></pre>
+<p>Looking above the winston tick the last part of my code before calling the winston lib is:</p>
+<pre class="z-code"><code><span class="z-text z-plain">LazyCompile: ~logError /src/lib/promised-queue.js:80
+</span></code></pre>
+<p>And that is the end. Looking into my code <code>/src/lib/promised-queue.js</code> at line <code>80</code>. The function <code>logError</code> really was calling the <code>winston</code> library. Based on this knowledge my approach was simplest replacing <code>winston</code> with <code>console.log</code> because at that part a simple print of the error into the console was enough.</p>
+
+  </div>
+
+  <footer>
+    <a class="blog_post__revision" href="https://github.com/maxclaus/maxclaus.xyz/commits/main/content/blog&#x2F;2016-10-19-debug-nodejs-100-percentage-cpu.md">revision history</a>
+  </footer>
+</article>
+
+      </div>
+      <footer id="footer">
+        <p> Copyright © 2025 Max Claus. All rights reserved. </p>
+      </footer>
+      <div hidden itemscope itemtype="http://schema.org/Person">
+        <span itemprop="gender">Male</span>
+        <span itemprop="email">maxclaus@posteo.com</span>
+        <span itemprop="givenName">Max</span>
+        <span itemprop="familyName">Claus</span>
+        <span itemprop="name">Max Claus Nunes</span>
+        <span itemprop="birthDate">1989-09-12</span>
+        <span itemprop="jobTitle">Software Engineer</span>
+        <span itemprop="nationality">BR</span>
+        <a href="https://maxclaus.xyz" itemprop="url">Portfolio</a>
+        <a href="https://maxclaus.xyz/blog" itemprop="url">Blog</a>
+        <a href="https://maxclaus.xyz/resume" itemprop="url">Resume</a>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Max Claus">
+    <title>Max Claus&#x27; website</title>
+    <meta name="description" content="">
+    <meta property="og:type" content="article" >
+    <meta name="image" property="og:image" content="https://maxclaus.xyz/og-image.webp">
+    <link rel="stylesheet" href="https://maxclaus.xyz/site.css?h=9652046a01e4d4c12120" >
+    <link rel="preconnect" href="https://rsms.me/">
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="https://maxclaus.xyz/favicon.png"/>
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://maxclaus.xyz/rss.xml">
+    <!-- <script src="https://kit.fontawesome.com/f91b95dbd1.js" crossorigin="anonymous"></script> -->
+  </head>
+
+  <body>
+    <div id="root">
+      <header id="header">
+        <ul class="breadcrumb">
+          <li><a href="/">Max Claus</a></li>
+          <li><a href="/blog">Blog</a></li>
+        </ul>
+        <ul class="menu">
+          <li><a href="/">About</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/resume/">Resume</a></li>
+          <li>
+            <input id="dark-mode" type="checkbox" name="dark-mode" aria-label="Toggle theme">
+            <label id="theme-toggle" for="dark-mode">
+              <svg id="light-mode-icon" viewBox="0 0 32 32" width="20" height="20" preserveAspectRatio="xMidYMid meet">
+                <circle cx="15" cy="15" r="6" fill="currentColor" />
+
+                <line
+                    id="ray"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    x1="15"
+                    y1="1"
+                    x2="15"
+                    y2="4"
+                    ></line>
+
+                <use href="#ray" transform="rotate(45 15 15)" />
+                <use href="#ray" transform="rotate(90 15 15)" />
+                <use href="#ray" transform="rotate(135 15 15)" />
+                <use href="#ray" transform="rotate(180 15 15)" />
+                <use href="#ray" transform="rotate(225 15 15)" />
+                <use href="#ray" transform="rotate(270 15 15)" />
+                <use href="#ray" transform="rotate(315 15 15)" />
+              </svg>
+              <svg id="dark-mode-icon" viewBox="0 0 32 32" width="20" height="20" preserveAspectRatio="xMidYMid meet">
+                <path
+                    fill="currentColor"
+                    d="
+                       M 23, 5
+                       A 12 12 0 1 0 23, 25
+                       A 12 12 0 0 1 23, 5"
+                    />
+              </svg>
+            </label>
+          </li>
+        </ul>
+      </header>
+
+      <div id="content">
+        
+<article itemscope itemtype="http://schema.org/BlogPosting" class="blog_post">
+  <header>
+    <h1 itemprop="name headline">Tell don't Ask</h1>
+    <div class="blog_post__meta">
+      <span hidden
+            itemprop="author"
+            itemscope
+            itemtype="http://schema.org/Person">
+        <span itemprop="name">Max Claus</span>
+      </span>
+
+      
+        <span>
+          Posted on <span itemprop="datePublished">Jan 3, 2014</span>
+        </span>
+      
+
+      
+
+      
+        <span class="blog_post__meta__sep" aria-hidden="true">·</span>
+        <span>
+          2 min. read
+        </span>
+      
+
+      
+    </div>
+  </header>
+
+  <div class="blog_post__body">
+    <p><em>Article originally posted on <a href="http://tribalingua.wordpress.com/2013/12/17/tell-dont-ask/">Tribalingua</a>.</em></p>
+<p>Do you take care with how you write a letter? So that it will clear and easy for your recipient  to read? Well, it should be the same feeling with the code that you write. With a letter we sometimes have to stop and think what is the best way to write down what is in our minds. Therefore, we have to be clear and easy for anyone else reading what you were thinking when you wrote that.  Just as we have rules to write a nice readable letter, also we have Patterns and Principles to write clean and understandable code.</p>
+<p>The principle <strong>Tell don't Ask</strong> helps to ensure a correct division of responsibility  without causing excess coupling to an incorrect class.</p>
+<blockquote>
+<p>...you should endeavor to <em>tell</em> objects what you want them to do; do not <em>ask</em> them questions about their state, make a decision, and then tell them what to do. - <a href="http://pragprog.com/articles/tell-dont-ask">The Pragmatic Bookshelf</a></p>
+</blockquote>
+<p><a href="https://maxclaus.xyz/blog/tell-dont-ask/./telldontask1.png"><img src="https://maxclaus.xyz/blog/tell-dont-ask/./telldontask1.png?w=490" alt="TellDontAsk" /></a></p>
+<p>To exemplify it I wrote a sample based in a common code present in a project that I'm working on in this sprint.</p>
+<pre class="z-code"><code><span class="z-text z-plain">// Ask_Version.cs
+</span><span class="z-text z-plain">private class Screen
+</span><span class="z-text z-plain">{
+</span><span class="z-text z-plain">  Form mainForm = ...
+</span><span class="z-text z-plain">  private void Screen_Loaded(object sender, ControlLoadedEventArgs e)
+</span><span class="z-text z-plain">  {
+</span><span class="z-text z-plain">    if(mainForm.InputControls != null &amp;&amp; mainForm.InputControls.Contains(&quot;Id&quot;))
+</span><span class="z-text z-plain">      mainForm.InputControls[&quot;Id&quot;].Editable = isEditable;
+</span><span class="z-text z-plain">  }
+</span><span class="z-text z-plain">}
+</span><span class="z-text z-plain">
+</span><span class="z-text z-plain">// Tell_Version.cs
+</span><span class="z-text z-plain">private class Screen
+</span><span class="z-text z-plain">{
+</span><span class="z-text z-plain">  Form mainForm = ...
+</span><span class="z-text z-plain">  private void Screen_Loaded(object sender, ControlLoadedEventArgs e)
+</span><span class="z-text z-plain">  {
+</span><span class="z-text z-plain">    mainForm.SetControlEditable(&quot;Id&quot;);
+</span><span class="z-text z-plain">  }
+</span><span class="z-text z-plain">}
+</span></code></pre>
+<p>In the Ask version I have too much logic outside the Form class, that should be responsible to do all that process. In the Tell version I just tell what I want and nothing else. This increases the maintainability and readability of my code because it is shorter, cleaner and I let the Form class do what it knows doing better than the Screen class.</p>
+<p>As many others principles and patterns in software design, this is not set in stone nor is it  a silver bullet to solve all your problems, but anyway with approaches like that you will be guided towards a better code.</p>
+<p>So do you want to be known as a good writer or as that crazy drunk friend that sends you nonsense messages on the phone at 3:00 AM?! Think about it :)</p>
+
+  </div>
+
+  <footer>
+    <a class="blog_post__revision" href="https://github.com/maxclaus/maxclaus.xyz/commits/main/content/blog&#x2F;2014-01-03-tell-dont-ask&#x2F;index.md">revision history</a>
+  </footer>
+</article>
+
+      </div>
+      <footer id="footer">
+        <p> Copyright © 2025 Max Claus. All rights reserved. </p>
+      </footer>
+      <div hidden itemscope itemtype="http://schema.org/Person">
+        <span itemprop="gender">Male</span>
+        <span itemprop="email">maxclaus@posteo.com</span>
+        <span itemprop="givenName">Max</span>
+        <span itemprop="familyName">Claus</span>
+        <span itemprop="name">Max Claus Nunes</span>
+        <span itemprop="birthDate">1989-09-12</span>
+        <span itemprop="jobTitle">Software Engineer</span>
+        <span itemprop="nationality">BR</span>
+        <a href="https://maxclaus.xyz" itemprop="url">Portfolio</a>
+        <a href="https://maxclaus.xyz/blog" itemprop="url">Blog</a>
+        <a href="https://maxclaus.xyz/resume" itemprop="url">Resume</a>
+      </div>
+    </div>
+  </body>
+</html>
